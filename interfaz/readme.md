@@ -1,1 +1,1 @@
-Nueva carpeta para la base de datos
+Nueva carpeta para la interfaz
