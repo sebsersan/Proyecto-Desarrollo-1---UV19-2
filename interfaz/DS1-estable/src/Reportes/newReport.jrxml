@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     venta."idventa" AS venta_idventa,
+     venta."iduser" AS venta_iduser,
+     venta."preciototal" AS venta_preciototal,
+     venta."fecha" AS venta_fecha,
+     venta."idsedes" AS venta_idsedes
+FROM
+     "public"."venta" venta]]>
+	</queryString>
+	<field name="venta_idventa" class="java.lang.Integer"/>
+	<field name="venta_iduser" class="java.lang.Integer"/>
+	<field name="venta_preciototal" class="java.math.BigDecimal"/>
+	<field name="venta_fecha" class="java.sql.Date"/>
+	<field name="venta_idsedes" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="135" y="29" width="293" height="50"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE VENTAS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="3" y="2" width="100" height="20"/>
+				<text><![CDATA[venta_idventa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="117" y="2" width="100" height="20"/>
+				<text><![CDATA[venta_iduser]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="2" width="100" height="20"/>
+				<text><![CDATA[venta_preciototal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="344" y="2" width="100" height="20"/>
+				<text><![CDATA[venta_fecha]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="3" y="21" width="100" height="20"/>
+				<textFieldExpression><![CDATA[$F{venta_idventa}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="21" width="100" height="20"/>
+				<textFieldExpression><![CDATA[$F{venta_iduser}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="232" y="21" width="100" height="20"/>
+				<textFieldExpression><![CDATA[$F{venta_preciototal}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="344" y="21" width="100" height="20"/>
+				<textFieldExpression><![CDATA[$F{venta_fecha}.toString()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
