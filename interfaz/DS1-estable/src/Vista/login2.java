@@ -304,7 +304,8 @@ public class login2 extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent ae) {
             String user = userInput.getText();
             String pass = passwordInput.getText();
-            String aux = control.login(user, pass); //esto lo hago para que no se ejecute varias veces el llamado a este metodo//esto lo hago para que no se ejecute varias veces el llamado a este metodo
+            String aux1 = control.login(user, pass); //esto lo hago para que no se ejecute varias veces el llamado a este metodo
+            String aux = ""+aux1;
             if (user.equals("USUARIO") || pass.equals("•••••••••••••••") || user.length() == 0 || pass.length() == 0) {
                 JOptionPane.showMessageDialog(null, "Error, campos por llenar.", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
@@ -312,7 +313,7 @@ public class login2 extends javax.swing.JFrame {
                     int userint = Integer.parseInt(user);
                     if (userint < 0) {
                         JOptionPane.showMessageDialog(null, "Informacion incorrecta, prueba otra vez", "Error", JOptionPane.ERROR_MESSAGE);
-                    } else if (aux == "Gerente") {
+                    } else if (aux.equals("Gerente")) {
                         Gerente viGerente = new Gerente(user);
                         viGerente.setLocationRelativeTo(null);
                         viGerente.setVisible(true);
@@ -322,12 +323,12 @@ public class login2 extends javax.swing.JFrame {
                         viVendedor.setLocationRelativeTo(null);
                         viVendedor.setVisible(true);
                         dispose();
-                    } else if (aux == "Vendedor") {
+                    } else if (aux.equals("Vendedor")) {
                         vistaVendedor viJefeTaller = new vistaVendedor(user);
                         viJefeTaller.setLocationRelativeTo(null);
                         viJefeTaller.setVisible(true);
                         dispose();
-                    } else if (aux == "Admin") {
+                    } else if (aux.equals("Administrador")) {
                         Administrador viAdmin = new Administrador(user);
                         viAdmin.setLocationRelativeTo(null);
                         viAdmin.setVisible(true);

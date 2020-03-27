@@ -12,7 +12,7 @@ public class UsersDAO {
     }
     
     public String login (String user, String pass) {
-        String QuerySQL = "SELECT * FROM Users WHERE idUser = '" + user + "' AND password = '"+ pass + "' AND stateUser='Activo'";
+        String QuerySQL = "SELECT * FROM Persona WHERE cedula = '" + user + "' AND constraseña_persona = '"+ pass + "' AND estado_persona='Activo'";
         System.out.println(QuerySQL);
         Connection coneccion= this.access.getConnetion();
         System.out.println("Connection: "+coneccion);
@@ -23,20 +23,9 @@ public class UsersDAO {
             ResultSet resultado = sentencia.executeQuery(QuerySQL);
             System.out.println("resultado: "+resultado);
             if(resultado.next()){
-                String cargo = resultado.getString("work_position");
+                String cargo = resultado.getString("cargo_persona");
                 System.out.println("cargo: "+cargo);
-                if(cargo.equals("Gerente")){
-                    return "Gerente";
-                }
-                else if(cargo.equals("Jefe de Taller")){
-                    return "Jefe de Taller";
-                }
-                else if(cargo.equals("Vendedor")){
-                    return "Vendedor";
-                }
-                else if(cargo.equals("admin")){
-                    return "Admin";
-                }
+                return cargo;
             }else{
                 return "error";
             }
