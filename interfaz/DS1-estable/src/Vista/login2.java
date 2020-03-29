@@ -317,10 +317,10 @@ public class login2 extends javax.swing.JFrame {
                         viGerente.setLocationRelativeTo(null);
                         viGerente.setVisible(true);
                         dispose();
-                    } else if (aux == "Operador") {
-                        Operador viVendedor = new Operador(user);
-                        viVendedor.setLocationRelativeTo(null);
-                        viVendedor.setVisible(true);
+                    } else if (aux.equals("Operador")) {
+                        Operador viOperador = new Operador(user);
+                        viOperador.setLocationRelativeTo(null);
+                        viOperador.setVisible(true);
                         dispose();
                     } else if (aux.equals("Vendedor")) {
                         vistaVendedor viJefeTaller = new vistaVendedor(user);

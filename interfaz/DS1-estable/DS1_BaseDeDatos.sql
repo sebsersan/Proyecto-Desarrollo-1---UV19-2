@@ -1,4 +1,4 @@
-CREATE TABLE Persona (
+CREATE TABLE Usuario (
 	cedula int PRIMARY KEY NOT NULL,
 	nombre_persona char(40) NOT NULL,
 	paterno_persona char(30) NOT NULL,

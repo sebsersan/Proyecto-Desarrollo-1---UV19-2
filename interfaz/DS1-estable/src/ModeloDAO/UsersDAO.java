@@ -12,7 +12,7 @@ public class UsersDAO {
     }
     
     public String login (String user, String pass) {
-        String QuerySQL = "SELECT * FROM Persona WHERE cedula = '" + user + "' AND constraseña_persona = '"+ pass + "' AND estado_persona='Activo'";
+        String QuerySQL = "SELECT * FROM usuario WHERE cedula = '" + user + "' AND constraseña_persona = '"+ pass + "' AND estado_persona='Activo'";
         System.out.println(QuerySQL);
         Connection coneccion= this.access.getConnetion();
         System.out.println("Connection: "+coneccion);
@@ -70,7 +70,7 @@ public class UsersDAO {
     }
     
     public Users consultProfile(String userID){
-        String QuerySQL = "SELECT * FROM Users WHERE idUser = '"+userID+"'";
+        String QuerySQL = "SELECT * FROM usuario WHERE cedula = '"+userID+"'";
         System.out.println(QuerySQL);
         Connection coneccion= this.access.getConnetion();
         System.out.println("Connection: "+coneccion);
@@ -81,14 +81,15 @@ public class UsersDAO {
             ResultSet resultado = sentencia.executeQuery(QuerySQL);
             System.out.println("resultado: "+resultado);
             if(resultado.next()){
-                String iduser = resultado.getString("iduser");
-                String fname = resultado.getString("first_name");
-                String lname = resultado.getString("last_name");
-                String tel = resultado.getString("telefono");
-                String dir = resultado.getString("direccion");
-                String wp = resultado.getString("work_position");
-                String pass = resultado.getString("password");
-                String state = resultado.getString("stateuser");
+                String iduser = resultado.getString("cedula");
+                String fname = resultado.getString("nombre_persona");
+                String lname = resultado.getString("paterno_persona").trim();
+                lname +=  " " + resultado.getString("materno_persona");
+                String tel = resultado.getString("telefono_persona");
+                String dir = resultado.getString("direccion_persona");
+                String wp = resultado.getString("cargo_persona");
+                String pass = resultado.getString("constraseña_persona");
+                String state = resultado.getString("estado_persona");
                 
                 return new Users(iduser, fname, lname, tel, dir, wp, pass);
             }else{

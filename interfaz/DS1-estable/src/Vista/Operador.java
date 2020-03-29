@@ -60,7 +60,7 @@ public class Operador extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(15, 60, 235));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Perfil");
         jButton1.setContentAreaFilled(false);
@@ -70,7 +70,7 @@ public class Operador extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Registrar Pago");
         jButton2.setContentAreaFilled(false);
@@ -86,9 +86,9 @@ public class Operador extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -217,9 +217,9 @@ public class Operador extends javax.swing.JFrame {
                     .addGroup(panelPerfilLayout.createSequentialGroup()
                         .addGap(189, 189, 189)
                         .addComponent(jLabel18)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
-                .addGap(0, 93, Short.MAX_VALUE)
+                .addGap(0, 95, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(65, 65, 65))
         );

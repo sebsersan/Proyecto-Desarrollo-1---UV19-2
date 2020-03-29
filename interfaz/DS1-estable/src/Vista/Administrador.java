@@ -5,23 +5,34 @@
  */
 package Vista;
 
+import Controladora.Controladora;
+import Modelo.Users;
+import java.awt.Color;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
  */
 public class Administrador extends javax.swing.JFrame {
-
+    Controladora control = new Controladora();
     /**
      * Creates new form Administrador
      */
     public Administrador(String userID) {
         initComponents();
         this.setLocationRelativeTo(null);
+        jButton4.setVisible(false);
         panelCrearUsuario.setVisible(false);
         panelModificarUsuario.setVisible(false);
         panelEstadoUsuario.setVisible(false);
         
-        
+        Users profileInfo = control.consultProfile(userID);
+        this.id_admin.setText(profileInfo.getId());
+        this.nombre_admin.setText(profileInfo.getFname());
+        this.apellido_admin.setText(profileInfo.getLname());
+        this.telefono_admin.setText(profileInfo.getTel());
+        this.direccion_admin.setText(profileInfo.getDir());
     }
 
     /**
@@ -56,6 +67,7 @@ public class Administrador extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton9 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         panelModificarUsuario = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -71,12 +83,12 @@ public class Administrador extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        id_admin = new javax.swing.JTextField();
+        nombre_admin = new javax.swing.JTextField();
+        apellido_admin = new javax.swing.JTextField();
+        telefono_admin = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        direccion_admin = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         SignOut = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
@@ -187,11 +199,11 @@ public class Administrador extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -199,16 +211,16 @@ public class Administrador extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(165, 165, 165)
-                .addComponent(jButton4)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jButton1)
-                .addGap(34, 34, 34)
-                .addComponent(jButton2)
-                .addGap(37, 37, 37)
-                .addComponent(jButton3)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addComponent(jButton7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         panelEstadoUsuario.setBackground(new java.awt.Color(255, 255, 255));
@@ -216,16 +228,18 @@ public class Administrador extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
         jLabel20.setText("Estado del Usuario");
 
-        jLabel21.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel21.setText("ID");
 
-        jLabel22.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jTextField15.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel22.setText("Nuevo Estado");
 
-        jComboBox3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estado Activo", "Estado inactivo" }));
 
-        jButton8.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jButton8.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton8.setText("Cambiar Estado");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,14 +253,16 @@ public class Administrador extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 22)); // NOI18N
         jLabel24.setText("Consultar Estado:");
 
-        jLabel25.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel25.setText("ID");
+
+        jTextField16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jButton9.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jButton9.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton9.setText("Consultar");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,17 +288,19 @@ public class Administrador extends javax.swing.JFrame {
                                         .addComponent(jLabel24))
                                     .addGap(30, 30, 30)
                                     .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelEstadoUsuarioLayout.createSequentialGroup()
-                                    .addGroup(panelEstadoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel22))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(panelEstadoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(63, 63, 63)
-                                    .addComponent(jButton8))
-                                .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelEstadoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelEstadoUsuarioLayout.createSequentialGroup()
+                                        .addGroup(panelEstadoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel22))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(panelEstadoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(63, 63, 63)
+                                        .addComponent(jButton8))))))
                     .addGroup(panelEstadoUsuarioLayout.createSequentialGroup()
                         .addGap(170, 170, 170)
                         .addComponent(jLabel20)))
@@ -306,7 +324,9 @@ public class Administrador extends javax.swing.JFrame {
                             .addComponent(jLabel22)
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(59, 59, 59)
+                .addGap(31, 31, 31)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel24)
                 .addGap(18, 18, 18)
                 .addGroup(panelEstadoUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -325,7 +345,7 @@ public class Administrador extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
         jLabel14.setText("Modificar Usuario");
 
-        jLabel16.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel16.setText("ID");
 
         jTextField12.addActionListener(new java.awt.event.ActionListener() {
@@ -334,10 +354,10 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel17.setText("Campo a Cambiar");
 
-        jComboBox2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Apellido", "Telefono", "Direccion" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,10 +365,10 @@ public class Administrador extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton6.setText("Modificar");
 
-        jLabel19.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel19.setText("Nuevo Valor");
 
         javax.swing.GroupLayout panelModificarUsuarioLayout = new javax.swing.GroupLayout(panelModificarUsuario);
@@ -370,7 +390,7 @@ public class Administrador extends javax.swing.JFrame {
                             .addComponent(jTextField14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 216, Short.MAX_VALUE))
+                .addGap(0, 156, Short.MAX_VALUE))
         );
         panelModificarUsuarioLayout.setVerticalGroup(
             panelModificarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,30 +419,50 @@ public class Administrador extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
         jLabel1.setText("Perfil Administrador");
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel2.setText("ID");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel2.setText("ID:");
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel3.setText("Nombre");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel3.setText("Nombre:");
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel4.setText("Apellido");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel4.setText("Apellido:");
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel5.setText("Teléfono");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel5.setText("Teléfono:");
 
-        jTextField1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        id_admin.setEditable(false);
+        id_admin.setBackground(new java.awt.Color(255, 255, 255));
+        id_admin.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        id_admin.setBorder(null);
+        id_admin.setSelectionColor(new java.awt.Color(204, 204, 204));
 
-        jTextField2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        nombre_admin.setEditable(false);
+        nombre_admin.setBackground(new java.awt.Color(255, 255, 255));
+        nombre_admin.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        nombre_admin.setBorder(null);
+        nombre_admin.setSelectionColor(new java.awt.Color(204, 204, 204));
 
-        jTextField3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        apellido_admin.setEditable(false);
+        apellido_admin.setBackground(new java.awt.Color(255, 255, 255));
+        apellido_admin.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        apellido_admin.setBorder(null);
+        apellido_admin.setSelectionColor(new java.awt.Color(204, 204, 204));
 
-        jTextField4.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        telefono_admin.setEditable(false);
+        telefono_admin.setBackground(new java.awt.Color(255, 255, 255));
+        telefono_admin.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        telefono_admin.setBorder(null);
+        telefono_admin.setSelectionColor(new java.awt.Color(204, 204, 204));
 
-        jLabel18.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel18.setText("Dirección");
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel18.setText("Dirección:");
 
-        jTextField13.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        direccion_admin.setEditable(false);
+        direccion_admin.setBackground(new java.awt.Color(255, 255, 255));
+        direccion_admin.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        direccion_admin.setBorder(null);
+        direccion_admin.setSelectionColor(new java.awt.Color(204, 204, 204));
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/profile.png"))); // NOI18N
 
@@ -456,36 +496,35 @@ public class Administrador extends javax.swing.JFrame {
                     .addGroup(panelAdministradorLayout.createSequentialGroup()
                         .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelAdministradorLayout.createSequentialGroup()
-                                .addGap(111, 111, 111)
+                                .addGap(302, 302, 302)
+                                .addComponent(SignOut))
+                            .addGroup(panelAdministradorLayout.createSequentialGroup()
+                                .addGap(144, 144, 144)
                                 .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
                                     .addGroup(panelAdministradorLayout.createSequentialGroup()
                                         .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
                                             .addComponent(jLabel2)
                                             .addComponent(jLabel4)
                                             .addComponent(jLabel5)
                                             .addComponent(jLabel18))
-                                        .addGap(119, 119, 119)
+                                        .addGap(86, 86, 86)
                                         .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField4)
-                                            .addComponent(jTextField3)
-                                            .addComponent(jTextField2)
-                                            .addComponent(jTextField1)
-                                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(panelAdministradorLayout.createSequentialGroup()
-                                .addGap(259, 259, 259)
-                                .addComponent(jLabel26))
-                            .addGroup(panelAdministradorLayout.createSequentialGroup()
-                                .addGap(144, 144, 144)
-                                .addComponent(jLabel1))
-                            .addGroup(panelAdministradorLayout.createSequentialGroup()
-                                .addGap(302, 302, 302)
-                                .addComponent(SignOut)))
-                        .addGap(0, 122, Short.MAX_VALUE))
+                                            .addComponent(telefono_admin)
+                                            .addComponent(apellido_admin)
+                                            .addComponent(nombre_admin)
+                                            .addComponent(id_admin)
+                                            .addComponent(direccion_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel1))))
+                        .addGap(0, 121, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAdministradorLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel27)))
                 .addContainerGap())
+            .addGroup(panelAdministradorLayout.createSequentialGroup()
+                .addGap(291, 291, 291)
+                .addComponent(jLabel26)
+                .addContainerGap(317, Short.MAX_VALUE))
         );
         panelAdministradorLayout.setVerticalGroup(
             panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,26 +538,26 @@ public class Administrador extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(id_admin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombre_admin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(apellido_admin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telefono_admin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelAdministradorLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel18))
                     .addGroup(panelAdministradorLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(direccion_admin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(SignOut)
                 .addGap(43, 43, 43))
@@ -648,13 +687,13 @@ public class Administrador extends javax.swing.JFrame {
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 666, Short.MAX_VALUE)
+            .addGap(0, 672, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addComponent(panelCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+                    .addComponent(panelCrearUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 669, Short.MAX_VALUE)
                     .addGap(3, 3, 3)))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panelModificarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE))
+                .addComponent(panelModificarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelAdministrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -701,46 +740,56 @@ public class Administrador extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(panelCrearUsuario.isVisible()){
             panelCrearUsuario.setVisible(false);
+            jButton1.setVisible(true);
         }
         if(panelModificarUsuario.isVisible()){
             panelModificarUsuario.setVisible(false);
+            jButton3.setVisible(true);
         }
         if(panelEstadoUsuario.isVisible()){
             panelEstadoUsuario.setVisible(false);
+            jButton7.setVisible(true);
         }
         panelAdministrador.setVisible(true);
-
+        jButton4.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:       
         if(panelAdministrador.isVisible()){
             panelAdministrador.setVisible(false);
+            jButton4.setVisible(true);
         }
         if(panelModificarUsuario.isVisible()){
             panelModificarUsuario.setVisible(false);
+            jButton3.setVisible(true);
         }
         if(panelEstadoUsuario.isVisible()){
             panelEstadoUsuario.setVisible(false);
+            jButton7.setVisible(true);
         }
         
         panelCrearUsuario.setVisible(true);
+        jButton1.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         if(panelCrearUsuario.isVisible()){
             panelCrearUsuario.setVisible(false);
+            jButton1.setVisible(true);
         }
         if(panelAdministrador.isVisible()){
             panelAdministrador.setVisible(false);
+            jButton4.setVisible(true);
         }
         if(panelEstadoUsuario.isVisible()){
             panelEstadoUsuario.setVisible(false);
+            jButton7.setVisible(true);
         }
         
-        
         panelModificarUsuario.setVisible(true);
+        jButton3.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
@@ -755,17 +804,19 @@ public class Administrador extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(panelCrearUsuario.isVisible()){
             panelCrearUsuario.setVisible(false);
+            jButton1.setVisible(true);
         }
         if(panelAdministrador.isVisible()){
             panelAdministrador.setVisible(false);
+            jButton4.setVisible(true);
         }
         if(panelModificarUsuario.isVisible()){
             panelModificarUsuario.setVisible(false);
+            jButton3.setVisible(true);
         }
         
-        
         panelEstadoUsuario.setVisible(true);
-        
+        jButton7.setVisible(false);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -794,6 +845,9 @@ public class Administrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SignOut;
+    private javax.swing.JTextField apellido_admin;
+    private javax.swing.JTextField direccion_admin;
+    private javax.swing.JTextField id_admin;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -836,26 +890,24 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField nombre_admin;
     private javax.swing.JPanel panelAdministrador;
     private javax.swing.JPanel panelCrearUsuario;
     private javax.swing.JPanel panelEstadoUsuario;
     private javax.swing.JPanel panelModificarUsuario;
+    private javax.swing.JTextField telefono_admin;
     // End of variables declaration//GEN-END:variables
 }
