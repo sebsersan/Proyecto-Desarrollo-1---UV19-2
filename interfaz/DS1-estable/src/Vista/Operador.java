@@ -5,12 +5,16 @@
  */
 package Vista;
 
+import Modelo.Users;
+import java.awt.event.MouseEvent;
+import Controladora.Controladora;
+
 /**
  *
  * @author Usuario
  */
 public class Operador extends javax.swing.JFrame {
-
+    Controladora control = new Controladora();
     /**
      * Creates new form Operador
      */
@@ -18,6 +22,13 @@ public class Operador extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         panelRegistrarPago.setVisible(false);
+        
+        Users profileInfo = control.consultProfile(userID);
+        this.cc_operador.setText(profileInfo.getId());
+        this.nombre_operador.setText(profileInfo.getFname());
+        this.apellido_operador.setText(profileInfo.getLname());
+        this.telefono_operador.setText(profileInfo.getTel());
+        this.direccion_operador.setText(profileInfo.getDir());
     }
 
     /**
@@ -40,6 +51,8 @@ public class Operador extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
+        SignOut1 = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
         panelPerfil = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -48,11 +61,13 @@ public class Operador extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        cc_operador = new javax.swing.JTextField();
+        nombre_operador = new javax.swing.JTextField();
+        apellido_operador = new javax.swing.JTextField();
+        direccion_operador = new javax.swing.JTextField();
+        telefono_operador = new javax.swing.JTextField();
+        SignOut = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -63,7 +78,10 @@ public class Operador extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Perfil");
+        jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
+        jButton1.setDefaultCapable(false);
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -73,7 +91,9 @@ public class Operador extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Registrar Pago");
+        jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
+        jButton2.setDefaultCapable(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -98,26 +118,47 @@ public class Operador extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
 
         panelRegistrarPago.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel7.setText("ID");
 
         jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
         jLabel8.setText("Registrar Pago");
 
-        jTextField6.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jButton3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("Confirmar");
 
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel9.setText("Monto");
 
-        jTextField7.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        SignOut1.setBackground(new java.awt.Color(255, 255, 255));
+        SignOut1.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        SignOut1.setForeground(new java.awt.Color(255, 255, 255));
+        SignOut1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
+        SignOut1.setBorderPainted(false);
+        SignOut1.setContentAreaFilled(false);
+        SignOut1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SignOut1.setFocusable(false);
+        SignOut1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SignOut1MouseClicked(evt);
+            }
+        });
+
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_Multiply_25px.png"))); // NOI18N
+        jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel28MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRegistrarPagoLayout = new javax.swing.GroupLayout(panelRegistrarPago);
         panelRegistrarPago.setLayout(panelRegistrarPagoLayout);
@@ -135,16 +176,23 @@ public class Operador extends javax.swing.JFrame {
                             .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                                 .addComponent(jTextField7)))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrarPagoLayout.createSequentialGroup()
                 .addContainerGap(89, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(81, 81, 81))
+                .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrarPagoLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(81, 81, 81))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrarPagoLayout.createSequentialGroup()
+                        .addComponent(SignOut1)
+                        .addGap(159, 159, 159))
+                    .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
         panelRegistrarPagoLayout.setVerticalGroup(
             panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(jLabel8)
                 .addGap(47, 47, 47)
                 .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -156,7 +204,9 @@ public class Operador extends javax.swing.JFrame {
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(jButton3)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addComponent(SignOut1)
+                .addGap(42, 42, 42))
         );
 
         panelPerfil.setBackground(new java.awt.Color(255, 255, 255));
@@ -168,30 +218,66 @@ public class Operador extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
         jLabel1.setText("Perfil Operador");
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel2.setText("ID");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel2.setText("Cedula:");
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel3.setText("Nombre");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel3.setText("Nombre:");
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel4.setText("Apellido");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel4.setText("Apellido:");
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel5.setText("Direccion");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel5.setText("Direccion:");
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        jLabel6.setText("Telefono");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel6.setText("Telefono:");
 
-        jTextField1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        cc_operador.setEditable(false);
+        cc_operador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cc_operador.setBorder(null);
+        cc_operador.setOpaque(false);
 
-        jTextField2.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        nombre_operador.setEditable(false);
+        nombre_operador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nombre_operador.setBorder(null);
+        nombre_operador.setOpaque(false);
 
-        jTextField3.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        apellido_operador.setEditable(false);
+        apellido_operador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        apellido_operador.setBorder(null);
+        apellido_operador.setOpaque(false);
 
-        jTextField4.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        direccion_operador.setEditable(false);
+        direccion_operador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        direccion_operador.setBorder(null);
+        direccion_operador.setOpaque(false);
 
-        jTextField5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        telefono_operador.setEditable(false);
+        telefono_operador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        telefono_operador.setBorder(null);
+        telefono_operador.setOpaque(false);
+
+        SignOut.setBackground(new java.awt.Color(255, 255, 255));
+        SignOut.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        SignOut.setForeground(new java.awt.Color(255, 255, 255));
+        SignOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
+        SignOut.setBorderPainted(false);
+        SignOut.setContentAreaFilled(false);
+        SignOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SignOut.setFocusable(false);
+        SignOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignOutActionPerformed(evt);
+            }
+        });
+
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_Multiply_25px.png"))); // NOI18N
+        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel27MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelPerfilLayout = new javax.swing.GroupLayout(panelPerfil);
         panelPerfil.setLayout(panelPerfilLayout);
@@ -209,48 +295,57 @@ public class Operador extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addGap(26, 26, 26)
                         .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)))
+                            .addComponent(cc_operador)
+                            .addComponent(nombre_operador)
+                            .addComponent(apellido_operador)
+                            .addComponent(direccion_operador)
+                            .addComponent(telefono_operador, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)))
                     .addGroup(panelPerfilLayout.createSequentialGroup()
                         .addGap(189, 189, 189)
-                        .addComponent(jLabel18)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                        .addComponent(jLabel18))
+                    .addGroup(panelPerfilLayout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(SignOut)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
                 .addGap(0, 95, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(65, 65, 65))
+                .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(65, 65, 65))
+                    .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
         panelPerfilLayout.setVerticalGroup(
             panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPerfilLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
                 .addGap(26, 26, 26)
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cc_operador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombre_operador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(apellido_operador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(direccion_operador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                    .addComponent(telefono_operador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(SignOut)
+                .addGap(41, 41, 41))
         );
 
         jLayeredPane1.setLayer(panelRegistrarPago, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -307,14 +402,47 @@ public class Operador extends javax.swing.JFrame {
         panelPerfil.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+        cerrarVentana();
+    }//GEN-LAST:event_jLabel27MouseClicked
+
+    private void SignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutActionPerformed
+        volverALogin();
+    }//GEN-LAST:event_SignOutActionPerformed
+
+    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
+        cerrarVentana();
+    }//GEN-LAST:event_jLabel28MouseClicked
+
+    private void SignOut1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignOut1MouseClicked
+        volverALogin();
+    }//GEN-LAST:event_SignOut1MouseClicked
+
+    private void cerrarVentana(){
+        this.dispose();
+    }
+    
+    private void volverALogin(){
+        login2 log = new login2();
+        log.setLocationRelativeTo(null);
+        log.setVisible(true);
+        this.dispose();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton SignOut;
+    private javax.swing.JButton SignOut1;
+    private javax.swing.JTextField apellido_operador;
+    private javax.swing.JTextField cc_operador;
+    private javax.swing.JTextField direccion_operador;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -324,14 +452,11 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField nombre_operador;
     private javax.swing.JPanel panelPerfil;
     private javax.swing.JPanel panelRegistrarPago;
+    private javax.swing.JTextField telefono_operador;
     // End of variables declaration//GEN-END:variables
 }
