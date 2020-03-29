@@ -304,8 +304,7 @@ public class login2 extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent ae) {
             String user = userInput.getText();
             String pass = passwordInput.getText();
-            String aux1 = control.login(user, pass); //esto lo hago para que no se ejecute varias veces el llamado a este metodo
-            String aux = ""+aux1;
+            String aux = control.login(user, pass); //esto lo hago para que no se ejecute varias veces el llamado a este metodo
             if (user.equals("USUARIO") || pass.equals("•••••••••••••••") || user.length() == 0 || pass.length() == 0) {
                 JOptionPane.showMessageDialog(null, "Error, campos por llenar.", "Error", JOptionPane.ERROR_MESSAGE);
             } else {

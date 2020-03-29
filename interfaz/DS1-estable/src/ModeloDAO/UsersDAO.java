@@ -23,7 +23,7 @@ public class UsersDAO {
             ResultSet resultado = sentencia.executeQuery(QuerySQL);
             System.out.println("resultado: "+resultado);
             if(resultado.next()){
-                String cargo = resultado.getString("cargo_persona");
+                String cargo = resultado.getString("cargo_persona").trim();
                 System.out.println("cargo: "+cargo);
                 return cargo;
             }else{
