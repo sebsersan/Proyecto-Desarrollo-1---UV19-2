@@ -272,10 +272,6 @@ public class Controladora {
     public DefaultTableModel consultarRegistroVentasJefeTaller(String idsede, String fechaInicio, String fechaFinal) {
         return productoDao.BuscarRegistrosDeVentaJefeTaller(idsede, fechaInicio, fechaFinal);
     }
-
-    public ArrayList<String[]> consultUsersJefes() {
-        return usersDao.consultUsersJefes();
-    }
     
     public ArrayList<String[]> consultUsersVendedores() {
         return usersDao.consultUsersVendedores();

@@ -105,7 +105,10 @@ public class UsersDAO {
     
     
     public ArrayList<String[]> consultUsers(){
-        String QuerySQL = "select iduser, first_name, last_name, telefono, direccion, work_position from users where work_position='Jefe de Taller' and stateuser='Activo' union select iduser, first_name, last_name, telefono, direccion, work_position from users where work_position='Vendedor' and stateuser='Activo'";
+        String QuerySQL = "select cedula, nombre_persona, paterno_persona, materno_persona, telefono_persona, "
+                        + "direccion_persona, cargo_persona from usuario where cargo_persona='Gerente' and estado_persona='Activo' "
+                        + "union select cedula, nombre_persona, paterno_persona, materno_persona, telefono_persona, "
+                        + "direccion_persona, cargo_persona from usuario where cargo_persona='Operador' and estado_persona='Activo'";
         System.out.println(QuerySQL);
         Connection coneccion= this.access.getConnetion();
         System.out.println("Connection: "+coneccion);
@@ -121,13 +124,14 @@ public class UsersDAO {
             int cont = 0;
             while (resultado.next()) {
                 
-                String a1 = resultado.getString("iduser");
-                String a2 = resultado.getString("first_name");
-                String a3 = resultado.getString("last_name");
-                String a4 = resultado.getString("telefono");
-                String a5 = resultado.getString("direccion");
-                String a6 = resultado.getString("work_position");
-                String[] niu = {a1, a2, a3, a4, a5, a6}; //Es importante crear un nuevo arreglo cada vez
+                String a1 = resultado.getString("cedula");
+                String a2 = resultado.getString("nombre_persona");
+                String a3 = resultado.getString("paterno_persona");
+                String a4 = resultado.getString("materno_persona");
+                String a5 = resultado.getString("telefono_persona");
+                String a6 = resultado.getString("direccion_persona");
+                String a7 = resultado.getString("cargo_persona");
+                String[] niu = {a1, a2, a3, a4, a5, a6, a7}; //Es importante crear un nuevo arreglo cada vez
                 matrixList.add(niu);
                 cont++;
             }
@@ -141,7 +145,8 @@ public class UsersDAO {
     }
     
     public ArrayList<String[]> consultGerente(){
-        String QuerySQL = "select iduser, first_name, last_name, telefono, direccion, work_position from users where work_position='Gerente' and stateuser='Activo'";
+        String QuerySQL = "select cedula, nombre_persona, paterno_persona, materno_persona, telefono_persona, "
+                        + "direccion_persona, cargo_persona from usuario where cargo_persona='Gerente' and estado_persona='Activo'";
         System.out.println(QuerySQL);
         Connection coneccion= this.access.getConnetion();
         System.out.println("Connection: "+coneccion);
@@ -157,13 +162,14 @@ public class UsersDAO {
             int cont = 0;
             while (resultado.next()) {
                 
-                String a1 = resultado.getString("iduser");
-                String a2 = resultado.getString("first_name");
-                String a3 = resultado.getString("last_name");
-                String a4 = resultado.getString("telefono");
-                String a5 = resultado.getString("direccion");
-                String a6 = resultado.getString("work_position");
-                String[] niu = {a1, a2, a3, a4, a5, a6}; //Es importante crear un nuevo arreglo cada vez
+                String a1 = resultado.getString("cedula");
+                String a2 = resultado.getString("nombre_persona");
+                String a3 = resultado.getString("paterno_persona");
+                String a4 = resultado.getString("materno_persona");
+                String a5 = resultado.getString("telefono_persona");
+                String a6 = resultado.getString("direccion_persona");
+                String a7 = resultado.getString("cargo_persona");
+                String[] niu = {a1, a2, a3, a4, a5, a6, a7}; //Es importante crear un nuevo arreglo cada vez
                 matrixList.add(niu);
                 cont++;
             }
@@ -175,7 +181,7 @@ public class UsersDAO {
         }
         return null;
     }
-    
+/*  No tenemos sedes.
     public ResultSet comboOptions(){
         String QuerySQL = "SELECT * FROM Sedes";
         System.out.println(QuerySQL);
@@ -195,12 +201,13 @@ public class UsersDAO {
         }
         return null;
     }
+*/
 
     public boolean updateUser(Users aUser) {
-            String QuerySQL = "UPDATE Users SET first_name='"+aUser.getFname()+ "', last_name='"+aUser.getLname()
-                    +"', telefono='"+aUser.getTel()+"', direccion='"+aUser.getDir()+"', work_position='"+aUser.getPosition()+"' WHERE iduser = '"+aUser.getId()+"' AND (work_position='Jefe de Taller' OR work_position='Vendedor')";
+        String QuerySQL = "UPDATE Usuario SET nombre_persona='"+aUser.getFname()+ "', paterno_persona='"+aUser.getLname()
+             +"', telefono_persona='"+aUser.getTel()+"', direccion_persona='"+aUser.getDir()+"', cargo_persona='"+aUser.getPosition()+"' WHERE cedula = '"+aUser.getId()+"' AND cargo_persona='Operador'";
             
-        String QuerySQLaux = "SELECT idUser FROM Users WHERE idUser = '"+aUser.getId()+"' AND (work_position='Jefe de Taller' OR work_position='Vendedor')";
+        String QuerySQLaux = "SELECT cedula FROM Usuario WHERE cedula = '"+aUser.getId()+"' AND cargo_persona='Operador'";
         System.out.println(QuerySQL);
         System.out.println(QuerySQLaux);
         Connection coneccion= this.access.getConnetion();
@@ -231,10 +238,10 @@ public class UsersDAO {
     }
     
     public boolean updateGerente(Users aUser) {
-            String QuerySQL = "UPDATE Users SET first_name='"+aUser.getFname()+ "', last_name='"+aUser.getLname()
-                    +"', telefono='"+aUser.getTel()+"', direccion='"+aUser.getDir()+"' WHERE iduser = '"+aUser.getId()+"' AND work_position='Gerente'";
+            String QuerySQL = "UPDATE Usuario SET nombre_persona='"+aUser.getFname()+ "', paterno_persona='"+aUser.getLname()
+                    +"', telefono_persona='"+aUser.getTel()+"', direccion_persona='"+aUser.getDir()+"' WHERE cedula = '"+aUser.getId()+"' AND cargo_persona='Gerente'";
             
-        String QuerySQLaux = "SELECT idUser FROM Users WHERE idUser = '"+aUser.getId()+"' AND work_position='Gerente'";
+        String QuerySQLaux = "SELECT cedula FROM Usuario WHERE cedula = '"+aUser.getId()+"' AND cargo_persona='Gerente'";
         System.out.println(QuerySQL);
         System.out.println(QuerySQLaux);
         Connection coneccion= this.access.getConnetion();
@@ -265,9 +272,8 @@ public class UsersDAO {
     }
     
     public boolean despedirUsuario(String idUser){
-        String QuerySQL = "UPDATE Users SET stateUser = 'Inactivo' where idUser = "+idUser;  
-        String QuerySQLaux = "SELECT idUser,work_position FROM Users WHERE idUser = "+idUser+" AND (work_position='Jefe de Taller' OR work_position='Vendedor')";
-        String QueryDelete = "DELETE FROM vendedoresSede WHERE idUser= "+idUser;
+        String QuerySQL = "UPDATE Usuario SET estado_persona = 'Inactivo' where cedula = "+idUser;  
+        String QuerySQLaux = "SELECT cedula,work_position FROM Usuario WHERE cedula = "+idUser+" AND cargo_persona='Vendedor'";
         System.out.println(QuerySQL);
         System.out.println(QuerySQLaux);
         Connection coneccion = this.access.getConnetion();
@@ -279,10 +285,8 @@ public class UsersDAO {
             ResultSet resultado = sentencia.executeQuery(QuerySQLaux);
             System.out.println("resultado: "+resultado);
             if(resultado.next()){
-                String cargo = resultado.getString("work_position");
                 int res = sentencia.executeUpdate(QuerySQL);
-                int res2 = sentencia.executeUpdate(QueryDelete);
-                if(res==1 && (res2==1 || cargo.equals("Jefe de Taller"))){
+                if(res==1){
                     return true;
                 }else{
                     return false;
@@ -299,8 +303,8 @@ public class UsersDAO {
     }
     
     public boolean despedirGerente(String idUser){
-        String QuerySQL = "UPDATE Users SET stateUser = 'Inactivo' where idUser = "+idUser;           
-        String QuerySQLaux = "SELECT idUser FROM Users WHERE idUser = "+idUser+" AND work_position='Gerente'";
+        String QuerySQL = "UPDATE Usuario SET estado_persona = 'Inactivo' where cedula = "+idUser;           
+        String QuerySQLaux = "SELECT cedula FROM Usuario WHERE cedula = "+idUser+" AND cargo_persona='Gerente'";
         System.out.println(QuerySQL);
         System.out.println(QuerySQLaux);
         Connection coneccion= this.access.getConnetion();
@@ -328,45 +332,9 @@ public class UsersDAO {
         }
         return false;  
     }
-
-    public ArrayList<String[]> consultUsersJefes() {
-        String QuerySQL = "select iduser, first_name, last_name, telefono, direccion, work_position from users where work_position='Jefe de Taller'";
-        System.out.println(QuerySQL);
-        Connection coneccion= this.access.getConnetion();
-        System.out.println("Connection: "+coneccion);
-        
-        try {
-            Statement sentencia = coneccion.createStatement();
-            System.out.println("sentencia: "+sentencia);
-            ResultSet resultado = sentencia.executeQuery(QuerySQL);
-            System.out.println("resultado: "+resultado);
-            
-
-            ArrayList<String[]> matrixList = new ArrayList<String[]>();
-            int cont = 0;
-            while (resultado.next()) {
-                
-                String a1 = resultado.getString("iduser");
-                String a2 = resultado.getString("first_name");
-                String a3 = resultado.getString("last_name");
-                String a4 = resultado.getString("telefono");
-                String a5 = resultado.getString("direccion");
-                String a6 = resultado.getString("work_position");
-                String[] niu = {a1, a2, a3, a4, a5, a6}; //Es importante crear un nuevo arreglo cada vez
-                matrixList.add(niu);
-                cont++;
-            }
-            return matrixList;
-
-        } catch (SQLException ex) {
-            System.out.println("---- Problema en la ejecucion.");
-            ex.printStackTrace();
-        }
-        return null;
-    }
     
     public ArrayList<String[]> consultUsersVendedores() {
-        String QuerySQL = "select iduser, first_name, last_name, telefono, direccion, work_position from users where work_position='Vendedor'";
+        String QuerySQL = "select cedula, nombre_persona, paterno_persona, materno_persona, telefono_persona, direccion_persona, cargo_persona from usuarios where cargo_persona='Operador'";
         System.out.println(QuerySQL);
         Connection coneccion= this.access.getConnetion();
         System.out.println("Connection: "+coneccion);
@@ -377,18 +345,18 @@ public class UsersDAO {
             ResultSet resultado = sentencia.executeQuery(QuerySQL);
             System.out.println("resultado: "+resultado);
             
-
+            int cont=0;
             ArrayList<String[]> matrixList = new ArrayList<String[]>();
-            int cont = 0;
             while (resultado.next()) {
                 
-                String a1 = resultado.getString("iduser");
-                String a2 = resultado.getString("first_name");
-                String a3 = resultado.getString("last_name");
-                String a4 = resultado.getString("telefono");
-                String a5 = resultado.getString("direccion");
-                String a6 = resultado.getString("work_position");
-                String[] niu = {a1, a2, a3, a4, a5, a6}; //Es importante crear un nuevo arreglo cada vez
+                String a1 = resultado.getString("cedula");
+                String a2 = resultado.getString("nombre_persona");
+                String a3 = resultado.getString("paterno_persona");
+                String a4 = resultado.getString("materno_persona");
+                String a5 = resultado.getString("telefono_persona");
+                String a6 = resultado.getString("direccion_persona");
+                String a7 = resultado.getString("cargo_persona");
+                String[] niu = {a1, a2, a3, a4, a5, a6, a7}; //Es importante crear un nuevo arreglo cada vez
                 matrixList.add(niu);
                 cont++;
             }
@@ -402,7 +370,7 @@ public class UsersDAO {
     }
 
     public ArrayList<String[]> consultUsersCoincidencia_tabla(String busqueda) {
-        String QuerySQL = "SELECT * FROM (select iduser, first_name, last_name, telefono, direccion, work_position from users where work_position='Jefe de Taller' "
+        String QuerySQL = "SELECT * FROM (select cedula, nombre_persona, paterno_persona, materno_persona, telefono_persona, direccion_persona, cargo_persona from usuario where work_position='Gerente' "
                 + "union select iduser, first_name, last_name, telefono, direccion, work_position from users where work_position='Vendedor') as persons WHERE LOWER (persons.iduser::text)  LIKE LOWER ( '" + busqueda + "%')";
                 System.out.println(QuerySQL);
         Connection coneccion= this.access.getConnetion();
