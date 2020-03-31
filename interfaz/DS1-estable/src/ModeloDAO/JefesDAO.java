@@ -135,7 +135,7 @@ public Jefes consultProfile(String userID){
         return null;
     }
     
-    public boolean updateUserVendedor(Users aUser) {
+    public boolean updateUserOperador(Users aUser) {
             String QuerySQL = "UPDATE Users SET first_name='"+aUser.getFname()+ "', last_name='"+aUser.getLname()
                     +"', telefono='"+aUser.getTel()+"', direccion='"+aUser.getDir()+"' WHERE iduser = '"+aUser.getId()+"'";
             

@@ -38,9 +38,9 @@ public class UsersDAO {
     }
     
     public boolean createNewUser(Users aUser){
-        String QuerySQL = "INSERT INTO Users VALUES ("+ aUser.getId() + ", '"+aUser.getFname()+ "', '"+aUser.getLname()+ "', '"
-                +aUser.getTel()+"', '"+aUser.getDir()+"', '"+aUser.getPosition()+ "', '"+aUser.getPass()+ "', '"+aUser.getState()+ "')";
-        String QuerySQLaux = "SELECT idUser FROM Users WHERE idUser = '"+aUser.getId()+"'"; //AND (work_position='Jefe de Taller' OR work_position='Vendedor')";
+        String QuerySQL = "INSERT INTO Usuario VALUES ("+ aUser.getId() + ", '"+aUser.getFname()+ "', '"+aUser.getLname()+ "', '"
+                +aUser.getLname2()+"', '"+aUser.getTel()+"', '"+aUser.getDir()+"', '"+aUser.getPosition()+ "', '"+aUser.getPass()+ "', 'Activo')";
+        String QuerySQLaux = "SELECT cedula FROM Usuario WHERE cedula = '"+aUser.getId()+"'"; //AND (work_position='Jefe de Taller' OR work_position='Vendedor')";
         System.out.println(QuerySQL);
         System.out.println(QuerySQLaux);
         Connection coneccion= this.access.getConnetion();
@@ -84,14 +84,14 @@ public class UsersDAO {
                 String iduser = resultado.getString("cedula");
                 String fname = resultado.getString("nombre_persona");
                 String lname = resultado.getString("paterno_persona").trim();
-                lname +=  " " + resultado.getString("materno_persona");
+                String lname2 = resultado.getString("materno_persona");
                 String tel = resultado.getString("telefono_persona");
                 String dir = resultado.getString("direccion_persona");
                 String wp = resultado.getString("cargo_persona");
                 String pass = resultado.getString("constraseña_persona");
                 String state = resultado.getString("estado_persona");
                 
-                return new Users(iduser, fname, lname, tel, dir, wp, pass);
+                return new Users(iduser, fname, lname, lname2, tel, dir, wp, pass, state);
             }else{
                 return new Users(null, null, null, null, null, null, null);
             }
@@ -203,11 +203,10 @@ public class UsersDAO {
     }
 */
 
-    public boolean updateUser(Users aUser) {
-        String QuerySQL = "UPDATE Usuario SET nombre_persona='"+aUser.getFname()+ "', paterno_persona='"+aUser.getLname()
-             +"', telefono_persona='"+aUser.getTel()+"', direccion_persona='"+aUser.getDir()+"', cargo_persona='"+aUser.getPosition()+"' WHERE cedula = '"+aUser.getId()+"' AND cargo_persona='Operador'";
+    public boolean updateUser(String cedula, String atributo, String nuevoValor) {
+        String QuerySQL = "UPDATE Usuario SET "+ atributo+ "=" + "'" + nuevoValor + "'" + " WHERE cedula = '"+cedula + "'";
             
-        String QuerySQLaux = "SELECT cedula FROM Usuario WHERE cedula = '"+aUser.getId()+"' AND cargo_persona='Operador'";
+        String QuerySQLaux = "SELECT cedula FROM Usuario WHERE cedula = '"+Integer.parseInt(cedula)+ "'";
         System.out.println(QuerySQL);
         System.out.println(QuerySQLaux);
         Connection coneccion= this.access.getConnetion();

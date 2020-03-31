@@ -42,8 +42,8 @@ public class Controladora {
         return usersDao.login(user, pass);
     }
 
-    public Users consultProfile(String userID) {
-        return usersDao.consultProfile(userID);
+    public Users consultProfile(String cedula) {
+        return usersDao.consultProfile(cedula);
     }
 
     public Jefes consultProfileJefe(String userID) {
@@ -109,9 +109,10 @@ public class Controladora {
     }
 
     //Funcion para crear usuarios desde el gerente
-    public boolean createUser(String id, String fname, String lname, String telefono, String direccion, String position, String pass) {
-        Users aU = new Users(id, fname, lname, telefono, direccion, position, pass);
-        if(position.equals("Gerente")){
+    public boolean createUser(String id, String fname, String lname,String lname2, String telefono, String direccion, String position, String pass) {
+        String state = "";
+        Users aU = new Users(id, fname, lname, lname2, telefono, direccion, position, pass, state="Activo");
+        if(position.equals("Administrador")){
             aU.setState("Activo");
         }else{
             aU.setState("Inactivo");
@@ -127,28 +128,20 @@ public class Controladora {
     }
 
     //Funcion para actualizar usuarios desde el gerente
-    public boolean updateUser(String id, String fname, String lname, String telefono, String direccion, String position) {
-        Users aU = new Users(id, fname, lname, telefono, direccion, position);
-        return usersDao.updateUser(aU);
+    public boolean updateUser(String cedula, String atributo, String nuevoValor) {
+        return usersDao.updateUser(cedula, atributo, nuevoValor);
     }
     
     //Actualizar un gerente desde el Administrador del Sistema
-    public boolean updateGerente(String id, String fname, String lname, String telefono, String direccion, String position) {
-        Users aU = new Users(id, fname, lname, telefono, direccion, position);
+    public boolean updateGerente(String id, String fname, String lname, String lname2, String telefono, String direccion, String position) {
+        Users aU = new Users(id, fname, lname, lname2, telefono, direccion, position);
         return usersDao.updateGerente(aU);
     }
 
     //Funcion para actualizar usuarios desde el gerente
-    public boolean updateUserVendedor(String id, String fname, String lname, String telefono, String direccion) {
-        Users aU = new Users(id, fname, lname, telefono, direccion, "Vendedor");
-        return jefesDao.updateUserVendedor(aU);
-    }
-
-    //Funcion para actualizar sedes desde el gerente
-    public boolean updateSede(String idSede, String city, String address, String state, String placeid, String jefeActual) {
-        Sedes aS = new Sedes(city, address, state, placeid);
-        aS.setId(idSede);
-        return sedesDao.updateSede(aS, jefeActual);
+    public boolean updateUserOperador(String id, String fname, String lname, String lname2, String telefono, String direccion) {
+        Users aU = new Users(id, fname, lname, lname2, telefono, direccion, "Operador");
+        return jefesDao.updateUserOperador(aU);
     }
 
     //Funcion para consultar usuarios desde el gerente
@@ -166,22 +159,6 @@ public class Controladora {
     
     public boolean despedirGerente(String idUser){
         return usersDao.despedirGerente(idUser);
-    }
-    
-    //Funcion para consultar vendedores desde el Jefe de taller
-    public ArrayList<String[]> consultUsersVendedores(String idSede) {
-        return jefesDao.consultUsersVendedores(idSede);
-    }
-
-    //Funcion para consultar sedes desde el gerente
-    public ArrayList<String[]> consultSedes() {
-        return sedesDao.consultSede();
-    }
-
-    //Funcion para crear sedes desde el gerente
-    public boolean createSede(String ciudad, String direccion, String estado, String jefe) {
-        Sedes sede = new Sedes(ciudad, direccion, estado, jefe);
-        return sedesDao.createNewSede(sede);
     }
 
     //Funcion para crear usuarios desde el gerente

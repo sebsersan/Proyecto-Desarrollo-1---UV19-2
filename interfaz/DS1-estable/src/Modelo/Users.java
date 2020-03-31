@@ -5,26 +5,30 @@ public class Users {
     String id;
     String fname;
     String lname;
+    String lname2;
     String pass;
     String position;
     String tel;
     String dir;
     String state;
     
-    public Users (String id, String fname, String lname, String tel, String dir, String position, String pass){
+    public Users (String id, String fname, String lname, String lname2, String tel, String dir, String position, String pass, String state){
         this.id = id;
         this.fname = fname;
         this.lname = lname;
+        this.lname2 = lname2;
         this.pass = pass;
         this.position = position;
         this.tel = tel;
         this.dir = dir;
+        this.state = state;
     }
 
-    public Users(String id, String fname, String lname, String tel, String dir, String position) {
+    public Users(String id, String fname, String lname, String lname2, String tel, String dir, String position) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
+        this.lname2 = lname2;
         this.tel = tel;
         this.dir = dir;
         this.position = position;
@@ -40,6 +44,10 @@ public class Users {
 
     public String getLname() {
         return lname;
+    }
+    
+    public String getLname2() {
+        return lname2;
     }
 
     public String getPass() {
@@ -64,6 +72,10 @@ public class Users {
 
     public void setLname(String lname) {
         this.lname = lname;
+    }
+    
+    public void setLname2(String lname2) {
+        this.lname2 = lname2;
     }
 
     public void setPass(String pass) {
