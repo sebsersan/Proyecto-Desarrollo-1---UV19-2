@@ -23,6 +23,7 @@ public class Operador extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         panelRegistrarPago.setVisible(false);
+        panelCrearCliente.setVisible(false);
         
         Users profileInfo = control.consultProfile(userID);
         this.cc_operador.setText(profileInfo.getId());
@@ -87,6 +88,8 @@ public class Operador extends javax.swing.JFrame {
         jTextFieldPaterno = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jTextFieldMaterno = new javax.swing.JTextField();
+        SignOut2 = new javax.swing.JButton();
+        jLabelCerrar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -94,34 +97,42 @@ public class Operador extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(15, 60, 235));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Perfil");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setDefaultCapable(false);
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Registrar Pago");
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setDefaultCapable(false);
+        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
+        crearCliente.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         crearCliente.setForeground(new java.awt.Color(255, 255, 255));
         crearCliente.setText("Crear Cliente");
         crearCliente.setBorderPainted(false);
         crearCliente.setContentAreaFilled(false);
         crearCliente.setDefaultCapable(false);
+        crearCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        crearCliente.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         crearCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearClienteActionPerformed(evt);
@@ -137,9 +148,7 @@ public class Operador extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(crearCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(crearCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,19 +165,21 @@ public class Operador extends javax.swing.JFrame {
 
         panelRegistrarPago.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel7.setText("ID");
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel7.setText("Cedula");
 
         jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
         jLabel8.setText("Registrar Pago");
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("Confirmar");
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel9.setText("Monto");
 
-        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         SignOut1.setBackground(new java.awt.Color(255, 255, 255));
         SignOut1.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
@@ -195,29 +206,31 @@ public class Operador extends javax.swing.JFrame {
         panelRegistrarPago.setLayout(panelRegistrarPagoLayout);
         panelRegistrarPagoLayout.setHorizontalGroup(
             panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton3)
-                        .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(49, 49, 49)
-                            .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                                .addComponent(jTextField7)))))
-                .addContainerGap(44, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrarPagoLayout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
+                .addContainerGap(128, Short.MAX_VALUE)
                 .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrarPagoLayout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(81, 81, 81))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrarPagoLayout.createSequentialGroup()
-                        .addComponent(SignOut1)
-                        .addGap(159, 159, 159))
                     .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING)))
+            .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
+                .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton3)
+                                .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(49, 49, 49)
+                                    .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                                        .addComponent(jTextField7))))))
+                    .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(SignOut1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRegistrarPagoLayout.setVerticalGroup(
             panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,9 +248,9 @@ public class Operador extends javax.swing.JFrame {
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
                 .addComponent(SignOut1)
-                .addGap(42, 42, 42))
+                .addGap(44, 44, 44))
         );
 
         panelPerfil.setBackground(new java.awt.Color(255, 255, 255));
@@ -249,38 +262,43 @@ public class Operador extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
         jLabel1.setText("Perfil Operador");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel2.setText("Cedula:");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel3.setText("Nombre:");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel4.setText("Apellido:");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel5.setText("Direccion:");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel6.setText("Telefono:");
 
         cc_operador.setEditable(false);
-        cc_operador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cc_operador.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         cc_operador.setBorder(null);
         cc_operador.setOpaque(false);
 
         nombre_operador.setEditable(false);
-        nombre_operador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nombre_operador.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         nombre_operador.setBorder(null);
         nombre_operador.setOpaque(false);
 
         apellido_operador.setEditable(false);
-        apellido_operador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        apellido_operador.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         apellido_operador.setBorder(null);
         apellido_operador.setOpaque(false);
 
         direccion_operador.setEditable(false);
-        direccion_operador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        direccion_operador.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         direccion_operador.setBorder(null);
         direccion_operador.setOpaque(false);
 
         telefono_operador.setEditable(false);
-        telefono_operador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        telefono_operador.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         telefono_operador.setBorder(null);
         telefono_operador.setOpaque(false);
 
@@ -309,6 +327,13 @@ public class Operador extends javax.swing.JFrame {
         panelPerfil.setLayout(panelPerfilLayout);
         panelPerfilLayout.setHorizontalGroup(
             panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
+                .addGap(0, 134, Short.MAX_VALUE)
+                .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(65, 65, 65))
+                    .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING)))
             .addGroup(panelPerfilLayout.createSequentialGroup()
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPerfilLayout.createSequentialGroup()
@@ -330,16 +355,9 @@ public class Operador extends javax.swing.JFrame {
                         .addGap(189, 189, 189)
                         .addComponent(jLabel18))
                     .addGroup(panelPerfilLayout.createSequentialGroup()
-                        .addGap(177, 177, 177)
+                        .addGap(195, 195, 195)
                         .addComponent(SignOut)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
-                .addGap(0, 184, Short.MAX_VALUE)
-                .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(65, 65, 65))
-                    .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
         panelPerfilLayout.setVerticalGroup(
             panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,32 +387,32 @@ public class Operador extends javax.swing.JFrame {
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(telefono_operador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addComponent(SignOut)
                 .addGap(41, 41, 41))
         );
 
         panelCrearCliente.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel10.setText("Nombre");
 
         jLabel11.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
         jLabel11.setText("Crear Cliente");
 
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel13.setText("Teléfono");
 
-        jLabel14.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel14.setText("Dirección");
 
-        jLabel15.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel15.setText("Tipo de Usuario");
 
-        jLabel16.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel16.setText("Cedula");
 
-        jButton5.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton5.setText("Crear Cliente");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -402,17 +420,18 @@ public class Operador extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldNombre.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jTextFieldNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jTextFieldTelefono.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jTextFieldTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jTextFieldDireccion.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jTextFieldDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jTextFieldCedula.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jTextFieldCedula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jComboBoxTipo.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        jComboBoxTipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Natural", "Corporativo" }));
 
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel17.setText("Apellido Paterno");
         jLabel17.setAlignmentX(1.0F);
 
@@ -424,21 +443,43 @@ public class Operador extends javax.swing.JFrame {
             }
         });
 
+        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel29.setText("Apellido Materno");
         jLabel29.setAlignmentX(1.0F);
 
         jTextFieldMaterno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldMaterno.setAlignmentX(1.0F);
 
+        SignOut2.setBackground(new java.awt.Color(255, 255, 255));
+        SignOut2.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        SignOut2.setForeground(new java.awt.Color(255, 255, 255));
+        SignOut2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
+        SignOut2.setBorderPainted(false);
+        SignOut2.setContentAreaFilled(false);
+        SignOut2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SignOut2.setFocusable(false);
+        SignOut2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignOut2ActionPerformed(evt);
+            }
+        });
+
+        jLabelCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_Multiply_25px.png"))); // NOI18N
+        jLabelCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelCerrarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelCrearClienteLayout = new javax.swing.GroupLayout(panelCrearCliente);
         panelCrearCliente.setLayout(panelCrearClienteLayout);
         panelCrearClienteLayout.setHorizontalGroup(
             panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCrearClienteLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabelCerrar))
             .addGroup(panelCrearClienteLayout.createSequentialGroup()
                 .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCrearClienteLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel11))
                     .addGroup(panelCrearClienteLayout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -457,28 +498,33 @@ public class Operador extends javax.swing.JFrame {
                             .addComponent(jComboBoxTipo, 0, 141, Short.MAX_VALUE)
                             .addComponent(jTextFieldPaterno)
                             .addComponent(jTextFieldNombre)
-                            .addComponent(jTextFieldMaterno))))
-                .addContainerGap(69, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCrearClienteLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(154, 154, 154))
+                            .addComponent(jTextFieldMaterno)))
+                    .addGroup(panelCrearClienteLayout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(jButton5))
+                    .addGroup(panelCrearClienteLayout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jLabel11))
+                    .addGroup(panelCrearClienteLayout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(SignOut2)))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         panelCrearClienteLayout.setVerticalGroup(
             panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCrearClienteLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addComponent(jLabelCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCrearClienteLayout.createSequentialGroup()
-                        .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel17))
-                    .addComponent(jTextFieldPaterno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29))
@@ -486,21 +532,23 @@ public class Operador extends javax.swing.JFrame {
                 .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addGap(19, 19, 19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
-                .addGap(84, 84, 84)
+                .addGap(39, 39, 39)
                 .addComponent(jButton5)
-                .addGap(72, 72, 72))
+                .addGap(54, 54, 54)
+                .addComponent(SignOut2)
+                .addGap(40, 40, 40))
         );
 
         jLayeredPane1.setLayer(panelRegistrarPago, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -597,8 +645,6 @@ public class Operador extends javax.swing.JFrame {
     }//GEN-LAST:event_crearClienteActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        
         if (jTextFieldCedula.getText().equals("") || jTextFieldNombre.getText().equals("") || jTextFieldPaterno.getText().equals("") || jTextFieldMaterno.getText().equals("") || jTextFieldTelefono.getText().equals("") || jTextFieldDireccion.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Error, tienes elementos vacios");
         } else {
@@ -606,9 +652,9 @@ public class Operador extends javax.swing.JFrame {
                 int identification = Integer.parseInt(jTextFieldCedula.getText());
                 if (identification < 0) {
                     JOptionPane.showMessageDialog(null, "Datos Incorrectos \nIntentalo Nuevamente");
-                } else if (control.createCliente(jTextFieldCedula.getText(), jTextFieldNombre.getText(), jTextFieldPaterno.getText(), jTextFieldMaterno.getText(),jTextFieldTelefono.getText(), jTextFieldDireccion.getText(), jComboBoxTipo.getItemAt(jComboBoxTipo.getSelectedIndex()))) {
+                } else if (control.createCliente(jTextFieldCedula.getText(), jTextFieldNombre.getText(), jTextFieldPaterno.getText(), jTextFieldMaterno.getText(), jTextFieldTelefono.getText(), jTextFieldDireccion.getText(), jComboBoxTipo.getItemAt(jComboBoxTipo.getSelectedIndex()))) {
                     this.cleanCreateSection();
-                    JOptionPane.showMessageDialog(null, "Usuario creado exitosamente");
+                    JOptionPane.showMessageDialog(null, "Cliente creado exitosamente");
                 } else {
                     JOptionPane.showMessageDialog(null, "Datos Incorrectos \nIntentalo Nuevamente");
                 }
@@ -631,6 +677,14 @@ public class Operador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPaternoActionPerformed
 
+    private void SignOut2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOut2ActionPerformed
+        volverALogin();
+    }//GEN-LAST:event_SignOut2ActionPerformed
+
+    private void jLabelCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCerrarMouseClicked
+        cerrarVentana();
+    }//GEN-LAST:event_jLabelCerrarMouseClicked
+
     private void cerrarVentana(){
         this.dispose();
     }
@@ -645,6 +699,7 @@ public class Operador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SignOut;
     private javax.swing.JButton SignOut1;
+    private javax.swing.JButton SignOut2;
     private javax.swing.JTextField apellido_operador;
     private javax.swing.JTextField cc_operador;
     private javax.swing.JButton crearCliente;
@@ -674,6 +729,7 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelCerrar;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField6;

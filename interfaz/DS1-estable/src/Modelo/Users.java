@@ -24,14 +24,14 @@ public class Users {
         this.state = state;
     }
 
-    public Users(String id, String fname, String lname, String lname2, String tel, String dir, String position) {
+    public Users(String id, String fname, String lname, String lname2, String tel, String dir, String tipo_cliente) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
         this.lname2 = lname2;
         this.tel = tel;
         this.dir = dir;
-        this.position = position;
+        this.position = tipo_cliente;
     }
 
     public String getId() {

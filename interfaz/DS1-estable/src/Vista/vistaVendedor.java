@@ -1255,16 +1255,6 @@ public class vistaVendedor extends javax.swing.JFrame {
 
     }
 
-    
-
-    public void cargarTableSede() {
-        mdSede.setRowCount(0); //Para limpiar la tabla
-        ArrayList<String[]> lista = control.consultSedes();
-        for (int i = 0; i < lista.size(); i++) {
-            mdSede.addRow(lista.get(i));
-        }
-
-    }
 
     private void setColor(JPanel pane) {
         pane.setBackground(new Color(153, 0, 0));

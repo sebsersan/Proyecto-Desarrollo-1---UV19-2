@@ -71,7 +71,7 @@ public class UsersDAO {
     
     public boolean createNewClient(Users aUser){
         String QuerySQL = "INSERT INTO Cliente VALUES ("+ aUser.getId() + ", '"+aUser.getFname()+ "', '"+aUser.getLname()+ "', '"
-                +aUser.getLname2()+"', '"+aUser.getTel()+"', '"+aUser.getPosition()+"', '"+aUser.getDir()+ ")";
+                +aUser.getLname2()+"', '"+aUser.getTel()+"', '"+aUser.getPosition()+"', '"+aUser.getDir()+ "')";
         String QuerySQLaux = "SELECT cedula FROM Cliente WHERE cedula = '"+aUser.getId()+"'";
         System.out.println(QuerySQL);
         System.out.println(QuerySQLaux);
