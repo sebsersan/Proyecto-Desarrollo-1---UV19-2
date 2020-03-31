@@ -119,6 +119,12 @@ public class Controladora {
         }
         return usersDao.createNewUser(aU);
     }
+    
+    
+    public boolean createCliente(String id, String fname, String lname,String lname2, String telefono, String direccion, String position) {
+        Users aU = new Users(id, fname, lname, lname2, telefono, direccion, position);
+        return usersDao.createNewClient(aU);
+    }
 
     //Funcion para crear usuarios vendedor desde la vista del Jefe de taller
     public boolean createUserVendedor(String id, String fname, String lname, String telefono, String direccion, String pass, String idSede) {

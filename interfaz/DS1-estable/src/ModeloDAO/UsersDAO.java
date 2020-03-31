@@ -69,6 +69,38 @@ public class UsersDAO {
         return false;
     }
     
+    public boolean createNewClient(Users aUser){
+        String QuerySQL = "INSERT INTO Cliente VALUES ("+ aUser.getId() + ", '"+aUser.getFname()+ "', '"+aUser.getLname()+ "', '"
+                +aUser.getLname2()+"', '"+aUser.getTel()+"', '"+aUser.getPosition()+"', '"+aUser.getDir()+ ")";
+        String QuerySQLaux = "SELECT cedula FROM Cliente WHERE cedula = '"+aUser.getId()+"'";
+        System.out.println(QuerySQL);
+        System.out.println(QuerySQLaux);
+        Connection coneccion= this.access.getConnetion();
+        System.out.println("Connection: "+coneccion);
+        
+        try {
+            Statement sentencia = coneccion.createStatement();
+            System.out.println("sentencia: "+sentencia);
+            ResultSet resultado = sentencia.executeQuery(QuerySQLaux);
+            System.out.println("resultado: "+resultado);
+            if(resultado.next()){
+                JOptionPane.showMessageDialog(null, "El cliente ya existe \nIntentelo nuevamente");
+            }else{
+                int res = sentencia.executeUpdate(QuerySQL);
+                if(res==1){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("---- Problema en la ejecucion.");
+            ex.printStackTrace();
+        }
+        return false;
+    }
+    
     public Users consultProfile(String userID){
         String QuerySQL = "SELECT * FROM usuario WHERE cedula = '"+userID+"'";
         System.out.println(QuerySQL);
