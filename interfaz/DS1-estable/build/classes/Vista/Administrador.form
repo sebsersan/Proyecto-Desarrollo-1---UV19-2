@@ -369,7 +369,7 @@
                                           <Component id="apellido_admin" alignment="0" max="32767" attributes="0"/>
                                           <Component id="nombre_admin" alignment="0" max="32767" attributes="0"/>
                                           <Component id="id_admin" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="direccion_admin" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
+                                          <Component id="direccion_admin" alignment="0" pref="240" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -552,13 +552,21 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="16" style="0"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="actionCommand" type="java.lang.String" value="&lt;Not Set&gt;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[1, 30]"/>
                 </Property>
                 <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="direccion_adminActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel26">
               <Properties>
@@ -896,10 +904,10 @@
                     <StringItem index="0" value="nombre_persona"/>
                     <StringItem index="1" value="paterno_persona"/>
                     <StringItem index="2" value="materno_persona"/>
-                    <StringItem index="3" value="telefono_persona"/>
+                    <StringItem index="3" value="telefono_usuario"/>
                     <StringItem index="4" value="direccion_persona"/>
-                    <StringItem index="5" value="cargo_persona"/>
-                    <StringItem index="6" value="constrase&#xf1;a_persona"/>
+                    <StringItem index="5" value="tipo_usuario"/>
+                    <StringItem index="6" value="password_usuario"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -919,6 +927,7 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BotonModificarUsuarioMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonModificarUsuarioActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel19">
@@ -1000,7 +1009,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="botonCrearUsuario" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="238" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1049,9 +1058,9 @@
                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jPasswordFieldContrasena" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="botonCrearUsuario" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="154" max="32767" attributes="0"/>
+                      <EmptySpace pref="145" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

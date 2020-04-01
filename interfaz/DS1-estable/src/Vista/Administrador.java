@@ -33,7 +33,7 @@ public class Administrador extends javax.swing.JFrame {
         this.nombre_admin.setText(profileInfo.getFname());
         this.apellido_admin.setText(profileInfo.getLname());
         this.telefono_admin.setText(profileInfo.getTel());
-        this.direccion_admin.setText(profileInfo.getDir());
+        this.direccion_admin.setText(profileInfo.getDir().trim());
     }
 
     /**
@@ -124,7 +124,7 @@ public class Administrador extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(15, 60, 235));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
@@ -317,8 +317,16 @@ public class Administrador extends javax.swing.JFrame {
         direccion_admin.setEditable(false);
         direccion_admin.setBackground(new java.awt.Color(255, 255, 255));
         direccion_admin.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        direccion_admin.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        direccion_admin.setActionCommand("<Not Set>");
         direccion_admin.setBorder(null);
+        direccion_admin.setMinimumSize(new java.awt.Dimension(1, 30));
         direccion_admin.setSelectionColor(new java.awt.Color(204, 204, 204));
+        direccion_admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                direccion_adminActionPerformed(evt);
+            }
+        });
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/profile.png"))); // NOI18N
 
@@ -344,7 +352,7 @@ public class Administrador extends javax.swing.JFrame {
                                     .addComponent(apellido_admin)
                                     .addComponent(nombre_admin)
                                     .addComponent(id_admin)
-                                    .addComponent(direccion_admin, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(direccion_admin, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
                             .addComponent(jLabel1)))
                     .addGroup(panelAdministradorLayout.createSequentialGroup()
                         .addGap(291, 291, 291)
@@ -525,7 +533,7 @@ public class Administrador extends javax.swing.JFrame {
         jLabel17.setText("Campo a Cambiar");
 
         jComboBoxAtributo.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jComboBoxAtributo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "nombre_persona", "paterno_persona", "materno_persona", "telefono_persona", "direccion_persona", "cargo_persona", "constraseña_persona" }));
+        jComboBoxAtributo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "nombre_persona", "paterno_persona", "materno_persona", "telefono_usuario", "direccion_persona", "tipo_usuario", "password_usuario" }));
         jComboBoxAtributo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxAtributoActionPerformed(evt);
@@ -537,6 +545,11 @@ public class Administrador extends javax.swing.JFrame {
         BotonModificarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BotonModificarUsuarioMouseClicked(evt);
+            }
+        });
+        BotonModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonModificarUsuarioActionPerformed(evt);
             }
         });
 
@@ -710,7 +723,7 @@ public class Administrador extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCrearUsuarioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonCrearUsuario)
-                .addGap(197, 197, 197))
+                .addGap(238, 238, 238))
         );
         panelCrearUsuarioLayout.setVerticalGroup(
             panelCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -749,9 +762,9 @@ public class Administrador extends javax.swing.JFrame {
                 .addGroup(panelCrearUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jPasswordFieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(38, 38, 38)
                 .addComponent(botonCrearUsuario)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         jLayeredPane1.add(panelCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 615));
@@ -942,6 +955,14 @@ public class Administrador extends javax.swing.JFrame {
     private void jTextFieldMaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMaternoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldMaternoActionPerformed
+
+    private void direccion_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccion_adminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_direccion_adminActionPerformed
+
+    private void BotonModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonModificarUsuarioActionPerformed
 
     private void cleanCreateSection() {
         jTextFieldCedula.setText("");

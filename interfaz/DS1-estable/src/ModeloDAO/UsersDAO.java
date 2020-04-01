@@ -12,7 +12,7 @@ public class UsersDAO {
     }
     
     public String login (String user, String pass) {
-        String QuerySQL = "SELECT * FROM usuario NATURAL JOIN persona"
+        String QuerySQL = "SELECT * FROM usuarios"
                 + " WHERE cedula = '" + user + "' AND password_usuario = '"+ pass + "' AND estado_usuario = 'Activo'";
         System.out.println(QuerySQL);
         Connection coneccion= this.access.getConnetion();
@@ -106,7 +106,7 @@ public class UsersDAO {
     }
     
     public Users consultProfile(String userID){
-        String QuerySQL = "SELECT * FROM usuario NATURAL JOIN persona WHERE cedula = '"+userID+"'";
+        String QuerySQL = "SELECT * FROM usuarios WHERE cedula = '"+userID+"'";
         System.out.println(QuerySQL);
         Connection coneccion= this.access.getConnetion();
         System.out.println("Connection: "+coneccion);
@@ -239,12 +239,20 @@ public class UsersDAO {
     }
 */
 
-    public boolean updateUser(String cedula, String atributo, String nuevoValor) {
-        String QuerySQL = "UPDATE Usuario SET "+ atributo+ "=" + "'" + nuevoValor + "'" + " WHERE cedula = '"+cedula + "'";
+    public boolean updateUser(String cedula, String atributo, String nuevoValor) {   
+        String QuerySQL = "";
+        if (atributo.equals("tipo_usuario")||atributo.equals("password_usuario")||atributo.equals("telefono_usuario")){
+                    QuerySQL = "UPDATE usuario SET "+ atributo+ "=" + "'" + nuevoValor + "'" + " WHERE cedula = '"+cedula + "'";
+        }
+        else {
+                    QuerySQL = "UPDATE persona SET "+ atributo+ "=" + "'" + nuevoValor + "'" + " WHERE cedula = '"+cedula + "'";
+        }
             
         String QuerySQLaux = "SELECT cedula FROM Usuario WHERE cedula = '"+Integer.parseInt(cedula)+ "'";
+        String QuerySQLTipo = "SELECT tipo_usuario FROM Usuario WHERE cedula = "+cedula + "AND tipo_usuario = 'Administrador'";
         System.out.println(QuerySQL);
         System.out.println(QuerySQLaux);
+        System.out.println(QuerySQLTipo);
         Connection coneccion= this.access.getConnetion();
         System.out.println("Connection: "+coneccion);
         
@@ -253,7 +261,15 @@ public class UsersDAO {
             System.out.println("sentencia: "+sentencia);
             ResultSet resultado = sentencia.executeQuery(QuerySQLaux);
             System.out.println("resultado: "+resultado);
-            if(resultado.next()){
+            Statement sentenciaTipo = coneccion.createStatement();
+            System.out.println("sentenciaTipo: "+sentenciaTipo);
+            ResultSet resultadoTipo = sentenciaTipo.executeQuery(QuerySQLTipo);
+            System.out.println("resultado de tipo: "+resultadoTipo);
+            if (resultadoTipo.next()){
+                JOptionPane.showMessageDialog(null, "No se puede modificar un administrador \nIntentelo con otro usuario");
+                return false;
+            }
+            else if(resultado.next()){
                 int res = sentencia.executeUpdate(QuerySQL);
                 if(res==1){
                     return true;
@@ -263,7 +279,7 @@ public class UsersDAO {
             }else{
                 return false;
             }
-
+            
         } catch (SQLException ex) {
             System.out.println("---- Problema en la ejecucion.");
             ex.printStackTrace();
