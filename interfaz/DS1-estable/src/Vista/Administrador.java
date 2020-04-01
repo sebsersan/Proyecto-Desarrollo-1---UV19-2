@@ -124,7 +124,7 @@ public class Administrador extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(15, 60, 235));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
@@ -134,7 +134,7 @@ public class Administrador extends javax.swing.JFrame {
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +150,7 @@ public class Administrador extends javax.swing.JFrame {
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 267, -1, 29));
 
@@ -162,7 +162,7 @@ public class Administrador extends javax.swing.JFrame {
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +179,7 @@ public class Administrador extends javax.swing.JFrame {
         jButton3.setBorder(null);
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +194,7 @@ public class Administrador extends javax.swing.JFrame {
         jButton7.setBorder(null);
         jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,7 +241,7 @@ public class Administrador extends javax.swing.JFrame {
         SignOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
         SignOut.setBorderPainted(false);
         SignOut.setContentAreaFilled(false);
-        SignOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SignOut.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SignOut.setFocusable(false);
         SignOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -651,7 +651,7 @@ public class Administrador extends javax.swing.JFrame {
         jTextFieldDireccion.setAlignmentX(1.0F);
 
         jComboBoxCargo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBoxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Gerente", "Operadores" }));
+        jComboBoxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Gerente", "Operador" }));
         jComboBoxCargo.setAlignmentX(1.0F);
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
@@ -660,6 +660,11 @@ public class Administrador extends javax.swing.JFrame {
 
         jTextFieldMaterno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldMaterno.setAlignmentX(1.0F);
+        jTextFieldMaterno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldMaternoActionPerformed(evt);
+            }
+        });
 
         jPasswordFieldContrasena.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordFieldContrasena.setAlignmentX(1.0F);
@@ -915,7 +920,7 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonModificarUsuarioMouseClicked
 
     private void botonCrearUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCrearUsuarioMouseClicked
-        if (jTextFieldCedula.getText().equals("") || jTextFieldNombre.getText().equals("") || jTextFieldPaterno.getText().equals("") || jTextFieldMaterno.getText().equals("") || jTextFieldTelefono.getText().equals("") || jTextFieldDireccion.getText().equals("") || jPasswordFieldContrasena.getText().equals("")) {
+        if (jTextFieldCedula.getText().equals("") || jTextFieldNombre.getText().equals("") || jTextFieldPaterno.getText().equals("") || jTextFieldTelefono.getText().equals("") || jTextFieldDireccion.getText().equals("") || jPasswordFieldContrasena.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Error, tienes elementos vacios");
         } else {
             try {
@@ -933,6 +938,10 @@ public class Administrador extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_botonCrearUsuarioMouseClicked
+
+    private void jTextFieldMaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMaternoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldMaternoActionPerformed
 
     private void cleanCreateSection() {
         jTextFieldCedula.setText("");

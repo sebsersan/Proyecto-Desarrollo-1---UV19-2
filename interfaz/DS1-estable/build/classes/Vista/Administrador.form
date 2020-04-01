@@ -80,7 +80,7 @@
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor de Mano"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
@@ -111,7 +111,7 @@
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor de Mano"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
@@ -140,7 +140,7 @@
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor de Mano"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="2"/>
@@ -172,7 +172,7 @@
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor de Mano"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
@@ -200,7 +200,7 @@
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor de Mano"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
@@ -309,7 +309,7 @@
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor de Mano"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
@@ -1191,7 +1191,7 @@
                   <StringArray count="3">
                     <StringItem index="0" value="Administrador"/>
                     <StringItem index="1" value="Gerente"/>
-                    <StringItem index="2" value="Operadores"/>
+                    <StringItem index="2" value="Operador"/>
                   </StringArray>
                 </Property>
                 <Property name="alignmentX" type="float" value="1.0"/>
@@ -1216,6 +1216,9 @@
                 </Property>
                 <Property name="alignmentX" type="float" value="1.0"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldMaternoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="jPasswordFieldContrasena">
               <Properties>

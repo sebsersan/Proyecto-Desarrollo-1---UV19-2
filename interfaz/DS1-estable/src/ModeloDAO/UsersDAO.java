@@ -12,7 +12,8 @@ public class UsersDAO {
     }
     
     public String login (String user, String pass) {
-        String QuerySQL = "SELECT * FROM usuario WHERE cedula = '" + user + "' AND constraseña_persona = '"+ pass + "' AND estado_persona='Activo'";
+        String QuerySQL = "SELECT * FROM usuario NATURAL JOIN persona"
+                + " WHERE cedula = '" + user + "' AND password_usuario = '"+ pass + "' AND estado_usuario = 'Activo'";
         System.out.println(QuerySQL);
         Connection coneccion= this.access.getConnetion();
         System.out.println("Connection: "+coneccion);
@@ -23,7 +24,7 @@ public class UsersDAO {
             ResultSet resultado = sentencia.executeQuery(QuerySQL);
             System.out.println("resultado: "+resultado);
             if(resultado.next()){
-                String cargo = resultado.getString("cargo_persona").trim();
+                String cargo = resultado.getString("tipo_usuario").trim();
                 System.out.println("cargo: "+cargo);
                 return cargo;
             }else{
@@ -38,9 +39,10 @@ public class UsersDAO {
     }
     
     public boolean createNewUser(Users aUser){
-        String QuerySQL = "INSERT INTO Usuario VALUES ("+ aUser.getId() + ", '"+aUser.getFname()+ "', '"+aUser.getLname()+ "', '"
-                +aUser.getLname2()+"', '"+aUser.getTel()+"', '"+aUser.getDir()+"', '"+aUser.getPosition()+ "', '"+aUser.getPass()+ "', 'Activo')";
-        String QuerySQLaux = "SELECT cedula FROM Usuario WHERE cedula = '"+aUser.getId()+"'"; //AND (work_position='Jefe de Taller' OR work_position='Vendedor')";
+        String QuerySQL = "INSERT INTO Persona VALUES ("+ aUser.getId() + ", '"+aUser.getFname()+ "', '"+aUser.getLname()+ "', '"
+                +aUser.getLname2()+"', '"+aUser.getDir()+ "');"
+                + "INSERT INTO Usuario VALUES ("+ aUser.getId() + ", '"+aUser.getPosition()+ "', '"+aUser.getPass()+ "', '"+aUser.getTel()+ "', 'Activo')";
+        String QuerySQLaux = "SELECT cedula FROM Persona WHERE cedula = '"+aUser.getId()+"'"; //AND (work_position='Jefe de Taller' OR work_position='Vendedor')";
         System.out.println(QuerySQL);
         System.out.println(QuerySQLaux);
         Connection coneccion= this.access.getConnetion();
@@ -70,8 +72,10 @@ public class UsersDAO {
     }
     
     public boolean createNewClient(Users aUser){
-        String QuerySQL = "INSERT INTO Cliente VALUES ("+ aUser.getId() + ", '"+aUser.getFname()+ "', '"+aUser.getLname()+ "', '"
-                +aUser.getLname2()+"', '"+aUser.getTel()+"', '"+aUser.getPosition()+"', '"+aUser.getDir()+ "')";
+        String QuerySQL = "INSERT INTO Persona VALUES ("+ aUser.getId() + ", '"+aUser.getFname()+ "', '"+aUser.getLname()+ "', '"
+                +aUser.getLname2()+"', '"+aUser.getDir()+"' );"
+                + "INSERT INTO Cliente VALUES ('"+ aUser.getId() +"', '"+aUser.getPosition()+"');"
+                + "INSERT INTO Telefono VALUES("+ aUser.getId() + ", '"+aUser.getTel()+ "', '"+aUser.getPlan()+"')";
         String QuerySQLaux = "SELECT cedula FROM Cliente WHERE cedula = '"+aUser.getId()+"'";
         System.out.println(QuerySQL);
         System.out.println(QuerySQLaux);
@@ -102,7 +106,7 @@ public class UsersDAO {
     }
     
     public Users consultProfile(String userID){
-        String QuerySQL = "SELECT * FROM usuario WHERE cedula = '"+userID+"'";
+        String QuerySQL = "SELECT * FROM usuario NATURAL JOIN persona WHERE cedula = '"+userID+"'";
         System.out.println(QuerySQL);
         Connection coneccion= this.access.getConnetion();
         System.out.println("Connection: "+coneccion);
@@ -117,22 +121,22 @@ public class UsersDAO {
                 String fname = resultado.getString("nombre_persona");
                 String lname = resultado.getString("paterno_persona").trim();
                 String lname2 = resultado.getString("materno_persona");
-                String tel = resultado.getString("telefono_persona");
+                String tel = resultado.getString("telefono_usuario");
                 String dir = resultado.getString("direccion_persona");
-                String wp = resultado.getString("cargo_persona");
-                String pass = resultado.getString("constraseña_persona");
-                String state = resultado.getString("estado_persona");
+                String wp = resultado.getString("tipo_usuario");
+                String pass = resultado.getString("password_usuario");
+                String state = resultado.getString("estado_usuario");
                 
                 return new Users(iduser, fname, lname, lname2, tel, dir, wp, pass, state);
             }else{
-                return new Users(null, null, null, null, null, null, null);
+                return new Users(null, null, null, null, null, null, null,null);
             }
             
         } catch (SQLException ex) {
             System.out.println("---- Problema en la ejecucion.");
             ex.printStackTrace();
         }
-        return new Users(null, null, null, null, null, null, null);
+        return new Users(null, null, null, null, null, null, null, null);
     }
     
     

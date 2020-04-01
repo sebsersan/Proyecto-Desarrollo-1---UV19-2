@@ -121,14 +121,14 @@ public class Controladora {
     }
     
     
-    public boolean createCliente(String id, String fname, String lname,String lname2, String telefono, String direccion, String position) {
-        Users aU = new Users(id, fname, lname, lname2, telefono, direccion, position);
+    public boolean createCliente(String id, String fname, String lname,String lname2, String telefono, String direccion, String position, String plan) {
+        Users aU = new Users(id, fname, lname, lname2, telefono, direccion, position, plan);
         return usersDao.createNewClient(aU);
     }
 
     //Funcion para crear usuarios vendedor desde la vista del Jefe de taller
-    public boolean createUserVendedor(String id, String fname, String lname, String telefono, String direccion, String pass, String idSede) {
-        Users aU = new Users(id, fname, lname, telefono, direccion, "Vendedor", pass);
+    public boolean createUserVendedor(String id, String fname, String lname, String telefono, String direccion, String pass, String idSede, String plan) {
+        Users aU = new Users(id, fname, lname, telefono, direccion, "Vendedor", pass, null);
         aU.setState("Activo");
         return jefesDao.createNewUser(aU, idSede);
     }
@@ -139,14 +139,14 @@ public class Controladora {
     }
     
     //Actualizar un gerente desde el Administrador del Sistema
-    public boolean updateGerente(String id, String fname, String lname, String lname2, String telefono, String direccion, String position) {
-        Users aU = new Users(id, fname, lname, lname2, telefono, direccion, position);
+    public boolean updateGerente(String id, String fname, String lname, String lname2, String telefono, String direccion, String position, String plan) {
+        Users aU = new Users(id, fname, lname, lname2, telefono, direccion, position, null);
         return usersDao.updateGerente(aU);
     }
 
     //Funcion para actualizar usuarios desde el gerente
-    public boolean updateUserOperador(String id, String fname, String lname, String lname2, String telefono, String direccion) {
-        Users aU = new Users(id, fname, lname, lname2, telefono, direccion, "Operador");
+    public boolean updateUserOperador(String id, String fname, String lname, String lname2, String telefono, String direccion, String plan) {
+        Users aU = new Users(id, fname, lname, lname2, telefono, direccion, "Operador", null);
         return jefesDao.updateUserOperador(aU);
     }
 
