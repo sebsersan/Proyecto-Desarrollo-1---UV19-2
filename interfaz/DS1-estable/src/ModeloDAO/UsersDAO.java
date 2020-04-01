@@ -457,5 +457,40 @@ public class UsersDAO {
         return null;
     }
      
-    
+    public ArrayList<String[]> listarUsuarios() {
+        String QuerySQL = "SELECT cedula, nombre_persona, paterno_persona, "
+                + "direccion_persona, tipo_usuario, estado_usuario from usuarios";
+        System.out.println(QuerySQL);
+        Connection coneccion = this.access.getConnetion();
+        System.out.println("Connection: " + coneccion);
+        
+        try {
+            Statement sentencia = coneccion.createStatement();
+            System.out.println("sentencia: "+sentencia);
+            ResultSet resultado = sentencia.executeQuery(QuerySQL);
+            System.out.println("resultado: "+resultado);
+            
+
+            ArrayList<String[]> matrixList = new ArrayList<String[]>();
+            int cont = 0;
+            while (resultado.next()) {
+                
+                String a1 = resultado.getString("cedula").trim();
+                String a2 = resultado.getString("nombre_persona").trim();
+                String a3 = resultado.getString("paterno_persona").trim();
+                String a4 = resultado.getString("direccion_persona").trim();
+                String a5 = resultado.getString("tipo_usuario").trim();
+                String a6 = resultado.getString("estado_usuario").trim();
+                String[] niu = {a1, a2, a3, a4, a5, a6}; //Es importante crear un nuevo arreglo cada vez
+                matrixList.add(niu);
+                cont++;
+            }
+            return matrixList;
+
+        } catch (SQLException ex) {
+            System.out.println("---- Problema en la ejecucion.");
+            ex.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -288,5 +288,7 @@ public class Controladora {
         productoDao.generarReporteVentasJefeDeTaller(sede, fechaInicio, fechaFinal);
     }
 
-
+    public ArrayList<String[]> listarUsers(){
+        return usersDao.listarUsuarios();
+    }
 }
