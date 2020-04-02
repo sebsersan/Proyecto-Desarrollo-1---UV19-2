@@ -96,8 +96,13 @@ public class login2 extends javax.swing.JFrame {
         signIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Bton Login.png"))); // NOI18N
         signIn.setBorderPainted(false);
         signIn.setContentAreaFilled(false);
-        signIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signIn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         signIn.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/bton login cursor oscuro.png"))); // NOI18N
+        signIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signInActionPerformed(evt);
+            }
+        });
 
         btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -105,7 +110,7 @@ public class login2 extends javax.swing.JFrame {
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/bton salida.png"))); // NOI18N
         btnExit.setBorderPainted(false);
         btnExit.setContentAreaFilled(false);
-        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/bton salida cursor oscuro.png"))); // NOI18N
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,6 +288,10 @@ public class login2 extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_passwordInputMouseReleased
+
+    private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_signInActionPerformed
 
     public static void main(String args[]) {
 

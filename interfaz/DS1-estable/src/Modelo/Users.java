@@ -11,6 +11,7 @@ public class Users {
     String tel;
     String dir;
     String state;
+    String plan;
     
     public Users (String id, String fname, String lname, String lname2, String tel, String dir, String position, String pass, String state){
         this.id = id;
@@ -24,7 +25,7 @@ public class Users {
         this.state = state;
     }
 
-    public Users(String id, String fname, String lname, String lname2, String tel, String dir, String tipo_cliente) {
+    public Users(String id, String fname, String lname, String lname2, String tel, String dir, String tipo_cliente, String plan) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
@@ -32,6 +33,11 @@ public class Users {
         this.tel = tel;
         this.dir = dir;
         this.position = tipo_cliente;
+        this.plan = plan;
+    }
+
+    public Users(String id, String fname, String lname, String lname2, String telefono, String direccion, String position, String pass, Boolean state) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getId() {
@@ -60,6 +66,10 @@ public class Users {
 
     public String getState() {
         return state;
+    }
+    
+    public String getPlan() {
+        return plan;
     }
 
     public void setId(String id) {

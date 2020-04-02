@@ -42,6 +42,7 @@ public class Operador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -90,12 +91,25 @@ public class Operador extends javax.swing.JFrame {
         jTextFieldMaterno = new javax.swing.JTextField();
         SignOut2 = new javax.swing.JButton();
         jLabelCerrar = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jComboBoxTipo1 = new javax.swing.JComboBox<>();
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(15, 60, 235));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -187,7 +201,7 @@ public class Operador extends javax.swing.JFrame {
         SignOut1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
         SignOut1.setBorderPainted(false);
         SignOut1.setContentAreaFilled(false);
-        SignOut1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SignOut1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SignOut1.setFocusable(false);
         SignOut1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -254,7 +268,7 @@ public class Operador extends javax.swing.JFrame {
         );
 
         panelPerfil.setBackground(new java.awt.Color(255, 255, 255));
-        panelPerfil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelPerfil.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         panelPerfil.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/profile.png"))); // NOI18N
@@ -308,7 +322,7 @@ public class Operador extends javax.swing.JFrame {
         SignOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
         SignOut.setBorderPainted(false);
         SignOut.setContentAreaFilled(false);
-        SignOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SignOut.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SignOut.setFocusable(false);
         SignOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -456,7 +470,7 @@ public class Operador extends javax.swing.JFrame {
         SignOut2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
         SignOut2.setBorderPainted(false);
         SignOut2.setContentAreaFilled(false);
-        SignOut2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SignOut2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SignOut2.setFocusable(false);
         SignOut2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -470,6 +484,12 @@ public class Operador extends javax.swing.JFrame {
                 jLabelCerrarMouseClicked(evt);
             }
         });
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel19.setText("Plan");
+
+        jComboBoxTipo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBoxTipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         javax.swing.GroupLayout panelCrearClienteLayout = new javax.swing.GroupLayout(panelCrearCliente);
         panelCrearCliente.setLayout(panelCrearClienteLayout);
@@ -489,7 +509,8 @@ public class Operador extends javax.swing.JFrame {
                             .addComponent(jLabel16)
                             .addComponent(jLabel15)
                             .addComponent(jLabel17)
-                            .addComponent(jLabel29))
+                            .addComponent(jLabel29)
+                            .addComponent(jLabel19))
                         .addGap(62, 62, 62)
                         .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldTelefono)
@@ -498,7 +519,8 @@ public class Operador extends javax.swing.JFrame {
                             .addComponent(jComboBoxTipo, 0, 141, Short.MAX_VALUE)
                             .addComponent(jTextFieldPaterno)
                             .addComponent(jTextFieldNombre)
-                            .addComponent(jTextFieldMaterno)))
+                            .addComponent(jTextFieldMaterno)
+                            .addComponent(jComboBoxTipo1, 0, 141, Short.MAX_VALUE)))
                     .addGroup(panelCrearClienteLayout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addComponent(jButton5))
@@ -516,7 +538,7 @@ public class Operador extends javax.swing.JFrame {
                 .addComponent(jLabelCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
@@ -544,9 +566,13 @@ public class Operador extends javax.swing.JFrame {
                 .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelCrearClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jComboBoxTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
                 .addComponent(jButton5)
-                .addGap(54, 54, 54)
+                .addGap(18, 18, 18)
                 .addComponent(SignOut2)
                 .addGap(40, 40, 40))
         );
@@ -652,7 +678,7 @@ public class Operador extends javax.swing.JFrame {
                 int identification = Integer.parseInt(jTextFieldCedula.getText());
                 if (identification < 0) {
                     JOptionPane.showMessageDialog(null, "Datos Incorrectos \nIntentalo Nuevamente");
-                } else if (control.createCliente(jTextFieldCedula.getText(), jTextFieldNombre.getText(), jTextFieldPaterno.getText(), jTextFieldMaterno.getText(), jTextFieldTelefono.getText(), jTextFieldDireccion.getText(), jComboBoxTipo.getItemAt(jComboBoxTipo.getSelectedIndex()))) {
+                } else if (control.createCliente(jTextFieldCedula.getText(), jTextFieldNombre.getText(), jTextFieldPaterno.getText(), jTextFieldMaterno.getText(), jTextFieldTelefono.getText(), jTextFieldDireccion.getText(), jComboBoxTipo.getItemAt(jComboBoxTipo.getSelectedIndex()), jComboBoxTipo1.getItemAt(jComboBoxTipo1.getSelectedIndex()))) {
                     this.cleanCreateSection();
                     JOptionPane.showMessageDialog(null, "Cliente creado exitosamente");
                 } else {
@@ -709,6 +735,7 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBoxTipo;
+    private javax.swing.JComboBox<String> jComboBoxTipo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -718,6 +745,7 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -732,6 +760,7 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelCerrar;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextFieldCedula;
