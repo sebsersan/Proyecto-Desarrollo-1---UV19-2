@@ -102,6 +102,8 @@ public class Administrador extends javax.swing.JFrame {
         BotonModificarUsuario = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jTextFieldNuevoValor = new javax.swing.JTextField();
+        cargoModificar = new javax.swing.JComboBox<>();
+        nuevoValorCargo = new javax.swing.JLabel();
         panelCrearUsuario = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         botonCrearUsuario = new javax.swing.JButton();
@@ -543,6 +545,7 @@ public class Administrador extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel16.setText("Cedula");
 
+        jTextFieldCedulaModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldCedulaModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldCedulaModificarActionPerformed(evt);
@@ -567,14 +570,24 @@ public class Administrador extends javax.swing.JFrame {
                 BotonModificarUsuarioMouseClicked(evt);
             }
         });
-        BotonModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonModificarUsuarioActionPerformed(evt);
-            }
-        });
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel19.setText("Nuevo Valor");
+
+        jTextFieldNuevoValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        cargoModificar.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        cargoModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Gerente", "Operador" }));
+        cargoModificar.setVisible(false);
+        cargoModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargoModificarActionPerformed(evt);
+            }
+        });
+
+        nuevoValorCargo.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        nuevoValorCargo.setText("Nuevo Valor");
+        nuevoValorCargo.setVisible(false);
 
         javax.swing.GroupLayout panelModificarUsuarioLayout = new javax.swing.GroupLayout(panelModificarUsuario);
         panelModificarUsuario.setLayout(panelModificarUsuarioLayout);
@@ -586,16 +599,19 @@ public class Administrador extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(BotonModificarUsuario)
                     .addGroup(panelModificarUsuarioLayout.createSequentialGroup()
-                        .addGroup(panelModificarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panelModificarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelModificarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(nuevoValorCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
-                        .addGroup(panelModificarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldNuevoValor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxAtributo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCedulaModificar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(panelModificarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextFieldNuevoValor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(jComboBoxAtributo, javax.swing.GroupLayout.Alignment.LEADING, 0, 195, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCedulaModificar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(cargoModificar, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 222, Short.MAX_VALUE))
         );
         panelModificarUsuarioLayout.setVerticalGroup(
             panelModificarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -606,11 +622,15 @@ public class Administrador extends javax.swing.JFrame {
                 .addGroup(panelModificarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldCedulaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(39, 39, 39)
+                .addGap(30, 30, 30)
                 .addGroup(panelModificarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jComboBoxAtributo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17))
-                .addGap(51, 51, 51)
+                .addGap(26, 26, 26)
+                .addGroup(panelModificarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cargoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nuevoValorCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelModificarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldNuevoValor, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -814,6 +834,7 @@ public class Administrador extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaUsuarios.setEnabled(false);
         jScrollPane1.setViewportView(tablaUsuarios);
 
         botonListarUsuarios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -937,7 +958,18 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCedulaModificarActionPerformed
 
     private void jComboBoxAtributoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAtributoActionPerformed
-        // TODO add your handling code here:
+        if (jComboBoxAtributo.getItemAt(jComboBoxAtributo.getSelectedIndex()).equals("tipo_usuario")){
+            nuevoValorCargo.setVisible(true);
+            cargoModificar.setVisible(true);
+            jLabel19.setVisible(false);
+            jTextFieldNuevoValor.setText(cargoModificar.getItemAt(cargoModificar.getSelectedIndex()));
+            jTextFieldNuevoValor.setEditable(false);            
+        }else {
+            nuevoValorCargo.setVisible(false);
+            cargoModificar.setVisible(false);
+            jLabel19.setVisible(true);
+            jTextFieldNuevoValor.setEditable(true);
+        }
     }//GEN-LAST:event_jComboBoxAtributoActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1066,10 +1098,6 @@ public class Administrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_direccion_adminActionPerformed
 
-    private void BotonModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotonModificarUsuarioActionPerformed
-
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         if(panelCrearUsuario.isVisible()){
@@ -1095,6 +1123,10 @@ public class Administrador extends javax.swing.JFrame {
     private void botonListarUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonListarUsuariosMouseClicked
         listarUsuarios();
     }//GEN-LAST:event_botonListarUsuariosMouseClicked
+
+    private void cargoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargoModificarActionPerformed
+        jTextFieldNuevoValor.setText(cargoModificar.getItemAt(cargoModificar.getSelectedIndex()));
+    }//GEN-LAST:event_cargoModificarActionPerformed
 
     private void listarUsuarios(){
         md.setRowCount(0); //Para limpiar la tabla
@@ -1126,6 +1158,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JButton botonConsultar;
     private javax.swing.JButton botonCrearUsuario;
     private javax.swing.JButton botonListarUsuarios;
+    private javax.swing.JComboBox<String> cargoModificar;
     private javax.swing.JLabel cerrar;
     private javax.swing.JTextField direccion_admin;
     private javax.swing.JTextField id_admin;
@@ -1185,6 +1218,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldTelefono;
     private javax.swing.JTextField jTextFieldcedulaEstado;
     private javax.swing.JTextField nombre_admin;
+    private javax.swing.JLabel nuevoValorCargo;
     private javax.swing.JPanel panelAdministrador;
     private javax.swing.JPanel panelCrearUsuario;
     private javax.swing.JPanel panelEstadoUsuario;
