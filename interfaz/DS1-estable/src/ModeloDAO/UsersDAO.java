@@ -241,7 +241,7 @@ public class UsersDAO {
 
     public boolean updateUser(String cedula, String atributo, String nuevoValor) {   
         String QuerySQL = "";
-        if (atributo.equals("tipo_usuario")||atributo.equals("password_usuario")||atributo.equals("telefono_usuario")){
+        if (atributo.equals("tipo_usuario")||atributo.equals("password_usuario")||atributo.equals("telefono_usuario") || atributo.equals("estado_usuario")){
                     QuerySQL = "UPDATE usuario SET "+ atributo+ "=" + "'" + nuevoValor + "'" + " WHERE cedula = '"+cedula + "'";
         }
         else {

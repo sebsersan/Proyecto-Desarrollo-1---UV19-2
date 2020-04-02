@@ -971,7 +971,7 @@ public class Administrador extends javax.swing.JFrame {
                 int identification = Integer.parseInt(jTextFieldcedulaEstado.getText());
                 if (identification < 0) {
                     JOptionPane.showMessageDialog(null, "Datos Incorrectos \nIntentalo Nuevamente");
-                } else if (control.updateUser(jTextFieldcedulaEstado.getText(), "estado_persona", jComboBoxEstado.getItemAt(jComboBoxEstado.getSelectedIndex()))) {
+                } else if (control.updateUser(jTextFieldcedulaEstado.getText(), "estado_usuario", jComboBoxEstado.getItemAt(jComboBoxEstado.getSelectedIndex()))) {
                     this.cleanCreateSection();
                     JOptionPane.showMessageDialog(null, "Estado modificado exitosamente");
                 } else {
