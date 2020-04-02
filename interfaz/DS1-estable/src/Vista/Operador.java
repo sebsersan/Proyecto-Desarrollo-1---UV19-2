@@ -47,6 +47,7 @@ public class Operador extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         crearCliente = new javax.swing.JButton();
+        asociarLinea = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         panelRegistrarPago = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -93,6 +94,17 @@ public class Operador extends javax.swing.JFrame {
         jLabelCerrar = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jComboBoxTipo1 = new javax.swing.JComboBox<>();
+        panelAsociarLinea = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        telefonoAsociar = new javax.swing.JTextField();
+        cedulaAsociar = new javax.swing.JTextField();
+        SignOut3 = new javax.swing.JButton();
+        jLabelCerrar1 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        ComboBoxAsociar = new javax.swing.JComboBox<>();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -109,7 +121,7 @@ public class Operador extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(15, 60, 235));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -153,17 +165,35 @@ public class Operador extends javax.swing.JFrame {
             }
         });
 
+        asociarLinea.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        asociarLinea.setForeground(new java.awt.Color(255, 255, 255));
+        asociarLinea.setText("Asociar Linea");
+        asociarLinea.setBorderPainted(false);
+        asociarLinea.setContentAreaFilled(false);
+        asociarLinea.setDefaultCapable(false);
+        asociarLinea.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        asociarLinea.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        asociarLinea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asociarLineaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(crearCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(crearCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(asociarLinea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,26 +204,22 @@ public class Operador extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(crearCliente)
+                .addGap(18, 18, 18)
+                .addComponent(asociarLinea)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelRegistrarPago.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel7.setText("Cedula");
 
         jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
         jLabel8.setText("Registrar Pago");
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("Confirmar");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel9.setText("Monto");
-
-        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         SignOut1.setBackground(new java.awt.Color(255, 255, 255));
         SignOut1.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
@@ -268,7 +294,7 @@ public class Operador extends javax.swing.JFrame {
         );
 
         panelPerfil.setBackground(new java.awt.Color(255, 255, 255));
-        panelPerfil.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        panelPerfil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelPerfil.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/profile.png"))); // NOI18N
@@ -276,43 +302,33 @@ public class Operador extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
         jLabel1.setText("Perfil Operador");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel2.setText("Cedula:");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel3.setText("Nombre:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel4.setText("Apellido:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel5.setText("Direccion:");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel6.setText("Telefono:");
 
         cc_operador.setEditable(false);
-        cc_operador.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         cc_operador.setBorder(null);
         cc_operador.setOpaque(false);
 
         nombre_operador.setEditable(false);
-        nombre_operador.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         nombre_operador.setBorder(null);
         nombre_operador.setOpaque(false);
 
         apellido_operador.setEditable(false);
-        apellido_operador.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         apellido_operador.setBorder(null);
         apellido_operador.setOpaque(false);
 
         direccion_operador.setEditable(false);
-        direccion_operador.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         direccion_operador.setBorder(null);
         direccion_operador.setOpaque(false);
 
         telefono_operador.setEditable(false);
-        telefono_operador.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         telefono_operador.setBorder(null);
         telefono_operador.setOpaque(false);
 
@@ -342,7 +358,7 @@ public class Operador extends javax.swing.JFrame {
         panelPerfilLayout.setHorizontalGroup(
             panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
-                .addGap(0, 134, Short.MAX_VALUE)
+                .addGap(0, 203, Short.MAX_VALUE)
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -401,29 +417,24 @@ public class Operador extends javax.swing.JFrame {
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(telefono_operador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addComponent(SignOut)
                 .addGap(41, 41, 41))
         );
 
         panelCrearCliente.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel10.setText("Nombre");
 
         jLabel11.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
         jLabel11.setText("Crear Cliente");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel13.setText("Teléfono");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel14.setText("Dirección");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel15.setText("Tipo de Usuario");
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel16.setText("Cedula");
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -445,7 +456,6 @@ public class Operador extends javax.swing.JFrame {
         jComboBoxTipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Natural", "Corporativo" }));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel17.setText("Apellido Paterno");
         jLabel17.setAlignmentX(1.0F);
 
@@ -457,7 +467,6 @@ public class Operador extends javax.swing.JFrame {
             }
         });
 
-        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel29.setText("Apellido Materno");
         jLabel29.setAlignmentX(1.0F);
 
@@ -485,7 +494,6 @@ public class Operador extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel19.setText("Plan");
 
         jComboBoxTipo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -577,9 +585,113 @@ public class Operador extends javax.swing.JFrame {
                 .addGap(40, 40, 40))
         );
 
+        panelAsociarLinea.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel20.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
+        jLabel20.setText("Asociar Linea");
+
+        jLabel21.setText("Teléfono");
+
+        jLabel24.setText("Cedula");
+
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton6.setText("Asociar Linea");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        telefonoAsociar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        cedulaAsociar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        SignOut3.setBackground(new java.awt.Color(255, 255, 255));
+        SignOut3.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        SignOut3.setForeground(new java.awt.Color(255, 255, 255));
+        SignOut3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
+        SignOut3.setBorderPainted(false);
+        SignOut3.setContentAreaFilled(false);
+        SignOut3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SignOut3.setFocusable(false);
+        SignOut3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignOut3ActionPerformed(evt);
+            }
+        });
+
+        jLabelCerrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_Multiply_25px.png"))); // NOI18N
+        jLabelCerrar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelCerrar1MouseClicked(evt);
+            }
+        });
+
+        jLabel26.setText("Plan");
+
+        ComboBoxAsociar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ComboBoxAsociar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        javax.swing.GroupLayout panelAsociarLineaLayout = new javax.swing.GroupLayout(panelAsociarLinea);
+        panelAsociarLinea.setLayout(panelAsociarLineaLayout);
+        panelAsociarLineaLayout.setHorizontalGroup(
+            panelAsociarLineaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAsociarLineaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabelCerrar1))
+            .addGroup(panelAsociarLineaLayout.createSequentialGroup()
+                .addGroup(panelAsociarLineaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelAsociarLineaLayout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addGroup(panelAsociarLineaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel26))
+                        .addGap(120, 120, 120)
+                        .addGroup(panelAsociarLineaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(telefonoAsociar)
+                            .addComponent(cedulaAsociar)
+                            .addComponent(ComboBoxAsociar, 0, 141, Short.MAX_VALUE)))
+                    .addGroup(panelAsociarLineaLayout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jLabel20))
+                    .addGroup(panelAsociarLineaLayout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(SignOut3))
+                    .addGroup(panelAsociarLineaLayout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(jButton6)))
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+        panelAsociarLineaLayout.setVerticalGroup(
+            panelAsociarLineaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAsociarLineaLayout.createSequentialGroup()
+                .addComponent(jLabelCerrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel20)
+                .addGap(64, 64, 64)
+                .addGroup(panelAsociarLineaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(telefonoAsociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelAsociarLineaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(cedulaAsociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelAsociarLineaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(ComboBoxAsociar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                .addComponent(SignOut3)
+                .addGap(40, 40, 40))
+        );
+
         jLayeredPane1.setLayer(panelRegistrarPago, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(panelPerfil, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(panelCrearCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(panelAsociarLinea, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -590,6 +702,11 @@ public class Operador extends javax.swing.JFrame {
                 .addComponent(panelRegistrarPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelCrearCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(panelAsociarLinea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -598,6 +715,11 @@ public class Operador extends javax.swing.JFrame {
                 .addComponent(panelRegistrarPago, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelCrearCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(panelAsociarLinea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -627,6 +749,10 @@ public class Operador extends javax.swing.JFrame {
             panelCrearCliente.setVisible(false);
         }
         
+         if (panelAsociarLinea.isVisible()){
+            panelAsociarLinea.setVisible(false);
+        }
+        
         panelRegistrarPago.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -637,6 +763,9 @@ public class Operador extends javax.swing.JFrame {
         }
         if (panelCrearCliente.isVisible()){
             panelCrearCliente.setVisible(false);
+        }
+        if (panelAsociarLinea.isVisible()){
+            panelAsociarLinea.setVisible(false);
         }
         
         panelPerfil.setVisible(true);
@@ -665,6 +794,10 @@ public class Operador extends javax.swing.JFrame {
         }
         if (panelPerfil.isVisible()){
             panelPerfil.setVisible(false);
+        }
+        
+        if (panelAsociarLinea.isVisible()){
+            panelAsociarLinea.setVisible(false);
         }
         
         panelCrearCliente.setVisible(true);
@@ -711,6 +844,53 @@ public class Operador extends javax.swing.JFrame {
         cerrarVentana();
     }//GEN-LAST:event_jLabelCerrarMouseClicked
 
+    private void jLabelCerrar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCerrar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelCerrar1MouseClicked
+
+    private void SignOut3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOut3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SignOut3ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        
+        if (cedulaAsociar.getText().equals("") || telefonoAsociar.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Error, tienes elementos vacios");
+        } else {
+            try {
+                int identification = Integer.parseInt(jTextFieldCedula.getText());
+                if (identification < 0) {
+                    JOptionPane.showMessageDialog(null, "Datos Incorrectos \nIntentalo Nuevamente");
+                } else if (control.asociarLinea(jTextFieldCedula.getText(), jTextFieldTelefono.getText(), ComboBoxAsociar.getItemAt(ComboBoxAsociar.getSelectedIndex()))) {
+                    this.cleanCreateSection();
+                    JOptionPane.showMessageDialog(null, "Linea asociada exitosamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Datos Incorrectos \nIntentalo Nuevamente");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "La Cedula debe ser un entero");
+            }
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void asociarLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asociarLineaActionPerformed
+        // TODO add your handling code here:
+        
+        if (panelRegistrarPago.isVisible()){
+            panelRegistrarPago.setVisible(false);
+        }
+        if (panelPerfil.isVisible()){
+            panelPerfil.setVisible(false);
+        }
+        
+        if (panelCrearCliente.isVisible()){
+            panelCrearCliente.setVisible(false);
+        }
+        
+        panelAsociarLinea.setVisible(true);
+    }//GEN-LAST:event_asociarLineaActionPerformed
+
     private void cerrarVentana(){
         this.dispose();
     }
@@ -723,17 +903,22 @@ public class Operador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBoxAsociar;
     private javax.swing.JButton SignOut;
     private javax.swing.JButton SignOut1;
     private javax.swing.JButton SignOut2;
+    private javax.swing.JButton SignOut3;
     private javax.swing.JTextField apellido_operador;
+    private javax.swing.JButton asociarLinea;
     private javax.swing.JTextField cc_operador;
+    private javax.swing.JTextField cedulaAsociar;
     private javax.swing.JButton crearCliente;
     private javax.swing.JTextField direccion_operador;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBoxTipo;
     private javax.swing.JComboBox<String> jComboBoxTipo1;
     private javax.swing.JLabel jLabel1;
@@ -747,6 +932,10 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -758,6 +947,7 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelCerrar;
+    private javax.swing.JLabel jLabelCerrar1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -770,9 +960,11 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPaterno;
     private javax.swing.JTextField jTextFieldTelefono;
     private javax.swing.JTextField nombre_operador;
+    private javax.swing.JPanel panelAsociarLinea;
     private javax.swing.JPanel panelCrearCliente;
     private javax.swing.JPanel panelPerfil;
     private javax.swing.JPanel panelRegistrarPago;
+    private javax.swing.JTextField telefonoAsociar;
     private javax.swing.JTextField telefono_operador;
     // End of variables declaration//GEN-END:variables
 }

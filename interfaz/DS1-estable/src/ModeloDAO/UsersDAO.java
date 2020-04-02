@@ -1,5 +1,6 @@
 package ModeloDAO;
 import Modelo.Users;
+import Modelo.Telefono;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -89,6 +90,37 @@ public class UsersDAO {
             System.out.println("resultado: "+resultado);
             if(resultado.next()){
                 JOptionPane.showMessageDialog(null, "El cliente ya existe \nIntentelo nuevamente");
+            }else{
+                int res = sentencia.executeUpdate(QuerySQL);
+                if(res==1){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("---- Problema en la ejecucion.");
+            ex.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean createTelefono(Telefono aUser){
+        String QuerySQL = "INSERT INTO Telefono VALUES("+ aUser.getId() + ", '"+aUser.getTel()+ "', '"+aUser.getPlan()+"')";
+        String QuerySQLaux = "SELECT cedula FROM Telefono WHERE cedula = '"+aUser.getId()+"'";
+        System.out.println(QuerySQL);
+        System.out.println(QuerySQLaux);
+        Connection coneccion= this.access.getConnetion();
+        System.out.println("Connection: "+coneccion);
+        
+        try {
+            Statement sentencia = coneccion.createStatement();
+            System.out.println("sentencia: "+sentencia);
+            ResultSet resultado = sentencia.executeQuery(QuerySQLaux);
+            System.out.println("resultado: "+resultado);
+            if(resultado.next()){
+                JOptionPane.showMessageDialog(null, "El telefono ya existe \nIntentelo nuevamente");
             }else{
                 int res = sentencia.executeUpdate(QuerySQL);
                 if(res==1){
