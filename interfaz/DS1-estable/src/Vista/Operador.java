@@ -859,10 +859,10 @@ public class Operador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error, tienes elementos vacios");
         } else {
             try {
-                int identification = Integer.parseInt(jTextFieldCedula.getText());
+                int identification = Integer.parseInt(cedulaAsociar.getText());
                 if (identification < 0) {
                     JOptionPane.showMessageDialog(null, "Datos Incorrectos \nIntentalo Nuevamente");
-                } else if (control.asociarLinea(jTextFieldCedula.getText(), jTextFieldTelefono.getText(), ComboBoxAsociar.getItemAt(ComboBoxAsociar.getSelectedIndex()))) {
+                } else if (control.asociarLinea(cedulaAsociar.getText(), telefonoAsociar.getText(), ComboBoxAsociar.getItemAt(ComboBoxAsociar.getSelectedIndex()))) {
                     this.cleanCreateSection();
                     JOptionPane.showMessageDialog(null, "Linea asociada exitosamente");
                 } else {
