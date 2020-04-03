@@ -2,6 +2,7 @@ package Controladora;
 
 import Modelo.Sedes;
 import Modelo.Users;
+import Modelo.Telefono;
 import Modelo.Jefes;
 import Modelo.Orden;
 import Modelo.Producto;
@@ -200,6 +201,11 @@ public class Controladora {
         }
     }
 
+    public boolean asociarLinea(String id, String telefono, String plan) {
+        Telefono aU = new Telefono(id, telefono, plan);
+        return usersDao.createTelefono(aU);
+    }
+     
     public boolean AsignarUnVendedor(String id, String sedeid) {
         return jefesDao.asignarUnVendedor(id, sedeid);
     }
