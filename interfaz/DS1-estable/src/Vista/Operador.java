@@ -886,8 +886,6 @@ public class Operador extends javax.swing.JFrame {
     }//GEN-LAST:event_SignOut3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        
         if (cedulaAsociar.getText().equals("") || telefonoAsociar.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Error, tienes elementos vacios");
         } else {

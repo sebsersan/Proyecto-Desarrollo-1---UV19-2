@@ -106,35 +106,63 @@ public class UsersDAO {
         return false;
     }
     
-    public boolean createTelefono(Telefono aUser){
-        String QuerySQL = "INSERT INTO Telefono VALUES("+ aUser.getId() + ", '"+aUser.getTel()+ "', '"+aUser.getPlan()+"')";
-        String QuerySQLaux = "SELECT cedula FROM Telefono WHERE cedula = '"+aUser.getTel()+"'";
-        System.out.println(QuerySQL);
-        System.out.println(QuerySQLaux);
-        Connection coneccion= this.access.getConnetion();
-        System.out.println("Connection: "+coneccion);
-        
+    public boolean limitarTelefonosClienteNatural(Telefono aUser){
+        String QuerySQLaux = "SELECT COUNT(cedula) FROM cliente_telefonos WHERE cedula='" + aUser.getId() + "' and tipo_cliente='Natural'";
+        Connection coneccion = this.access.getConnetion();
+        int cantidad =0;
         try {
             Statement sentencia = coneccion.createStatement();
-            System.out.println("sentencia: "+sentencia);
-            ResultSet resultado = sentencia.executeQuery(QuerySQLaux);
-            System.out.println("resultado: "+resultado);
+            ResultSet resultado = sentencia.executeQuery(QuerySQLaux);         
             if(resultado.next()){
-                JOptionPane.showMessageDialog(null, "El telefono ya existe \nIntentelo nuevamente");
-            }else{
-                int res = sentencia.executeUpdate(QuerySQL);
-                if(res==1){
-                    return true;
-                }else{
-                    return false;
-                }
+                cantidad = Integer.parseInt(resultado.getString("count").trim());
             }
-
+            if (cantidad >= 3) {
+                return false;
+            } else {
+                return true;
+            }
         } catch (SQLException ex) {
             System.out.println("---- Problema en la ejecucion.");
             ex.printStackTrace();
         }
         return false;
+    }
+
+    public boolean createTelefono(Telefono aUser) {
+        if (!limitarTelefonosClienteNatural(aUser)) {
+            JOptionPane.showMessageDialog(null, "El cliente ha superado el limite de telefonos \nIntentelo nuevamente con otro cliente");
+            return false;
+        } else {
+            String QuerySQL = "INSERT INTO Telefono VALUES(" + aUser.getId() + ", '" + aUser.getTel() + "', '" + aUser.getPlan() + "')";
+
+            String QuerySQLaux = "SELECT cedula FROM Telefono WHERE cedula = '" + aUser.getTel() + "'";
+            System.out.println(QuerySQL);
+            System.out.println(QuerySQLaux);
+            Connection coneccion = this.access.getConnetion();
+            System.out.println("Connection: " + coneccion);
+
+            try {
+                Statement sentencia = coneccion.createStatement();
+                System.out.println("sentencia: " + sentencia);
+                ResultSet resultado = sentencia.executeQuery(QuerySQLaux);
+                System.out.println("resultado: " + resultado);
+                if (resultado.next()) {
+                    JOptionPane.showMessageDialog(null, "El telefono ya existe \nIntentelo nuevamente");
+                } else {
+                    int res = sentencia.executeUpdate(QuerySQL);
+                    if (res == 1) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+
+            } catch (SQLException ex) {
+                System.out.println("---- Problema en la ejecucion.");
+                ex.printStackTrace();
+            }
+            return false;
+        }
     }
     
     public Users consultProfile(String userID){
