@@ -135,7 +135,7 @@ public class UsersDAO {
         } else {
             String QuerySQL = "INSERT INTO Telefono VALUES(" + aUser.getId() + ", '" + aUser.getTel() + "', '" + aUser.getPlan() + "')";
 
-            String QuerySQLaux = "SELECT cedula FROM Telefono WHERE cedula = '" + aUser.getTel() + "'";
+            String QuerySQLaux = "SELECT numero_telefono FROM Telefono WHERE numero_telefono = '" + aUser.getTel() + "'";
             System.out.println(QuerySQL);
             System.out.println(QuerySQLaux);
             Connection coneccion = this.access.getConnetion();
