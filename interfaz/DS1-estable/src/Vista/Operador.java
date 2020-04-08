@@ -68,7 +68,7 @@ public class Operador extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        botonConfirmarPago = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         SignOut1 = new javax.swing.JButton();
@@ -352,8 +352,13 @@ public class Operador extends javax.swing.JFrame {
 
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setText("Confirmar");
+        botonConfirmarPago.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonConfirmarPago.setText("Confirmar");
+        botonConfirmarPago.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonConfirmarPagoMouseClicked(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel9.setText("Monto");
@@ -405,7 +410,7 @@ public class Operador extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(SignOut1)
-                    .addComponent(jButton3))
+                    .addComponent(botonConfirmarPago))
                 .addGap(171, 171, 171))
         );
         panelRegistrarPagoLayout.setVerticalGroup(
@@ -429,7 +434,7 @@ public class Operador extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addComponent(jLabel9)))
                 .addGap(40, 40, 40)
-                .addComponent(jButton3)
+                .addComponent(botonConfirmarPago)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
                 .addComponent(SignOut1)
                 .addGap(25, 25, 25))
@@ -922,6 +927,10 @@ public class Operador extends javax.swing.JFrame {
         panelAsociarLinea.setVisible(true);
     }//GEN-LAST:event_asociarLineaActionPerformed
 
+    private void botonConfirmarPagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonConfirmarPagoMouseClicked
+        
+    }//GEN-LAST:event_botonConfirmarPagoMouseClicked
+
     private void cerrarVentana(){
         this.dispose();
     }
@@ -941,13 +950,13 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JButton SignOut3;
     private javax.swing.JTextField apellido_operador;
     private javax.swing.JButton asociarLinea;
+    private javax.swing.JButton botonConfirmarPago;
     private javax.swing.JTextField cc_operador;
     private javax.swing.JTextField cedulaAsociar;
     private javax.swing.JButton crearCliente;
     private javax.swing.JTextField direccion_operador;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBoxTipo;
