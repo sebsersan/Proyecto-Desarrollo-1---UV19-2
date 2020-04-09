@@ -1,5 +1,5 @@
 package Controladora;
-
+import Modelo.Clients;
 import Modelo.Sedes;
 import Modelo.Users;
 import Modelo.Telefono;
@@ -13,6 +13,7 @@ import ModeloDAO.OrdenDAO;
 import ModeloDAO.ProductoDAO;
 import ModeloDAO.UsersDAO;
 import ModeloDAO.SedesDAO;
+import ModeloDAO.ClientsDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class Controladora {
     JefesDAO jefesDao;
     ProductoDAO productoDao;
     OrdenDAO ordenDao;
+    ClientsDAO clientsDao;
 
     public Controladora() {
         access = new Acceso();
@@ -37,6 +39,7 @@ public class Controladora {
         this.jefesDao = new JefesDAO(access);
         this.productoDao = new ProductoDAO(access);
         this.ordenDao = new OrdenDAO(access);
+        this.clientsDao = new ClientsDAO(access);
     }
 
     public String login(String user, String pass) {
@@ -122,9 +125,9 @@ public class Controladora {
     }
     
     
-    public boolean createCliente(String id, String fname, String lname,String lname2, String telefono, String direccion, String position, String plan) {
-        Users aU = new Users(id, fname, lname, lname2, telefono, direccion, position, plan);
-        return usersDao.createNewClient(aU);
+    public boolean createCliente(String id, String fname, String lname,String lname2, String telefono, String direccion, String tipocliente, String plan) {
+        Clients aC = new Clients(id, fname, lname, lname2, telefono, direccion, tipocliente, plan);
+        return clientsDao.createNewClient(aC);
     }
 
     //Funcion para crear usuarios vendedor desde la vista del Jefe de taller

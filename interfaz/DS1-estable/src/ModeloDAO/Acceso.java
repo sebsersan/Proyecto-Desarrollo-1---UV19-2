@@ -11,7 +11,7 @@ public class Acceso {
         //this.password = "LaDK1W0ZNGd-S-TQCRVRd0Z7F5Qm6DUY";
         this.url = "jdbc:postgresql://localhost:5432/DS1_BaseDeDatos";
         this.usuario = "postgres";
-        this.password = "cjloco1996";
+        this.password = "SuperSecret";
     }
     
     public Connection conectar(){
