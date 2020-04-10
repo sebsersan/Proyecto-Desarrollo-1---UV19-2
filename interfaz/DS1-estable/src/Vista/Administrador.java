@@ -6,6 +6,7 @@
 package Vista;
 
 import Controladora.Controladora;
+import Modelo.Factura;
 import Modelo.Users;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -60,7 +61,8 @@ public class Administrador extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        jButtonGenerarFacturas = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         cerrar = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -218,20 +220,35 @@ public class Administrador extends javax.swing.JFrame {
         });
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, 29));
 
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Listar Usuarios");
-        jButton8.setBorder(null);
-        jButton8.setBorderPainted(false);
-        jButton8.setContentAreaFilled(false);
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGenerarFacturas.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButtonGenerarFacturas.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonGenerarFacturas.setText("Generar Facturas");
+        jButtonGenerarFacturas.setBorder(null);
+        jButtonGenerarFacturas.setBorderPainted(false);
+        jButtonGenerarFacturas.setContentAreaFilled(false);
+        jButtonGenerarFacturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonGenerarFacturas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButtonGenerarFacturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jButtonGenerarFacturasActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 170, 29));
+        jPanel1.add(jButtonGenerarFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 170, 29));
+
+        jButton9.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("Listar Usuarios");
+        jButton9.setBorder(null);
+        jButton9.setBorderPainted(false);
+        jButton9.setContentAreaFilled(false);
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 170, 29));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 201, 580));
 
@@ -901,7 +918,7 @@ public class Administrador extends javax.swing.JFrame {
         }
         if(panelListarUsuarios.isVisible()){
             panelListarUsuarios.setVisible(false);
-            jButton8.setVisible(true);
+            jButtonGenerarFacturas.setVisible(true);
         }
         
         panelAdministrador.setVisible(true);
@@ -924,7 +941,7 @@ public class Administrador extends javax.swing.JFrame {
         }
         if(panelListarUsuarios.isVisible()){
             panelListarUsuarios.setVisible(false);
-            jButton8.setVisible(true);
+            jButton9.setVisible(true);
         }
         
         panelCrearUsuario.setVisible(true);
@@ -946,7 +963,7 @@ public class Administrador extends javax.swing.JFrame {
             jButton7.setVisible(true);
         }if(panelListarUsuarios.isVisible()){
             panelListarUsuarios.setVisible(false);
-            jButton8.setVisible(true);
+            jButton9.setVisible(true);
         }
         
         panelModificarUsuario.setVisible(true);
@@ -988,7 +1005,7 @@ public class Administrador extends javax.swing.JFrame {
         }
         if(panelListarUsuarios.isVisible()){
             panelListarUsuarios.setVisible(false);
-            jButton8.setVisible(true);
+            jButton9.setVisible(true);
         }
         
         panelEstadoUsuario.setVisible(true);
@@ -1098,7 +1115,45 @@ public class Administrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_direccion_adminActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jButtonGenerarFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerarFacturasActionPerformed
+        // TODO add your handling code here:
+        if(panelCrearUsuario.isVisible()){
+            panelCrearUsuario.setVisible(false);
+            jButton1.setVisible(true);
+        }
+        if(panelAdministrador.isVisible()){
+            panelAdministrador.setVisible(false);
+            jButton4.setVisible(true);
+        }
+        if(panelModificarUsuario.isVisible()){
+            panelModificarUsuario.setVisible(false);
+            jButton3.setVisible(true);
+        }if(panelEstadoUsuario.isVisible()){
+            panelEstadoUsuario.setVisible(false);
+            jButton7.setVisible(true);
+        }
+        String nombreCliente="aqui va el nombre cliente";
+        String direccion="esta es su direccion";
+        String cedula="aqui es la cedula";
+        String rutaImagen="C:\\Users\\Jesús\\Downloads\\Logotelefonica1.jpeg";
+        String infoCliente="\n\n    cliente  " + nombreCliente + "\n    direccion  " + direccion + "\n    cedula  " + cedula+ "\n    Fecha de expedición x" + "\n    Factura de venta n"+ "\n\n\n\n";
+        String infoPago="  aqui iria la tabla con valor a pagar fechas etc\n\n\n\n";
+        String resumenCuenta="  aquí va la info de pagos atrasados si los hay o deucdas y el Total a pagar otra vez";
+        String rutaGuardar="C:\\Users\\Jesús\\Desktop\\fatura.pdf";
+        Factura g= new Factura();
+        g.generarPDF(rutaImagen, infoCliente, infoPago, resumenCuenta, rutaGuardar);
+        jButtonGenerarFacturas.setVisible(true);
+    }//GEN-LAST:event_jButtonGenerarFacturasActionPerformed
+
+    private void botonListarUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonListarUsuariosMouseClicked
+        listarUsuarios();
+    }//GEN-LAST:event_botonListarUsuariosMouseClicked
+
+    private void cargoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargoModificarActionPerformed
+        jTextFieldNuevoValor.setText(cargoModificar.getItemAt(cargoModificar.getSelectedIndex()));
+    }//GEN-LAST:event_cargoModificarActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         if(panelCrearUsuario.isVisible()){
             panelCrearUsuario.setVisible(false);
@@ -1117,16 +1172,8 @@ public class Administrador extends javax.swing.JFrame {
         }
 
         panelListarUsuarios.setVisible(true);
-        jButton8.setVisible(false);
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void botonListarUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonListarUsuariosMouseClicked
-        listarUsuarios();
-    }//GEN-LAST:event_botonListarUsuariosMouseClicked
-
-    private void cargoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargoModificarActionPerformed
-        jTextFieldNuevoValor.setText(cargoModificar.getItemAt(cargoModificar.getSelectedIndex()));
-    }//GEN-LAST:event_cargoModificarActionPerformed
+        jButton9.setVisible(false);
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     private void listarUsuarios(){
         md.setRowCount(0); //Para limpiar la tabla
@@ -1167,7 +1214,8 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButtonGenerarFacturas;
     private javax.swing.JComboBox<String> jComboBoxAtributo;
     private javax.swing.JComboBox<String> jComboBoxCargo;
     private javax.swing.JComboBox<String> jComboBoxEstado;
