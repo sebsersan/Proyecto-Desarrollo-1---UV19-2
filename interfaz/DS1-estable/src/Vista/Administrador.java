@@ -1132,6 +1132,7 @@ public class Administrador extends javax.swing.JFrame {
             panelEstadoUsuario.setVisible(false);
             jButton7.setVisible(true);
         }
+        
         String nombreCliente="aqui va el nombre cliente";
         String direccion="esta es su direccion";
         String cedula="aqui es la cedula";
@@ -1184,6 +1185,7 @@ public class Administrador extends javax.swing.JFrame {
         ArrayList<String[]> lista = control.listarUsers();
         for (int i = 0; i < lista.size(); i++) {
             md.addRow(lista.get(i));
+           
         }
     }
     
