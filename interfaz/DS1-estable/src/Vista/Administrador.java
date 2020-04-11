@@ -1140,8 +1140,12 @@ public class Administrador extends javax.swing.JFrame {
         String infoPago="  aqui iria la tabla con valor a pagar fechas etc\n\n\n\n";
         String resumenCuenta="  aquí va la info de pagos atrasados si los hay o deucdas y el Total a pagar otra vez";
         String rutaGuardar="C:\\Users\\Jesús\\Desktop\\fatura.pdf";
+        String facturasPendientes="";
+        String serviciosAdicionales="";
+        String valorMesActual="";
+        String totalaPagar="";
         Factura g= new Factura();
-        g.generarPDF(rutaImagen, infoCliente, infoPago, resumenCuenta, rutaGuardar);
+        g.generarPDF(rutaImagen, infoCliente, infoPago, resumenCuenta, rutaGuardar, facturasPendientes,serviciosAdicionales,valorMesActual, totalaPagar);
         jButtonGenerarFacturas.setVisible(true);
     }//GEN-LAST:event_jButtonGenerarFacturasActionPerformed
 
