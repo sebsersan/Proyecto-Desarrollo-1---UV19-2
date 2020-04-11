@@ -37,7 +37,7 @@ public class Factura {
     private Font fuenteItalic = new Font(Font.NORMAL);
     private Font fuenteNormal = new Font(Font.NORMAL);
     
-    public void generarPDF(String rutaImagen, String header, String info, String footer, String salida){
+    public void generarPDF(String rutaImagen, String header, String info, String footer, String salida, String facturasPendientes,String serviciosAdicionales,String valorMesActual, String totalaPagar){
         try{
             
             Document document=new Document(PageSize.A4, 0,0,0,10);
@@ -51,13 +51,13 @@ public class Factura {
             
             document.add(imagen);
             document.add(getHeader(header));
-            document.add(getTablasFactActual());
+            document.add(getTablasFactActual(valorMesActual));
             document.add(paragraph);
             document.add(getTablaDisclaimer());
             document.add(paragraph);
             document.add(getTablaEstadoCuenta());
             document.add(paragraph);
-            document.add(getTablasServicios());
+            document.add(getTablasServicios(facturasPendientes,serviciosAdicionales,valorMesActual, totalaPagar));
             document.add(paragraph);
             document.add(getFooter(footer));
             document.close();
@@ -99,7 +99,7 @@ public class Factura {
         return p;
     }
     
-    private Paragraph getTablasFactActual(){
+    private Paragraph getTablasFactActual(String valorMesActual){
         Paragraph paragraph = new Paragraph();
         PdfPCell cell = null;
             //Tabla main
@@ -158,7 +158,7 @@ public class Factura {
             tabla3cell.setBorder(PdfPCell.NO_BORDER);
             
             PdfPTable tabla3=new PdfPTable(2);
-            cell = new PdfPCell(new Phrase("Fecha Entrega"));
+            cell = new PdfPCell(new Phrase("Fecha límite de pago"));
             cell.setBackgroundColor(Color.GREEN);
             tabla3.addCell(cell);
             tabla3.addCell(formatter.format(date));
@@ -187,7 +187,7 @@ public class Factura {
             cell = new PdfPCell(new Phrase("TOTAL A PAGAR"));
             cell.setBackgroundColor(Color.GREEN);
             tabla5.addCell(cell);
-            tabla5.addCell("100,000.00");
+            tabla5.addCell(valorMesActual);
             
             tabla5cell.addElement(tabla5);
             tablamain.addCell(tabla5cell);
@@ -225,7 +225,7 @@ public class Factura {
     }
     
     private Paragraph getTablaDisclaimer(){
-        String texto="Estimado cliente, pague oportunamente y evite la suspensión del servicio, cobro de reconexión por\nproducto e intereses de mora: El inccumplimiento en los pagos genera reportes a Centrales de \nRiesgo como moroso. Si ya realizó el pago, haga caso omiso.";
+        String texto="Estimado cliente, pague oportunamente y evite la suspensión del servicio, cobro de reconexión por producto e intereses de mora: El inccumplimiento en los pagos genera reportes a Centrales de Riesgo como moroso. Si ya realizó el pago, haga caso omiso.\n ";
         Paragraph paragraph=new Paragraph();
         PdfPTable tablamain=new PdfPTable(1);
         
@@ -238,7 +238,7 @@ public class Factura {
         return paragraph;
     }
     
-    private Paragraph getTablasServicios(){
+    private Paragraph getTablasServicios(String facturasPendientes,String serviciosAdicionales,String valorMesActual, String totalaPagar){
         Paragraph paragraph = new Paragraph();
         PdfPCell cell = null;
             //Tabla main
@@ -256,87 +256,25 @@ public class Factura {
             
             cell = new PdfPCell(new Phrase("Facturas Pendientes"));
             tablamain.addCell(cell);
-            tablamain.addCell("$"+"000000000");
+            tablamain.addCell("$"+ facturasPendientes);
             
             cell = new PdfPCell(new Phrase("Servicios adicionales"));
             tablamain.addCell(cell);
-            tablamain.addCell("$"+"00000000");
+            tablamain.addCell("$"+ serviciosAdicionales);
             
             cell = new PdfPCell(new Phrase("Mes Actual"));
             tablamain.addCell(cell);
-            tablamain.addCell("$"+"00000000");
+            tablamain.addCell("$"+ valorMesActual);
             
             cell = new PdfPCell(new Phrase("TOTAL A PAGAR"));
             cell.setBackgroundColor(Color.gray);
             tablamain.addCell(cell);
             
-            cell = new PdfPCell(new Phrase("$"+"100,000.00"));
+            cell = new PdfPCell(new Phrase("$"+totalaPagar));
             cell.setBackgroundColor(Color.gray);
             tablamain.addCell(cell);
             
-            /*
-            //segunda celda tabla main
-            PdfPCell tabla1cell = new PdfPCell();
-            tabla1cell.setBorder(PdfPCell.NO_BORDER);
             
-            PdfPTable tabla1=new PdfPTable(2);
-            cell = new PdfPCell(new Phrase("Facturas Pendientes"));
-            tabla1.addCell(cell);
-            tabla1.addCell("$"+"000000000");
-            
-            tabla1cell.addElement(tabla1);
-            tablamain.addCell(tabla1cell);
-    
-            
-            //Tercera celda tabla main
-            PdfPCell tabla2cell = new PdfPCell();
-            tabla2cell.setBorder(PdfPCell.NO_BORDER);
-            
-            PdfPTable tabla2=new PdfPTable(2);
-            cell = new PdfPCell(new Phrase("Servicios adicionales"));
-            tabla2.addCell(cell);
-            tabla2.addCell("$"+"00000000");
-            
-            tabla2cell.addElement(tabla2);
-            tablamain.addCell(tabla2cell);
-            
-            //Cuarta celda tabla main
-            PdfPCell tabla3cell = new PdfPCell();
-            tabla3cell.setBorder(PdfPCell.NO_BORDER);
-            
-            PdfPTable tabla3=new PdfPTable(2);
-            cell = new PdfPCell(new Phrase("Mes Actual"));
-            tabla3.addCell(cell);
-            tabla3.addCell("$"+"00000000");
-            
-            tabla3cell.addElement(tabla3);
-            tablamain.addCell(tabla3cell);
-            
-            //Quinta celda tabla main
-            PdfPCell tabla4cell = new PdfPCell();
-            tabla4cell.setBorder(PdfPCell.NO_BORDER);
-            
-            PdfPTable tabla4=new PdfPTable(2);
-            cell = new PdfPCell(new Phrase("Total a Pagar"));
-            tabla4.addCell(cell);
-            tabla4.addCell("$"+"00000000");
-            
-            tabla4cell.addElement(tabla4);
-            tablamain.addCell(tabla4cell);
-            
-            //Sexta celda tabla main
-            PdfPCell tabla5cell = new PdfPCell();
-            tabla5cell.setBorder(PdfPCell.NO_BORDER);
-            
-            PdfPTable tabla5=new PdfPTable(2);
-            cell = new PdfPCell(new Phrase("TOTAL A PAGAR"));
-            cell.setBackgroundColor(Color.GREEN);
-            tabla5.addCell(cell);
-            tabla5.addCell("100,000.00");
-            
-            tabla5cell.addElement(tabla5);
-            tablamain.addCell(tabla5cell);
-            */
             paragraph.add(tablamain);
             
             return paragraph;
