@@ -6,14 +6,10 @@
 package Vista;
 
 import Controladora.Controladora;
-import Modelo.Factura;
 import Modelo.Users;
-import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import static sun.misc.Version.println;
 
 /**
  *
@@ -1149,7 +1145,7 @@ public class Administrador extends javax.swing.JFrame {
         String totalaPagar="";
         Factura g= new Factura();
         g.generarPDF(rutaImagen, infoCliente, infoPago, resumenCuenta, rutaGuardar, facturasPendientes,serviciosAdicionales,valorMesActual, totalaPagar);*/
-        control.generarFacturaClientes();
+        control.generarFacturaClients();
         jButtonGenerarFacturas.setVisible(true);
     }//GEN-LAST:event_jButtonGenerarFacturasActionPerformed
 

@@ -135,7 +135,7 @@ public class ClientsDAO {
     
     public String[] generarFacturaClientes() {
         String QuerySQL = "SELECT cedula, nombre_persona, paterno_persona, materno_persona"
-                + "direccion_persona, tipo_cliente, numero_telefono, costo from Cliente_telefonos_plan";
+                + ",direccion_persona, tipo_cliente, numero_telefono, costo from Cliente_telefonos_plan";
         System.out.println(QuerySQL);
         Connection coneccion = this.access.getConnetion();
         System.out.println("Connection: " + coneccion);
@@ -167,7 +167,7 @@ public class ClientsDAO {
                 
                 String rutaGuardar="C:\\Users\\Jesús\\Desktop\\fatura"+a1+".pdf";
                 Factura g=new Factura();
-                g.generarPDF(rutaImagen, a2+a3+a4, a5, a1, rutaGuardar, "0", "0", a8, a8);
+                g.generarPDF(rutaImagen, a2+" "+a3+" "+a4, a5, a1, rutaGuardar, "0", "0", a8, a8);
                 //matrixList.add(niu);
                 
             }
