@@ -37,7 +37,7 @@ public class Factura {
     private Font fuenteItalic = new Font(Font.NORMAL);
     private Font fuenteNormal = new Font(Font.NORMAL);
     
-    public void generarPDF(String rutaImagen, String header, String info, String footer, String salida, String facturasPendientes,String serviciosAdicionales,String valorMesActual, String totalaPagar){
+    public void generarPDF(String rutaImagen, String nombreCliente, String direccion, String cedula, String salida, String facturasPendientes,String serviciosAdicionales,String valorMesActual, String totalaPagar){
         try{
             
             Document document=new Document(PageSize.A4, 0,0,0,10);
@@ -50,8 +50,8 @@ public class Factura {
             
             
             document.add(imagen);
-            document.add(getHeader(header));
-            document.add(getTablasFactActual(valorMesActual));
+            document.add(getHeader(nombreCliente,direccion,cedula));
+            document.add(getTablasFactActual(valorMesActual,cedula));
             document.add(paragraph);
             document.add(getTablaDisclaimer());
             document.add(paragraph);
@@ -59,7 +59,7 @@ public class Factura {
             document.add(paragraph);
             document.add(getTablasServicios(facturasPendientes,serviciosAdicionales,valorMesActual, totalaPagar));
             document.add(paragraph);
-            document.add(getFooter(footer));
+            //document.add(getFooter(footer));
             document.close();
             
         }catch(Exception e){
@@ -69,22 +69,16 @@ public class Factura {
         
     }
     
-    private Paragraph getHeader(String texto){
+    private Paragraph getHeader(String nombreCliente, String direccion, String cedula){
+        Date date = new Date(); // This object contains the current date value
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            String fechaActual=formatter.format(date);
+        String infoCliente="\n\n    cliente  " + nombreCliente + "\n    direccion  " + direccion + "\n    cedula  " + cedula+ "\n    Fecha de expedición "+ fechaActual + "\n    Factura de venta n"+ "\n\n\n\n";
         Paragraph p = new Paragraph();
         Chunk c = new Chunk();
         p.setAlignment(Element.ALIGN_LEFT);
-        c.append(texto);
+        c.append(infoCliente);
         c.setFont(fuenteBold);
-        p.add(c);
-        return p;
-    }
-    
-    private Paragraph getInfo(String texto){
-        Paragraph p = new Paragraph();
-        Chunk c = new Chunk();
-        p.setAlignment(Element.ALIGN_JUSTIFIED);
-        c.append(texto);
-        c.setFont(fuenteItalic);
         p.add(c);
         return p;
     }
@@ -99,7 +93,7 @@ public class Factura {
         return p;
     }
     
-    private Paragraph getTablasFactActual(String valorMesActual){
+    private Paragraph getTablasFactActual(String valorMesActual,String cedula){
         Paragraph paragraph = new Paragraph();
         PdfPCell cell = null;
             //Tabla main
@@ -129,10 +123,13 @@ public class Factura {
             tabla1cell.setBorder(PdfPCell.NO_BORDER);
             
             PdfPTable tabla1=new PdfPTable(2);
+            Date date = new Date(); // This object contains the current date value
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            
             cell = new PdfPCell(new Phrase("Numero para pagos"));
             cell.setBackgroundColor(Color.GREEN);
             tabla1.addCell(cell);
-            tabla1.addCell("000000000");
+            tabla1.addCell(cedula + formatter.format(date).toString().replace("-", ""));
             
             tabla1cell.addElement(tabla1);
             tablamain.addCell(tabla1cell);
@@ -146,8 +143,6 @@ public class Factura {
             cell = new PdfPCell(new Phrase("Fecha Entrega"));
             cell.setBackgroundColor(Color.GREEN);
             tabla2.addCell(cell);
-            Date date = new Date(); // This object contains the current date value
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
             tabla2.addCell(formatter.format(date));
             
             tabla2cell.addElement(tabla2);

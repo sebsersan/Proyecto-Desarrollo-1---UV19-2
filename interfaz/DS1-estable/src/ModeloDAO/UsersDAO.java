@@ -509,6 +509,7 @@ public class UsersDAO {
                 String a5 = resultado.getString("tipo_usuario").trim();
                 String a6 = resultado.getString("estado_usuario").trim();
                 String[] niu = {a1, a2, a3, a4, a5, a6}; //Es importante crear un nuevo arreglo cada vez
+                
                 matrixList.add(niu);
                 cont++;
             }

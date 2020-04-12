@@ -1,6 +1,7 @@
 package ModeloDAO;
 
 import Modelo.Clients;
+import Modelo.Factura;
 import Modelo.Telefono;
 import java.sql.*;
 import java.util.ArrayList;
@@ -131,4 +132,51 @@ public class ClientsDAO {
         return null;
     }
 */
+    
+    public String[] generarFacturaClientes() {
+        String QuerySQL = "SELECT cedula, nombre_persona, paterno_persona, materno_persona"
+                + "direccion_persona, tipo_cliente, numero_telefono, costo from Cliente_telefonos_plan";
+        System.out.println(QuerySQL);
+        Connection coneccion = this.access.getConnetion();
+        System.out.println("Connection: " + coneccion);
+        
+        try {
+            Statement sentencia = coneccion.createStatement();
+            System.out.println("sentencia: "+sentencia);
+            ResultSet resultado = sentencia.executeQuery(QuerySQL);
+            System.out.println("resultado: "+resultado);
+            
+
+            ArrayList<String[]> matrixList = new ArrayList<String[]>();
+            int cont = 0;//guarda el numero de factura generado. En un archivo txt
+            String rutaImagen="C:\\Users\\Jesús\\Downloads\\Logotelefonica1.jpeg";
+            
+            while (resultado.next()) {
+                
+                String a1 = resultado.getString("cedula").trim();
+                String a2 = resultado.getString("nombre_persona").trim();
+                String a3 = resultado.getString("paterno_persona").trim();
+                String a4 = resultado.getString("materno_persona").trim();
+                String a5 = resultado.getString("direccion_persona").trim();
+                String a6 = resultado.getString("tipo_cliente").trim();
+                String a7 = resultado.getString("numero_telefono").trim();
+                String a8 = resultado.getString("costo").trim();
+                
+                cont++;
+                //String[] niu = {a1, a2, a3, a4, a5, a6, a7, a8, Integer.toString(cont)}; //Es importante crear un nuevo arreglo cada vez
+                
+                String rutaGuardar="C:\\Users\\Jesús\\Desktop\\fatura"+a1+".pdf";
+                Factura g=new Factura();
+                g.generarPDF(rutaImagen, a2+a3+a4, a5, a1, rutaGuardar, "0", "0", a8, a8);
+                //matrixList.add(niu);
+                
+            }
+            
+
+        } catch (SQLException ex) {
+            System.out.println("---- Problema en la ejecucion.");
+            ex.printStackTrace();
+        }
+        return null;
+    }
 }

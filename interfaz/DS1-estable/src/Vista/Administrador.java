@@ -1135,21 +1135,7 @@ public class Administrador extends javax.swing.JFrame {
             jButton7.setVisible(true);
         }
         
-        ArrayList<String[]> lista = control.listarUsers();
-        for (int i = 0; i < lista.size(); i++) {
-            md.addRow(lista.get(i));
-            
-            String fila=Arrays.toString(lista.get(i));
-            String[] datos=fila.split(",");
-            for(String item : datos){
-                String aux= item.replace("[", "");
-                aux= aux.replace("]", "").trim();
-                System.out.println(aux);
-            }
-            
-        }
-         
-        String nombreCliente="aqui va el nombre cliente";
+        /*String nombreCliente="aqui va el nombre cliente";
         String direccion="esta es su direccion";
         String cedula="aqui es la cedula";
         String rutaImagen="C:\\Users\\Jesús\\Downloads\\Logotelefonica1.jpeg";
@@ -1162,7 +1148,8 @@ public class Administrador extends javax.swing.JFrame {
         String valorMesActual="";
         String totalaPagar="";
         Factura g= new Factura();
-        g.generarPDF(rutaImagen, infoCliente, infoPago, resumenCuenta, rutaGuardar, facturasPendientes,serviciosAdicionales,valorMesActual, totalaPagar);
+        g.generarPDF(rutaImagen, infoCliente, infoPago, resumenCuenta, rutaGuardar, facturasPendientes,serviciosAdicionales,valorMesActual, totalaPagar);*/
+        control.generarFacturaClientes();
         jButtonGenerarFacturas.setVisible(true);
     }//GEN-LAST:event_jButtonGenerarFacturasActionPerformed
 
@@ -1201,15 +1188,6 @@ public class Administrador extends javax.swing.JFrame {
         ArrayList<String[]> lista = control.listarUsers();
         for (int i = 0; i < lista.size(); i++) {
             md.addRow(lista.get(i));
-            /*
-            String fila=Arrays.toString(lista.get(i));
-            String[] datos=fila.split(",");
-            for(String item : datos){
-                String aux= item.replace("[", "");
-                aux= aux.replace("]", "").trim();
-                System.out.println(aux);
-            }
-            */
             
         }
     }
