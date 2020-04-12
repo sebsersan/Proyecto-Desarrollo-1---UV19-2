@@ -10,8 +10,10 @@ import Modelo.Factura;
 import Modelo.Users;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static sun.misc.Version.println;
 
 /**
  *
@@ -1133,6 +1135,20 @@ public class Administrador extends javax.swing.JFrame {
             jButton7.setVisible(true);
         }
         
+        ArrayList<String[]> lista = control.listarUsers();
+        for (int i = 0; i < lista.size(); i++) {
+            md.addRow(lista.get(i));
+            
+            String fila=Arrays.toString(lista.get(i));
+            String[] datos=fila.split(",");
+            for(String item : datos){
+                String aux= item.replace("[", "");
+                aux= aux.replace("]", "").trim();
+                System.out.println(aux);
+            }
+            
+        }
+         
         String nombreCliente="aqui va el nombre cliente";
         String direccion="esta es su direccion";
         String cedula="aqui es la cedula";
@@ -1185,7 +1201,16 @@ public class Administrador extends javax.swing.JFrame {
         ArrayList<String[]> lista = control.listarUsers();
         for (int i = 0; i < lista.size(); i++) {
             md.addRow(lista.get(i));
-           
+            /*
+            String fila=Arrays.toString(lista.get(i));
+            String[] datos=fila.split(",");
+            for(String item : datos){
+                String aux= item.replace("[", "");
+                aux= aux.replace("]", "").trim();
+                System.out.println(aux);
+            }
+            */
+            
         }
     }
     
