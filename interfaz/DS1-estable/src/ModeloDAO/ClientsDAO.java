@@ -149,7 +149,7 @@ public class ClientsDAO {
 
             ArrayList<String[]> matrixList = new ArrayList<String[]>();
             int cont = 0;//guarda el numero de factura generado. En un archivo txt
-            String rutaImagen="C:\\Users\\Jesús\\Downloads\\Logotelefonica1.jpeg";
+            String rutaImagen="D:\\Descargas\\SEMESTRE\\DS1\\Proyecto-Desarrollo-1---UV19-2\\interfaz\\DS1-estable\\src\\Reportes\\leaf_banner_red.png";
             
             while (resultado.next()) {
                 
@@ -165,7 +165,7 @@ public class ClientsDAO {
                 cont++;
                 //String[] niu = {a1, a2, a3, a4, a5, a6, a7, a8, Integer.toString(cont)}; //Es importante crear un nuevo arreglo cada vez
                 
-                String rutaGuardar="C:\\Users\\Jesús\\Desktop\\fatura"+a1+".pdf";
+                String rutaGuardar="C:\\Users\\Pablo Andres A\\Desktop\\fatura"+a1+".pdf";
                 Factura g=new Factura();
                 g.generarPDF(rutaImagen, a2+" "+a3+" "+a4, a5, a1, rutaGuardar, "0", "0", a8, a8);
                 //matrixList.add(niu);

@@ -73,7 +73,7 @@ public class Factura {
         Date date = new Date(); // This object contains the current date value
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
             String fechaActual=formatter.format(date);
-        String infoCliente="\n\n    cliente  " + nombreCliente + "\n    direccion  " + direccion + "\n    cedula  " + cedula+ "\n    Fecha de expedición "+ fechaActual + "\n    Factura de venta n"+ "\n\n\n\n";
+        String infoCliente="\n\n    Cliente:  " + nombreCliente + "\n    Dirección:  " + direccion + "\n    Cédula:  " + cedula+ "\n    Fecha de expedición: "+ fechaActual + "\n    Factura de venta: n"+ "\n\n\n\n";
         Paragraph p = new Paragraph();
         Chunk c = new Chunk();
         p.setAlignment(Element.ALIGN_LEFT);

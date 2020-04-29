@@ -149,14 +149,14 @@ public class Administrador extends javax.swing.JFrame {
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 212, 170, 29));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 212, 175, 29));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -165,9 +165,9 @@ public class Administrador extends javax.swing.JFrame {
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 267, -1, 29));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 267, 175, 29));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -177,7 +177,7 @@ public class Administrador extends javax.swing.JFrame {
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +185,7 @@ public class Administrador extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 165, 170, 29));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 165, 175, 29));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -194,14 +194,14 @@ public class Administrador extends javax.swing.JFrame {
         jButton3.setBorder(null);
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 324, -1, 29));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 324, 175, 29));
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,14 +209,14 @@ public class Administrador extends javax.swing.JFrame {
         jButton7.setBorder(null);
         jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, 29));
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 175, 29));
 
         jButtonGenerarFacturas.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButtonGenerarFacturas.setForeground(new java.awt.Color(255, 255, 255));
@@ -231,7 +231,7 @@ public class Administrador extends javax.swing.JFrame {
                 jButtonGenerarFacturasActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonGenerarFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 170, 29));
+        jPanel1.add(jButtonGenerarFacturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 175, 29));
 
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
@@ -246,7 +246,7 @@ public class Administrador extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 170, 29));
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 175, 29));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 201, 580));
 
@@ -901,71 +901,51 @@ public class Administrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        if(panelCrearUsuario.isVisible()){
-            panelCrearUsuario.setVisible(false);
-            jButton1.setVisible(true);
-        }
-        if(panelModificarUsuario.isVisible()){
-            panelModificarUsuario.setVisible(false);
-            jButton3.setVisible(true);
-        }
-        if(panelEstadoUsuario.isVisible()){
-            panelEstadoUsuario.setVisible(false);
-            jButton7.setVisible(true);
-        }
-        if(panelListarUsuarios.isVisible()){
-            panelListarUsuarios.setVisible(false);
-            jButtonGenerarFacturas.setVisible(true);
-        }
-        
         panelAdministrador.setVisible(true);
+        panelEstadoUsuario.setVisible(false);
+        panelModificarUsuario.setVisible(false);
+        panelCrearUsuario.setVisible(false);
+        panelListarUsuarios.setVisible(false);
+
+        jButton1.setVisible(true);
+        jButton2.setVisible(true);
         jButton4.setVisible(false);
+        jButton3.setVisible(true);
+        jButton7.setVisible(true);
+        jButtonGenerarFacturas.setVisible(true);
+        jButton9.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:       
-        if(panelAdministrador.isVisible()){
-            panelAdministrador.setVisible(false);
-            jButton4.setVisible(true);
-        }
-        if(panelModificarUsuario.isVisible()){
-            panelModificarUsuario.setVisible(false);
-            jButton3.setVisible(true);
-        }
-        if(panelEstadoUsuario.isVisible()){
-            panelEstadoUsuario.setVisible(false);
-            jButton7.setVisible(true);
-        }
-        if(panelListarUsuarios.isVisible()){
-            panelListarUsuarios.setVisible(false);
-            jButton9.setVisible(true);
-        }
-        
+        panelAdministrador.setVisible(false);
+        panelEstadoUsuario.setVisible(false);
+        panelModificarUsuario.setVisible(false);
         panelCrearUsuario.setVisible(true);
+        panelListarUsuarios.setVisible(false);
+
         jButton1.setVisible(false);
+        jButton2.setVisible(true);
+        jButton4.setVisible(true);
+        jButton3.setVisible(true);
+        jButton7.setVisible(true);
+        jButtonGenerarFacturas.setVisible(true);
+        jButton9.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        if(panelCrearUsuario.isVisible()){
-            panelCrearUsuario.setVisible(false);
-            jButton1.setVisible(true);
-        }
-        if(panelAdministrador.isVisible()){
-            panelAdministrador.setVisible(false);
-            jButton4.setVisible(true);
-        }
-        if(panelEstadoUsuario.isVisible()){
-            panelEstadoUsuario.setVisible(false);
-            jButton7.setVisible(true);
-        }if(panelListarUsuarios.isVisible()){
-            panelListarUsuarios.setVisible(false);
-            jButton9.setVisible(true);
-        }
-        
+        panelAdministrador.setVisible(false);
+        panelEstadoUsuario.setVisible(false);
         panelModificarUsuario.setVisible(true);
+        panelCrearUsuario.setVisible(false);
+        panelListarUsuarios.setVisible(false);
+
+        jButton1.setVisible(true);
+        jButton2.setVisible(true);
+        jButton4.setVisible(true);
         jButton3.setVisible(false);
+        jButton7.setVisible(true);
+        jButtonGenerarFacturas.setVisible(true);
+        jButton9.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextFieldCedulaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCedulaModificarActionPerformed
@@ -988,26 +968,19 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxAtributoActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-        if(panelCrearUsuario.isVisible()){
-            panelCrearUsuario.setVisible(false);
-            jButton1.setVisible(true);
-        }
-        if(panelAdministrador.isVisible()){
-            panelAdministrador.setVisible(false);
-            jButton4.setVisible(true);
-        }
-        if(panelModificarUsuario.isVisible()){
-            panelModificarUsuario.setVisible(false);
-            jButton3.setVisible(true);
-        }
-        if(panelListarUsuarios.isVisible()){
-            panelListarUsuarios.setVisible(false);
-            jButton9.setVisible(true);
-        }
-        
+        panelAdministrador.setVisible(false);
         panelEstadoUsuario.setVisible(true);
+        panelModificarUsuario.setVisible(false);
+        panelCrearUsuario.setVisible(false);
+        panelListarUsuarios.setVisible(false);
+
+        jButton1.setVisible(true);
+        jButton2.setVisible(true);
+        jButton4.setVisible(true);
+        jButton3.setVisible(true);
         jButton7.setVisible(false);
+        jButtonGenerarFacturas.setVisible(true);
+        jButton9.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void botonCambiarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarEstadoActionPerformed
@@ -1114,22 +1087,6 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_direccion_adminActionPerformed
 
     private void jButtonGenerarFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerarFacturasActionPerformed
-        // TODO add your handling code here:
-        if(panelCrearUsuario.isVisible()){
-            panelCrearUsuario.setVisible(false);
-            jButton1.setVisible(true);
-        }
-        if(panelAdministrador.isVisible()){
-            panelAdministrador.setVisible(false);
-            jButton4.setVisible(true);
-        }
-        if(panelModificarUsuario.isVisible()){
-            panelModificarUsuario.setVisible(false);
-            jButton3.setVisible(true);
-        }if(panelEstadoUsuario.isVisible()){
-            panelEstadoUsuario.setVisible(false);
-            jButton7.setVisible(true);
-        }
         
         /*String nombreCliente="aqui va el nombre cliente";
         String direccion="esta es su direccion";
@@ -1147,6 +1104,7 @@ public class Administrador extends javax.swing.JFrame {
         g.generarPDF(rutaImagen, infoCliente, infoPago, resumenCuenta, rutaGuardar, facturasPendientes,serviciosAdicionales,valorMesActual, totalaPagar);*/
         control.generarFacturaClients();
         jButtonGenerarFacturas.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Factura generada exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButtonGenerarFacturasActionPerformed
 
     private void botonListarUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonListarUsuariosMouseClicked
@@ -1158,24 +1116,18 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_cargoModificarActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-        if(panelCrearUsuario.isVisible()){
-            panelCrearUsuario.setVisible(false);
-            jButton1.setVisible(true);
-        }
-        if(panelAdministrador.isVisible()){
-            panelAdministrador.setVisible(false);
-            jButton4.setVisible(true);
-        }
-        if(panelModificarUsuario.isVisible()){
-            panelModificarUsuario.setVisible(false);
-            jButton3.setVisible(true);
-        }if(panelEstadoUsuario.isVisible()){
-            panelEstadoUsuario.setVisible(false);
-            jButton7.setVisible(true);
-        }
-
+        panelAdministrador.setVisible(false);
+        panelEstadoUsuario.setVisible(false);
+        panelModificarUsuario.setVisible(false);
+        panelCrearUsuario.setVisible(false);
         panelListarUsuarios.setVisible(true);
+
+        jButton1.setVisible(true);
+        jButton2.setVisible(true);
+        jButton4.setVisible(true);
+        jButton3.setVisible(true);
+        jButton7.setVisible(true);
+        jButtonGenerarFacturas.setVisible(true);
         jButton9.setVisible(false);
     }//GEN-LAST:event_jButton9ActionPerformed
 
