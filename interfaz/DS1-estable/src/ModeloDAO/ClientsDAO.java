@@ -133,9 +133,71 @@ public class ClientsDAO {
     }
 */
     
+    public int numeroAleatorio(int consumo, int limiteconsumo){
+      int numero = (int)(Math.random()*(consumo-limiteconsumo+1)+limiteconsumo);
+      return numero;
+    }
+    
+    public void ActualizarConsumo(Long numero){
+        String QuerySQL = "SELECT minutos_consumo, minutos_adicionales, datos_consumo, mensajes_consumo, recarga_igual,"
+                + "minutos,datos,mensajes From consumo_telefono_plan where consumo_telefono_plan.numero_telefono=" + numero;
+        System.out.println(QuerySQL);
+        Connection coneccion = this.access.getConnetion();
+        System.out.println("Connection: " + coneccion);
+        
+        try {
+            Statement sentencia = coneccion.createStatement();
+            System.out.println("sentencia: "+sentencia);
+            ResultSet resultado = sentencia.executeQuery(QuerySQL);
+            System.out.println("resultado: "+resultado);
+            
+
+            ArrayList<String[]> matrixList = new ArrayList<String[]>();
+                resultado.next();
+                String a1 = resultado.getString("minutos_consumo").trim();
+                String a2 = resultado.getString("minutos_adicionales").trim();
+                String a3 = resultado.getString("datos_consumo").trim();
+                String a4 = resultado.getString("mensajes_consumo").trim();
+                String a5 = resultado.getString("recarga_igual").trim();
+                String a6 = resultado.getString("minutos").trim();
+                String a7 = resultado.getString("datos").trim();
+                String a8 = resultado.getString("mensajes").trim();
+                
+                //String[] niu = {a1, a2, a3, a4, a5, a6, a7, a8, Integer.toString(cont)}; //Es importante crear un nuevo arreglo cada vez
+                
+                int minutos_c=this.numeroAleatorio(Integer.parseInt(a1), Integer.parseInt(a6));
+                int datos_c=this.numeroAleatorio(Integer.parseInt(a3), Integer.parseInt(a7));
+                int mensajes_c=this.numeroAleatorio(Integer.parseInt(a4), Integer.parseInt(a8));
+                
+                
+                String QuerySQLUpdate = "update consumo set minutos_consumo ="+ minutos_c+
+                        ", datos_consumo=" + datos_c + ",mensajes_consumo=" + mensajes_c + "where "
+                        + "numero_telefono=" + numero;
+                
+        System.out.println(QuerySQLUpdate);
+        System.out.println("Connection: " + coneccion);
+        
+            Statement sentencia1 = coneccion.createStatement();
+            System.out.println("sentencia: "+sentencia1);
+            sentencia1.execute(QuerySQLUpdate);
+            //ResultSet resultadoUpdate = sentencia1.executeQuery(QuerySQLUpdate);
+            //System.out.println("resultado: "+resultadoUpdate);
+                
+         
+                
+                //matrixList.add(niu);
+                
+            
+
+        } catch (SQLException ex) {
+            System.out.println("---- Problema en la ejecucion.");
+            ex.printStackTrace();
+        }
+    }
     public String[] generarFacturaClientes() {
+        
         String QuerySQL = "SELECT cedula, nombre_persona, paterno_persona, materno_persona"
-                + ",direccion_persona, tipo_cliente, numero_telefono, costo from Cliente_telefonos_plan";
+                + ",direccion_persona, tipo_cliente, numero_telefono, costo, minutos, minutos_consumo,minutos_adicionales,datos_consumo,mensajes_consumo from Cliente_telefonos_plan_consumo";
         System.out.println(QuerySQL);
         Connection coneccion = this.access.getConnetion();
         System.out.println("Connection: " + coneccion);
@@ -149,7 +211,7 @@ public class ClientsDAO {
 
             ArrayList<String[]> matrixList = new ArrayList<String[]>();
             int cont = 0;//guarda el numero de factura generado. En un archivo txt
-            String rutaImagen="D:\\Descargas\\SEMESTRE\\DS1\\Proyecto-Desarrollo-1---UV19-2\\interfaz\\DS1-estable\\src\\Reportes\\leaf_banner_red.png";
+            String rutaImagen="C:\\Users\\Jesús\\Desktop\\Proyecto-Desarrollo-1---UV19-2\\interfaz\\DS1-estable\\src\\Images\\Logotelefonica1.jpeg";
             
             while (resultado.next()) {
                 
@@ -161,13 +223,22 @@ public class ClientsDAO {
                 String a6 = resultado.getString("tipo_cliente").trim();
                 String a7 = resultado.getString("numero_telefono").trim();
                 String a8 = resultado.getString("costo").trim();
-                
+                String a13 = resultado.getString("minutos").trim();
+                this.ActualizarConsumo(Long.parseLong(a7));
+                String a9 = resultado.getString("minutos_consumo").trim();
+                String a10=resultado.getString("minutos_adicionales").trim();
+                String a11=resultado.getString("datos_consumo").trim();
+                String a12=resultado.getString("mensajes_consumo").trim();
                 cont++;
-                //String[] niu = {a1, a2, a3, a4, a5, a6, a7, a8, Integer.toString(cont)}; //Es importante crear un nuevo arreglo cada vez
                 
-                String rutaGuardar="C:\\Users\\Pablo Andres A\\Desktop\\fatura"+a1+".pdf";
+                // double valorMinuto=Integer.parseInt(a13)/;
+                // double minutoAdicional=a10*
+                // int serviciosAdicional=;
+                //String[] niu = {a1, a2, a3, a4, a5, a6, a7, a8, Integer.toString(cont)}; //Es importante crear un nuevo arreglo cada vez
+           
+                String rutaGuardar="C:\\Users\\Jesús\\Desktop\\fatura"+a1+".pdf";
                 Factura g=new Factura();
-                g.generarPDF(rutaImagen, a2+" "+a3+" "+a4, a5, a1, rutaGuardar, "0", "0", a8, a8);
+                g.generarPDF(rutaImagen, a2+" "+a3+" "+a4, a5, a1, rutaGuardar, "33", "28", a8, a8);
                 //matrixList.add(niu);
                 
             }
