@@ -229,16 +229,24 @@ public class ClientsDAO {
                 String a10=resultado.getString("minutos_adicionales").trim();
                 String a11=resultado.getString("datos_consumo").trim();
                 String a12=resultado.getString("mensajes_consumo").trim();
+                String a14=resultado.getString("recarga_igual").trim();
+                //String a15=resultado.getString("deuda_anterior").trim();
+                //String a16=resultado.getString("deuda_trasanterior").trim();
                 cont++;
                 
-                // double valorMinuto=Integer.parseInt(a13)/;
-                // double minutoAdicional=a10*
-                // int serviciosAdicional=;
+                 double valorMinuto=Integer.parseInt(a13)/Integer.parseInt(a8);
+                 double minutoAdicional=valorMinuto*Double.parseDouble(a10);
+                 double serviciosAdicional=minutoAdicional + (Integer.parseInt(a14)*(Double.parseDouble(a8)/2));
+                 
+                 double facturasPendientes=0;
+                 //double facturasPendientes=Double.parseDouble(a15)+Double.parseDouble(a16);
+                 System.out.println(Double.toString(facturasPendientes));
+                 double totalaPagar=serviciosAdicional+Double.parseDouble(a8);
                 //String[] niu = {a1, a2, a3, a4, a5, a6, a7, a8, Integer.toString(cont)}; //Es importante crear un nuevo arreglo cada vez
            
                 String rutaGuardar="C:\\Users\\Jesús\\Desktop\\fatura"+a1+".pdf";
                 Factura g=new Factura();
-                g.generarPDF(rutaImagen, a2+" "+a3+" "+a4, a5, a1, rutaGuardar, "33", "28", a8, a8);
+                g.generarPDF(rutaImagen, a2+" "+a3+" "+a4, a5, a1, rutaGuardar, serviciosAdicional, facturasPendientes, a8, Double.toString(totalaPagar));
                 //matrixList.add(niu);
                 
             }

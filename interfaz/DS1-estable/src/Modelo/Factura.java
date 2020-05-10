@@ -37,7 +37,7 @@ public class Factura {
     private Font fuenteItalic = new Font(Font.NORMAL);
     private Font fuenteNormal = new Font(Font.NORMAL);
     
-    public void generarPDF(String rutaImagen, String nombreCliente, String direccion, String cedula, String salida, String facturasPendientes,String serviciosAdicionales,String valorMesActual, String totalaPagar){
+    public void generarPDF(String rutaImagen, String nombreCliente, String direccion, String cedula, String salida, Double facturasPendientes,Double serviciosAdicionales,String valorMesActual, String totalaPagar){
         try{
             
             Document document=new Document(PageSize.A4, 0,0,0,10);
@@ -233,7 +233,7 @@ public class Factura {
         return paragraph;
     }
     
-    private Paragraph getTablasServicios(String facturasPendientes,String serviciosAdicionales,String valorMesActual, String totalaPagar){
+    private Paragraph getTablasServicios(Double facturasPendientes,Double serviciosAdicionales,String valorMesActual, String totalaPagar){
         Paragraph paragraph = new Paragraph();
         PdfPCell cell = null;
             //Tabla main
