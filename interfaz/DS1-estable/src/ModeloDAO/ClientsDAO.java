@@ -53,7 +53,7 @@ public class ClientsDAO {
     }
     
     public boolean limitarTelefonosClienteNatural(Telefono aUser){
-        String QuerySQLaux = "SELECT COUNT(cedula) FROM cliente_telefonos WHERE cedula='" + aUser.getId() + "' and tipo_cliente='Natural'";
+        String QuerySQLaux = "SELECT COUNT(cedula) FROM cliente_telefono WHERE cedula='" + aUser.getId() + "' and tipo_cliente='Natural'";
         Connection coneccion = this.access.getConnetion();
         int cantidad =0;
         try {
@@ -197,7 +197,7 @@ public class ClientsDAO {
     public String[] generarFacturaClientes() {
         
         String QuerySQL = "SELECT cedula, nombre_persona, paterno_persona, materno_persona"
-                + ",direccion_persona, tipo_cliente, numero_telefono, costo, minutos, minutos_consumo,minutos_adicionales,datos_consumo,mensajes_consumo from Cliente_telefonos_plan_consumo";
+                + ",direccion_persona, tipo_cliente, numero_telefono, costo, minutos, minutos_consumo,minutos_adicionales,datos_consumo,mensajes_consumo from Cliente_telefono_plan_consumo";
         System.out.println(QuerySQL);
         Connection coneccion = this.access.getConnetion();
         System.out.println("Connection: " + coneccion);
@@ -250,4 +250,45 @@ public class ClientsDAO {
         }
         return null;
     }
+    
+    public boolean recargarCliente(Long telefono) {
+        
+        String QuerySQL = "SELECT recarga_igual FROM consumo WHERE numero_telefono = " + telefono;
+        System.out.println(QuerySQL);
+        Connection coneccion = this.access.getConnetion();
+        System.out.println("Connection: " + coneccion);
+        
+          try {
+                Statement sentencia = coneccion.createStatement();
+                System.out.println("sentencia: " + sentencia);
+                ResultSet resultado = sentencia.executeQuery(QuerySQL);
+                System.out.println("resultado: " + resultado);
+                
+                
+                
+                if (resultado.next()) {
+                    int recargas_actuales = Integer.parseInt(resultado.getString("recarga_igual").trim());
+                
+                     String QueryAux = "UPDATE consumo SET recarga_igual = "+ (recargas_actuales + 1) +
+                            ", minutos_consumo = 0 ,datos_consumo = 0, mensajes_consumo = 0" + 
+                            " WHERE numero_telefono = " + telefono;
+                    System.out.println(QueryAux);
+                    int res = sentencia.executeUpdate(QueryAux);
+                    if (res == 1) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "El telefono no existe \nIntentelo nuevamente");
+                   
+                }
+
+            } catch (SQLException ex) {
+                System.out.println("---- Problema en la ejecucion.");
+                ex.printStackTrace();
+            }
+        return false;
+    }
+    
 }

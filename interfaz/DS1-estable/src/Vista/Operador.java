@@ -25,6 +25,7 @@ public class Operador extends javax.swing.JFrame {
         panelRegistrarPago.setVisible(false);
         panelCrearCliente.setVisible(false);
         panelAsociarLinea.setVisible(false);
+        panelRecargar.setVisible(false);
         
         Users profileInfo = control.consultProfile(userID);
         this.cc_operador.setText(profileInfo.getId());
@@ -48,6 +49,7 @@ public class Operador extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         crearCliente = new javax.swing.JButton();
         asociarLinea = new javax.swing.JButton();
+        botonPanelRecargar = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         panelPerfil = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -105,6 +107,11 @@ public class Operador extends javax.swing.JFrame {
         jLabelCerrar1 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         ComboBoxAsociar = new javax.swing.JComboBox<>();
+        panelRecargar = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        telefonoRecargar = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -168,6 +175,20 @@ public class Operador extends javax.swing.JFrame {
             }
         });
 
+        botonPanelRecargar.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        botonPanelRecargar.setForeground(new java.awt.Color(255, 255, 255));
+        botonPanelRecargar.setText("Recargar");
+        botonPanelRecargar.setBorderPainted(false);
+        botonPanelRecargar.setContentAreaFilled(false);
+        botonPanelRecargar.setDefaultCapable(false);
+        botonPanelRecargar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonPanelRecargar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonPanelRecargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPanelRecargarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -181,7 +202,8 @@ public class Operador extends javax.swing.JFrame {
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(crearCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(asociarLinea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(asociarLinea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonPanelRecargar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -195,6 +217,8 @@ public class Operador extends javax.swing.JFrame {
                 .addComponent(crearCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(asociarLinea)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonPanelRecargar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -297,7 +321,7 @@ public class Operador extends javax.swing.JFrame {
                             .addGroup(panelPerfilLayout.createSequentialGroup()
                                 .addGap(216, 216, 216)
                                 .addComponent(jLabel18)))
-                        .addGap(0, 124, Short.MAX_VALUE))
+                        .addGap(0, 106, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPerfilLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel27)))
@@ -336,7 +360,7 @@ public class Operador extends javax.swing.JFrame {
                 .addGroup(panelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(telefono_operador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(SignOut)
                 .addGap(22, 22, 22))
         );
@@ -357,6 +381,11 @@ public class Operador extends javax.swing.JFrame {
         botonConfirmarPago.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonConfirmarPagoMouseClicked(evt);
+            }
+        });
+        botonConfirmarPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConfirmarPagoActionPerformed(evt);
             }
         });
 
@@ -688,19 +717,19 @@ public class Operador extends javax.swing.JFrame {
                                 .addComponent(jButton6))
                             .addGroup(panelAsociarLineaLayout.createSequentialGroup()
                                 .addGap(111, 111, 111)
-                                .addGroup(panelAsociarLineaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel20)
-                                    .addGroup(panelAsociarLineaLayout.createSequentialGroup()
-                                        .addGroup(panelAsociarLineaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel21)
-                                            .addComponent(jLabel24)
-                                            .addComponent(jLabel26))
-                                        .addGap(86, 86, 86)
-                                        .addGroup(panelAsociarLineaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(telefonoAsociar)
-                                            .addComponent(cedulaAsociar)
-                                            .addComponent(ComboBoxAsociar, 0, 141, Short.MAX_VALUE))))))
-                        .addGap(0, 105, Short.MAX_VALUE)))
+                                .addGroup(panelAsociarLineaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jLabel24)
+                                    .addComponent(jLabel26))
+                                .addGap(86, 86, 86)
+                                .addGroup(panelAsociarLineaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(telefonoAsociar)
+                                    .addComponent(cedulaAsociar)
+                                    .addComponent(ComboBoxAsociar, 0, 141, Short.MAX_VALUE)))
+                            .addGroup(panelAsociarLineaLayout.createSequentialGroup()
+                                .addGap(142, 142, 142)
+                                .addComponent(jLabel20)))
+                        .addGap(0, 117, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelAsociarLineaLayout.setVerticalGroup(
@@ -732,32 +761,101 @@ public class Operador extends javax.swing.JFrame {
                         .addGap(26, 26, 26))))
         );
 
+        jLabel22.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
+        jLabel22.setText("Recargar");
+
+        telefonoRecargar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel23.setText("Teléfono");
+
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton7.setText("Recargar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRecargarLayout = new javax.swing.GroupLayout(panelRecargar);
+        panelRecargar.setLayout(panelRecargarLayout);
+        panelRecargarLayout.setHorizontalGroup(
+            panelRecargarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRecargarLayout.createSequentialGroup()
+                .addGroup(panelRecargarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRecargarLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jLabel23)
+                        .addGap(53, 53, 53)
+                        .addGroup(panelRecargarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22)
+                            .addComponent(telefonoRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelRecargarLayout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addComponent(jButton7)))
+                .addContainerGap(72, Short.MAX_VALUE))
+        );
+        panelRecargarLayout.setVerticalGroup(
+            panelRecargarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRecargarLayout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jLabel22)
+                .addGap(86, 86, 86)
+                .addGroup(panelRecargarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(telefonoRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(jButton7)
+                .addContainerGap(293, Short.MAX_VALUE))
+        );
+
         jLayeredPane1.setLayer(panelPerfil, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(panelRegistrarPago, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(panelCrearCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(panelAsociarLinea, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(panelRecargar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 529, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelRegistrarPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelCrearCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelAsociarLinea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(panelPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panelRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 586, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelRegistrarPago, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelCrearCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panelAsociarLinea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(panelPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panelRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -790,6 +888,10 @@ public class Operador extends javax.swing.JFrame {
          if (panelAsociarLinea.isVisible()){
             panelAsociarLinea.setVisible(false);
         }
+         
+         if (panelRecargar.isVisible()){
+            panelRecargar.setVisible(false);
+        }
         
         panelRegistrarPago.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -804,6 +906,10 @@ public class Operador extends javax.swing.JFrame {
         }
         if (panelAsociarLinea.isVisible()){
             panelAsociarLinea.setVisible(false);
+        }
+        
+        if (panelRecargar.isVisible()){
+            panelRecargar.setVisible(false);
         }
         
         panelPerfil.setVisible(true);
@@ -836,6 +942,10 @@ public class Operador extends javax.swing.JFrame {
         
         if (panelAsociarLinea.isVisible()){
             panelAsociarLinea.setVisible(false);
+        }
+        
+        if (panelRecargar.isVisible()){
+            panelRecargar.setVisible(false);
         }
         
         panelCrearCliente.setVisible(true);
@@ -923,6 +1033,9 @@ public class Operador extends javax.swing.JFrame {
         if (panelCrearCliente.isVisible()){
             panelCrearCliente.setVisible(false);
         }
+        if (panelRecargar.isVisible()){
+            panelRecargar.setVisible(false);
+        }
         
         panelAsociarLinea.setVisible(true);
     }//GEN-LAST:event_asociarLineaActionPerformed
@@ -930,6 +1043,50 @@ public class Operador extends javax.swing.JFrame {
     private void botonConfirmarPagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonConfirmarPagoMouseClicked
         
     }//GEN-LAST:event_botonConfirmarPagoMouseClicked
+
+    private void botonPanelRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPanelRecargarActionPerformed
+        // TODO add your handling code here:
+        if (panelRegistrarPago.isVisible()){
+            panelRegistrarPago.setVisible(false);
+        }
+        if (panelPerfil.isVisible()){
+            panelPerfil.setVisible(false);
+        }
+        
+        if (panelCrearCliente.isVisible()){
+            panelCrearCliente.setVisible(false);
+        }
+        if (panelAsociarLinea.isVisible()){
+            panelAsociarLinea.setVisible(false);
+        }
+            
+        panelRecargar.setVisible(true);
+    }//GEN-LAST:event_botonPanelRecargarActionPerformed
+
+    private void botonConfirmarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonConfirmarPagoActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+
+    if (telefonoRecargar.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Error, tienes elementos vacios");
+        } else {
+            try {
+                Long Telefono = Long.parseLong(telefonoRecargar.getText());
+                if (Telefono < 0) {
+                    JOptionPane.showMessageDialog(null, "Datos Incorrectos \nIntentalo Nuevamente");
+                } else if (control.recargarTelefono(Telefono)) {
+                    this.cleanCreateSection();
+                    JOptionPane.showMessageDialog(null, "Linea recargada exitosamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Datos Incorrectos \nIntentalo Nuevamente");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "El telefono debe ser un entero"+ e);
+            }
+        } 
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     private void cerrarVentana(){
         this.dispose();
@@ -951,6 +1108,7 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JTextField apellido_operador;
     private javax.swing.JButton asociarLinea;
     private javax.swing.JButton botonConfirmarPago;
+    private javax.swing.JButton botonPanelRecargar;
     private javax.swing.JTextField cc_operador;
     private javax.swing.JTextField cedulaAsociar;
     private javax.swing.JButton crearCliente;
@@ -959,6 +1117,7 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBoxTipo;
     private javax.swing.JComboBox<String> jComboBoxTipo1;
     private javax.swing.JLabel jLabel1;
@@ -974,6 +1133,8 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -1002,8 +1163,10 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JPanel panelAsociarLinea;
     private javax.swing.JPanel panelCrearCliente;
     private javax.swing.JPanel panelPerfil;
+    private javax.swing.JPanel panelRecargar;
     private javax.swing.JPanel panelRegistrarPago;
     private javax.swing.JTextField telefonoAsociar;
+    private javax.swing.JTextField telefonoRecargar;
     private javax.swing.JTextField telefono_operador;
     // End of variables declaration//GEN-END:variables
 }

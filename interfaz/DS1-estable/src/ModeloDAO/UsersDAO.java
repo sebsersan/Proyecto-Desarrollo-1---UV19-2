@@ -74,7 +74,7 @@ public class UsersDAO {
   
     
     public boolean limitarTelefonosClienteNatural(Telefono aUser){
-        String QuerySQLaux = "SELECT COUNT(cedula) FROM cliente_telefonos WHERE cedula='" + aUser.getId() + "' and tipo_cliente='Natural'";
+        String QuerySQLaux = "SELECT COUNT(cedula) FROM cliente_telefono WHERE cedula='" + aUser.getId() + "' and tipo_cliente='Natural'";
         Connection coneccion = this.access.getConnetion();
         int cantidad =0;
         try {

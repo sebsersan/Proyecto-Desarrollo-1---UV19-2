@@ -307,4 +307,9 @@ public class Controladora {
     public void generarFacturaClients() {
         clientsDao.generarFacturaClientes();
     }
+    
+    public boolean recargarTelefono(Long telefono) {
+        return clientsDao.recargarCliente(telefono);
+    }
+            
 }
