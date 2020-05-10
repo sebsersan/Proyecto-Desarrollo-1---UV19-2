@@ -197,7 +197,8 @@ public class ClientsDAO {
     public String[] generarFacturaClientes() {
         
         String QuerySQL = "SELECT cedula, nombre_persona, paterno_persona, materno_persona"
-                + ",direccion_persona, tipo_cliente, numero_telefono, costo, minutos, minutos_consumo,minutos_adicionales,datos_consumo,mensajes_consumo from Cliente_telefono_plan_consumo";
+                + ",direccion_persona, tipo_cliente, numero_telefono, costo, minutos, minutos_consumo,minutos_adicionales,datos_consumo,mensajes_consumo"
+                + ",recarga_igual from Cliente_telefono_plan_consumo";
         System.out.println(QuerySQL);
         Connection coneccion = this.access.getConnetion();
         System.out.println("Connection: " + coneccion);
@@ -211,7 +212,10 @@ public class ClientsDAO {
 
             ArrayList<String[]> matrixList = new ArrayList<String[]>();
             int cont = 0;//guarda el numero de factura generado. En un archivo txt
-            String rutaImagen="C:\\Users\\Jesús\\Desktop\\Proyecto-Desarrollo-1---UV19-2\\interfaz\\DS1-estable\\src\\Images\\Logotelefonica1.jpeg";
+            
+            
+            //Direccion donde esta la imagen del logo
+            String rutaImagen="C:\\Users\\User\\Desktop\\Facturas\\Logotelefonica1.jpeg";
             
             while (resultado.next()) {
                 
@@ -244,7 +248,9 @@ public class ClientsDAO {
                  double totalaPagar=serviciosAdicional+Double.parseDouble(a8);
                 //String[] niu = {a1, a2, a3, a4, a5, a6, a7, a8, Integer.toString(cont)}; //Es importante crear un nuevo arreglo cada vez
            
-                String rutaGuardar="C:\\Users\\Jesús\\Desktop\\fatura"+a1+".pdf";
+                
+                //Direccion donde se guardan las facturas
+                String rutaGuardar="C:\\Users\\User\\Desktop\\Facturas\\fatura"+a1+".pdf";
                 Factura g=new Factura();
                 g.generarPDF(rutaImagen, a2+" "+a3+" "+a4, a5, a1, rutaGuardar, serviciosAdicional, facturasPendientes, a8, Double.toString(totalaPagar));
                 //matrixList.add(niu);
