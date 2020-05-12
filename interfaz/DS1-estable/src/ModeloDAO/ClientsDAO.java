@@ -4,7 +4,9 @@ import Modelo.Clients;
 import Modelo.Factura;
 import Modelo.Telefono;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -199,6 +201,7 @@ public class ClientsDAO {
         String QuerySQL = "SELECT cedula, nombre_persona, paterno_persona, materno_persona"
                 + ",direccion_persona, tipo_cliente, numero_telefono, costo, minutos, minutos_consumo,minutos_adicionales,datos_consumo,mensajes_consumo"
                 + ",recarga_igual from Cliente_telefono_plan_consumo";
+        
         System.out.println(QuerySQL);
         Connection coneccion = this.access.getConnetion();
         System.out.println("Connection: " + coneccion);
@@ -208,6 +211,8 @@ public class ClientsDAO {
             System.out.println("sentencia: "+sentencia);
             ResultSet resultado = sentencia.executeQuery(QuerySQL);
             System.out.println("resultado: "+resultado);
+            
+          
             
 
             ArrayList<String[]> matrixList = new ArrayList<String[]>();
@@ -219,18 +224,18 @@ public class ClientsDAO {
             
             while (resultado.next()) {
                 
-                String a1 = resultado.getString("cedula").trim();
-                String a2 = resultado.getString("nombre_persona").trim();
-                String a3 = resultado.getString("paterno_persona").trim();
-                String a4 = resultado.getString("materno_persona").trim();
-                String a5 = resultado.getString("direccion_persona").trim();
-                String a6 = resultado.getString("tipo_cliente").trim();
-                String a7 = resultado.getString("numero_telefono").trim();
-                String a8 = resultado.getString("costo").trim();
-                String a13 = resultado.getString("minutos").trim();
-                this.ActualizarConsumo(Long.parseLong(a7));
+                String cedula = resultado.getString("cedula").trim();
+                String nombrePersona = resultado.getString("nombre_persona").trim();
+                String paternoPersona = resultado.getString("paterno_persona").trim();
+                String maternoPersona = resultado.getString("materno_persona").trim();
+                String direccionPersona = resultado.getString("direccion_persona").trim();
+                String tipoCliente = resultado.getString("tipo_cliente").trim();
+                String numeroTelefono = resultado.getString("numero_telefono").trim();
+                String costo = resultado.getString("costo").trim();
+                String minutos = resultado.getString("minutos").trim();
+                this.ActualizarConsumo(Long.parseLong(numeroTelefono));
                 String a9 = resultado.getString("minutos_consumo").trim();
-                String a10=resultado.getString("minutos_adicionales").trim();
+                String minutosAdicionales =resultado.getString("minutos_adicionales").trim();
                 String a11=resultado.getString("datos_consumo").trim();
                 String a12=resultado.getString("mensajes_consumo").trim();
                 String a14=resultado.getString("recarga_igual").trim();
@@ -238,21 +243,113 @@ public class ClientsDAO {
                 //String a16=resultado.getString("deuda_trasanterior").trim();
                 cont++;
                 
-                 double valorMinuto=Integer.parseInt(a13)/Integer.parseInt(a8);
-                 double minutoAdicional=valorMinuto*Double.parseDouble(a10);
-                 double serviciosAdicional=minutoAdicional + (Integer.parseInt(a14)*(Double.parseDouble(a8)/2));
+                 double valorMinuto=Integer.parseInt(minutos)/Integer.parseInt(costo);
+                 double costoMinutoAdicional = valorMinuto*Double.parseDouble(minutosAdicionales);
+                 double serviciosAdicional = costoMinutoAdicional + (Integer.parseInt(a14)*(Double.parseDouble(costo)/2));
                  
                  double facturasPendientes=0;
                  //double facturasPendientes=Double.parseDouble(a15)+Double.parseDouble(a16);
                  System.out.println(Double.toString(facturasPendientes));
-                 double totalaPagar=serviciosAdicional+Double.parseDouble(a8);
+                 double totalaPagar=serviciosAdicional+Double.parseDouble(costo);
                 //String[] niu = {a1, a2, a3, a4, a5, a6, a7, a8, Integer.toString(cont)}; //Es importante crear un nuevo arreglo cada vez
-           
+                
+                
+                java.util.Date date = new java.util.Date(); // This object contains the current date value
+                java.sql.Date Date = new java.sql.Date(date.getTime());
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                String fechaActual=formatter.format(Date);
+                
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(date);
+                calendar.add(Calendar.DAY_OF_YEAR, 30);
+                date = calendar.getTime();
+                java.sql.Date Date2 = new java.sql.Date(date.getTime());
+                String fechaLimite=formatter.format(Date2);
+                
+            
+            
+                String QueryBuscarFacturas = "SELECT id_factura, total_a_pagar, estado_financiero, deuda_anterior, deuda_trasanterior"
+                        + " FROM Factura WHERE factura.numero_telefono ="+ numeroTelefono;
+                
+                String QueryInsertarFacturas = "INSERT INTO Factura Values ('"+cedula.concat(fechaActual)+"',"+ totalaPagar +", "
+                        + ""+fechaLimite+", "
+                           + "FALSE, "+ Long.parseLong(numeroTelefono) +", 0, 0)";
+                
+                ResultSet resultadoBuscarFactura;
+                try ( //Coneccion para manejo de tablas factura en la base de datos
+                        Statement sentenciaFactura = coneccion.createStatement()) {
+                    System.out.println("sentenciaFACTURA: "+sentencia);
+                    resultadoBuscarFactura = sentenciaFactura.executeQuery(QueryBuscarFacturas);
+                    System.out.println("resultadoFACTURA: "+resultadoBuscarFactura);
+                    if(resultadoBuscarFactura.next()){
+                        String id_factura = resultadoBuscarFactura.getString("id_factura").trim();
+                        String total_a_pagar = resultadoBuscarFactura.getString("total_a_pagar").trim();
+                        String estado_financiero = resultadoBuscarFactura.getString("estado_financiero").trim();
+                        String deuda_ante = resultadoBuscarFactura.getString("deuda_anterior").trim();
+                        String deuda_trasante = resultadoBuscarFactura.getString("deuda_trasanterior").trim();
+                        System.out.println(deuda_ante);
+                        
+                        
+                        if(!estado_financiero.equals("f")){
+                            String QueryEliminarFacturaPagada = "DELETE FROM Factura WHERE id_factura ="+ id_factura;
+                            sentenciaFactura.executeUpdate(QueryEliminarFacturaPagada);
+                            sentenciaFactura.executeUpdate(QueryInsertarFacturas);
+                            
+                        }
+                        
+                        
+                        else if(!resultadoBuscarFactura.next()){
+                            
+                            String QueryInsertarSegundaFactura = "INSERT INTO Factura Values ('"+cedula.concat(fechaActual)+"d1',"+ totalaPagar +","
+                                    + " "+fechaLimite+", "
+                                    + "FALSE, "+ Long.parseLong(numeroTelefono) +", "+ Integer.parseInt(total_a_pagar) +", 0)";
+                                sentenciaFactura.executeUpdate(QueryInsertarSegundaFactura);
+                            
+                        }
+                        
+                        else {
+                            
+                            total_a_pagar = resultadoBuscarFactura.getString("total_a_pagar").trim();
+ 
+                            deuda_ante = resultadoBuscarFactura.getString("deuda_anterior").trim();
+                            deuda_trasante = resultadoBuscarFactura.getString("deuda_trasanterior").trim();
+                            
+                            if(!resultadoBuscarFactura.next()){
+                                String QueryInsertarTerceraFactura = "INSERT INTO Factura Values ('"+cedula.concat(fechaActual)+"d2',"+ totalaPagar +","
+                                    + " "+fechaLimite+", "
+                                    + "FALSE, "+ Long.parseLong(numeroTelefono) +", "+ Integer.parseInt(deuda_ante) +" , "
+                                    + ""+Integer.parseInt(total_a_pagar)+")";
+                            sentenciaFactura.executeUpdate(QueryInsertarTerceraFactura);
+                            } else {
+                                String QuerySuspenderServicio = "UPDATE Telefono SET estado_del_servicio = FALSE WHERE numero_telefono ="+ Long.parseLong(numeroTelefono);
+                                sentenciaFactura.executeUpdate(QuerySuspenderServicio);
+                                continue;
+                            }
+                            
+                            
+                            
+                        }
+
+                        
+                        
+                    } else {
+                        sentenciaFactura.executeUpdate(QueryInsertarFacturas);
+                        System.out.println("creando tablas");
+                    }
+                }
+
+                
+            
+
+                
+                
+                
                 
                 //Direccion donde se guardan las facturas
-                String rutaGuardar="C:\\Users\\User\\Desktop\\Facturas\\fatura"+a1+".pdf";
+                String rutaGuardar="C:\\Users\\User\\Desktop\\Facturas\\Fatura-"+cedula+"-"+fechaActual+".pdf";
                 Factura g=new Factura();
-                g.generarPDF(rutaImagen, a2+" "+a3+" "+a4, a5, a1, rutaGuardar, serviciosAdicional, facturasPendientes, a8, Double.toString(totalaPagar));
+                g.generarPDF(rutaImagen, nombrePersona+" "+paternoPersona+" "+maternoPersona, direccionPersona, cedula, rutaGuardar, 
+                        serviciosAdicional, facturasPendientes, costo, Double.toString(totalaPagar));
                 //matrixList.add(niu);
                 
             }
