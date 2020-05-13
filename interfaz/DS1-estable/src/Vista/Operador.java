@@ -8,7 +8,9 @@ package Vista;
 import Modelo.Users;
 import java.awt.event.MouseEvent;
 import Controladora.Controladora;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class Operador extends javax.swing.JFrame {
     Controladora control = new Controladora();
+    DefaultTableModel md;
     /**
      * Creates new form Operador
      */
@@ -33,6 +36,11 @@ public class Operador extends javax.swing.JFrame {
         this.apellido_operador.setText(profileInfo.getLname());
         this.telefono_operador.setText(profileInfo.getTel());
         this.direccion_operador.setText(profileInfo.getDir());
+        
+        String data[][] = {};
+        String columnFields[] = {"Nombre", "Apellido", "Telefono", "Mes", "Monto"};
+        md = new DefaultTableModel(data, columnFields);
+        tablaFactura.setModel(md);
     }
 
     /**
@@ -69,12 +77,15 @@ public class Operador extends javax.swing.JFrame {
         panelRegistrarPago = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        telefonoText = new javax.swing.JTextField();
         botonConfirmarPago = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
         SignOut1 = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
+        mesText = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        botonConfirmarPago1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaFactura = new javax.swing.JTable();
         panelCrearCliente = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -369,12 +380,17 @@ public class Operador extends javax.swing.JFrame {
         panelRegistrarPago.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel7.setText("Cedula");
+        jLabel7.setText("Telefono");
 
         jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
         jLabel8.setText("Registrar Pago");
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        telefonoText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        telefonoText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telefonoTextActionPerformed(evt);
+            }
+        });
 
         botonConfirmarPago.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botonConfirmarPago.setText("Confirmar");
@@ -388,11 +404,6 @@ public class Operador extends javax.swing.JFrame {
                 botonConfirmarPagoActionPerformed(evt);
             }
         });
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel9.setText("Monto");
-
-        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         SignOut1.setBackground(new java.awt.Color(255, 255, 255));
         SignOut1.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
@@ -415,56 +426,116 @@ public class Operador extends javax.swing.JFrame {
             }
         });
 
+        mesText.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mesText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mesTextActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel12.setText("Mes");
+
+        botonConfirmarPago1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botonConfirmarPago1.setText("Ver facturas");
+        botonConfirmarPago1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonConfirmarPago1MouseClicked(evt);
+            }
+        });
+        botonConfirmarPago1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonConfirmarPago1ActionPerformed(evt);
+            }
+        });
+
+        tablaFactura.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Apellido", "Telefono", "Mes", "Monto"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaFactura.setEnabled(false);
+        jScrollPane1.setViewportView(tablaFactura);
+
         javax.swing.GroupLayout panelRegistrarPagoLayout = new javax.swing.GroupLayout(panelRegistrarPago);
         panelRegistrarPago.setLayout(panelRegistrarPagoLayout);
         panelRegistrarPagoLayout.setHorizontalGroup(
             panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrarPagoLayout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(46, 46, 46)
-                .addComponent(jLabel28)
-                .addContainerGap())
             .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
-                .addGap(91, 91, 91)
                 .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                    .addComponent(jTextField7))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
+                                .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel12))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
+                                        .addComponent(telefonoText, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(botonConfirmarPago1))
+                                    .addComponent(mesText, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(botonConfirmarPago)))
+                    .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrarPagoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SignOut1)
-                    .addComponent(botonConfirmarPago))
-                .addGap(171, 171, 171))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrarPagoLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(105, 105, 105)
+                        .addComponent(jLabel28)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrarPagoLayout.createSequentialGroup()
+                        .addComponent(SignOut1)
+                        .addGap(209, 209, 209))))
         );
         panelRegistrarPagoLayout.setVerticalGroup(
             panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
                 .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel8))
-                    .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(47, 47, 47)
-                .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelRegistrarPagoLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel9)))
-                .addGap(40, 40, 40)
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel8)))
+                .addGap(52, 52, 52)
+                .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(telefonoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(botonConfirmarPago1))
+                .addGap(18, 18, 18)
+                .addGroup(panelRegistrarPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(mesText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addComponent(botonConfirmarPago)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                .addGap(55, 55, 55)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(SignOut1)
                 .addGap(25, 25, 25))
         );
@@ -1065,6 +1136,25 @@ public class Operador extends javax.swing.JFrame {
 
     private void botonConfirmarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarPagoActionPerformed
         // TODO add your handling code here:
+    if (telefonoText.getText().equals("")||mesText.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Error, tienes elementos vacios");
+        } else {
+            try {
+                Long Telefono = Long.parseLong(telefonoText.getText());
+                int Mes = Integer.parseInt(mesText.getText());
+                if (Telefono < 0) {
+                    JOptionPane.showMessageDialog(null, "Telefono Incorrecto \nIntentalo Nuevamente");
+                } else if (control.pagarTelefono(Telefono, Mes)) {
+                    this.cleanCreateSection();
+                    JOptionPane.showMessageDialog(null, "Pago realizado correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Datos Incorrectos \nIntentalo Nuevamente");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "El telefono debe ser un entero"+ e);
+            }
+        }    
+      
     }//GEN-LAST:event_botonConfirmarPagoActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1088,6 +1178,47 @@ public class Operador extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void telefonoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telefonoTextActionPerformed
+
+    private void mesTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mesTextActionPerformed
+
+    private void botonConfirmarPago1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonConfirmarPago1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonConfirmarPago1MouseClicked
+
+    private void botonConfirmarPago1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarPago1ActionPerformed
+        // TODO add your handling code here:
+        listarFacturas();
+    }//GEN-LAST:event_botonConfirmarPago1ActionPerformed
+
+    public void listarFacturas (){
+        if (telefonoText.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Error, tienes elementos vacios");
+        } else {
+            try {
+                Long Telefono = Long.parseLong(telefonoText.getText());
+                if (Telefono < 0) {
+                    JOptionPane.showMessageDialog(null, "Datos Incorrectos \nIntentalo Nuevamente");
+                } else {
+                    md.setRowCount(0); //Para limpiar la tabla
+                    ArrayList<String[]> lista = control.listarFacturas(Telefono);
+                    for (int i = 0; i < lista.size(); i++) {
+                         md.addRow(lista.get(i));
+            
+                    }
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "El telefono debe ser un entero"+ e);
+            }
+        }  
+        
+    }
+    
+    
     private void cerrarVentana(){
         this.dispose();
     }
@@ -1108,6 +1239,7 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JTextField apellido_operador;
     private javax.swing.JButton asociarLinea;
     private javax.swing.JButton botonConfirmarPago;
+    private javax.swing.JButton botonConfirmarPago1;
     private javax.swing.JButton botonPanelRecargar;
     private javax.swing.JTextField cc_operador;
     private javax.swing.JTextField cedulaAsociar;
@@ -1123,6 +1255,7 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -1146,27 +1279,28 @@ public class Operador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelCerrar;
     private javax.swing.JLabel jLabelCerrar1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldCedula;
     private javax.swing.JTextField jTextFieldDireccion;
     private javax.swing.JTextField jTextFieldMaterno;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldPaterno;
     private javax.swing.JTextField jTextFieldTelefono;
+    private javax.swing.JTextField mesText;
     private javax.swing.JTextField nombre_operador;
     private javax.swing.JPanel panelAsociarLinea;
     private javax.swing.JPanel panelCrearCliente;
     private javax.swing.JPanel panelPerfil;
     private javax.swing.JPanel panelRecargar;
     private javax.swing.JPanel panelRegistrarPago;
+    private javax.swing.JTable tablaFactura;
     private javax.swing.JTextField telefonoAsociar;
     private javax.swing.JTextField telefonoRecargar;
+    private javax.swing.JTextField telefonoText;
     private javax.swing.JTextField telefono_operador;
     // End of variables declaration//GEN-END:variables
 }

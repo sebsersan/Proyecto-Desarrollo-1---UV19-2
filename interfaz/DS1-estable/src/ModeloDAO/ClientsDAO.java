@@ -266,76 +266,151 @@ public class ClientsDAO {
                 java.sql.Date Date2 = new java.sql.Date(date.getTime());
                 String fechaLimite=formatter.format(Date2);
                 
+                
+                String id_factura;
+                String total_a_pagar;
+                String estado_financiero;
+                String deuda_ante = "0";
+                String deuda_trasante = "0";
+                ResultSet resultadoFactura1 = null;
+                ResultSet resultadoFactura2 = null;
             
             
                 String QueryBuscarFacturas = "SELECT id_factura, total_a_pagar, estado_financiero, deuda_anterior, deuda_trasanterior"
                         + " FROM Factura WHERE factura.numero_telefono ="+ numeroTelefono;
                 
-                String QueryInsertarFacturas = "INSERT INTO Factura Values ('"+cedula.concat(fechaActual)+"',"+ totalaPagar +", "
-                        + ""+fechaLimite+", "
+                String QueryInsertarFacturas = "INSERT INTO Factura Values ('"+numeroTelefono.concat(fechaActual)+"',"+ totalaPagar +", "
+                        + "'"+fechaLimite+"', "
                            + "FALSE, "+ Long.parseLong(numeroTelefono) +", 0, 0)";
                 
                 ResultSet resultadoBuscarFactura;
                 try ( //Coneccion para manejo de tablas factura en la base de datos
-                        Statement sentenciaFactura = coneccion.createStatement()) {
+                        Statement sentenciaFactura = coneccion.createStatement
+        (ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY)) {
                     System.out.println("sentenciaFACTURA: "+sentencia);
                     resultadoBuscarFactura = sentenciaFactura.executeQuery(QueryBuscarFacturas);
                     System.out.println("resultadoFACTURA: "+resultadoBuscarFactura);
+                    
+                    resultadoFactura1 = resultadoBuscarFactura;
                     if(resultadoBuscarFactura.next()){
-                        String id_factura = resultadoBuscarFactura.getString("id_factura").trim();
-                        String total_a_pagar = resultadoBuscarFactura.getString("total_a_pagar").trim();
-                        String estado_financiero = resultadoBuscarFactura.getString("estado_financiero").trim();
-                        String deuda_ante = resultadoBuscarFactura.getString("deuda_anterior").trim();
-                        String deuda_trasante = resultadoBuscarFactura.getString("deuda_trasanterior").trim();
-                        System.out.println(deuda_ante);
                         
                         
-                        if(!estado_financiero.equals("f")){
-                            String QueryEliminarFacturaPagada = "DELETE FROM Factura WHERE id_factura ="+ id_factura;
-                            sentenciaFactura.executeUpdate(QueryEliminarFacturaPagada);
-                            sentenciaFactura.executeUpdate(QueryInsertarFacturas);
+                        resultadoFactura2 = resultadoBuscarFactura;
+                        
+                        if(resultadoBuscarFactura.next()){
                             
-                        }
-                        
-                        
-                        else if(!resultadoBuscarFactura.next()){
+                            if(resultadoBuscarFactura.next()){
+                                id_factura = resultadoBuscarFactura.getString("id_factura").trim();
+                                estado_financiero = resultadoBuscarFactura.getString("estado_financiero").trim();
+                                deuda_ante = resultadoBuscarFactura.getString("deuda_anterior").trim();
+                                deuda_trasante = resultadoBuscarFactura.getString("deuda_trasanterior").trim();
+
+                                
+                                if(!estado_financiero.equals("f")){
+                                    String QueryEliminarFacturaPagada = "DELETE FROM Factura WHERE id_factura = '"+ id_factura+"'";
+                          
+                                    sentenciaFactura.executeUpdate(QueryEliminarFacturaPagada);
+                                    
+                                }
+                            }
+                            resultadoBuscarFactura = sentenciaFactura.executeQuery(QueryBuscarFacturas);
+                            resultadoFactura2 = resultadoBuscarFactura;
+                            resultadoFactura2.first();
+                            resultadoFactura2.next();
                             
-                            String QueryInsertarSegundaFactura = "INSERT INTO Factura Values ('"+cedula.concat(fechaActual)+"d1',"+ totalaPagar +","
-                                    + " "+fechaLimite+", "
-                                    + "FALSE, "+ Long.parseLong(numeroTelefono) +", "+ Integer.parseInt(total_a_pagar) +", 0)";
-                                sentenciaFactura.executeUpdate(QueryInsertarSegundaFactura);
                             
-                        }
-                        
-                        else {
-                            
-                            total_a_pagar = resultadoBuscarFactura.getString("total_a_pagar").trim();
- 
+                            id_factura = resultadoFactura2.getString("id_factura").trim();
+                            estado_financiero = resultadoFactura2.getString("estado_financiero").trim();
                             deuda_ante = resultadoBuscarFactura.getString("deuda_anterior").trim();
-                            deuda_trasante = resultadoBuscarFactura.getString("deuda_trasanterior").trim();
                             
-                            if(!resultadoBuscarFactura.next()){
-                                String QueryInsertarTerceraFactura = "INSERT INTO Factura Values ('"+cedula.concat(fechaActual)+"d2',"+ totalaPagar +","
-                                    + " "+fechaLimite+", "
-                                    + "FALSE, "+ Long.parseLong(numeroTelefono) +", "+ Integer.parseInt(deuda_ante) +" , "
-                                    + ""+Integer.parseInt(total_a_pagar)+")";
-                            sentenciaFactura.executeUpdate(QueryInsertarTerceraFactura);
-                            } else {
-                                String QuerySuspenderServicio = "UPDATE Telefono SET estado_del_servicio = FALSE WHERE numero_telefono ="+ Long.parseLong(numeroTelefono);
-                                sentenciaFactura.executeUpdate(QuerySuspenderServicio);
-                                continue;
+                            if(!estado_financiero.equals("f")){
+                                String QueryEliminarFacturaPagada = "DELETE FROM Factura WHERE id_factura = '"+ id_factura+"'";
+                                
+                                sentenciaFactura.executeUpdate(QueryEliminarFacturaPagada);
                             }
                             
                             
-                            
                         }
+                        
+                        resultadoBuscarFactura = sentenciaFactura.executeQuery(QueryBuscarFacturas);
+                        resultadoFactura1 = resultadoBuscarFactura;
+                        resultadoFactura2 = resultadoBuscarFactura;
+                        
+                        
+                        if(resultadoFactura1.first()){
+                            
 
-                        
-                        
-                    } else {
-                        sentenciaFactura.executeUpdate(QueryInsertarFacturas);
-                        System.out.println("creando tablas");
-                    }
+                                id_factura = resultadoFactura1.getString("id_factura").trim();
+                                estado_financiero = resultadoFactura1.getString("estado_financiero").trim();
+
+
+                            if(!estado_financiero.equals("f")){
+                                String QueryEliminarFacturaPagada = "DELETE FROM Factura WHERE id_factura = '"+ id_factura+"'";
+                                String QueryInsertarFactura1 = "INSERT INTO Factura Values ('"+numeroTelefono.concat(fechaActual)+"',"+ totalaPagar +", "
+                                        + "'"+fechaLimite+"', "
+                                    + "FALSE, "+ Long.parseLong(numeroTelefono) +", "+ Integer.parseInt(deuda_ante) +", "
+                                        + ""+Integer.parseInt(deuda_trasante)+")";
+
+                                sentenciaFactura.executeUpdate(QueryEliminarFacturaPagada);
+                                sentenciaFactura.executeUpdate(QueryInsertarFactura1);
+                                continue;
+                            }
+
+                            if(!resultadoFactura2.next()){
+                                if(resultadoBuscarFactura.next()){
+
+                                    deuda_ante =  resultadoBuscarFactura.getString("deuda_trasanterior").trim();
+                                    String QueryUpdateDeduda3 = "UPDATE Factura SET deuda_trasanterior = 0, deuda_anterior ="+ Integer.parseInt(deuda_ante)
+                                            + " WHERE numero_telefono ="
+                                        + Long.parseLong(numeroTelefono) +" and deuda_trasanterior != 0";
+                                    sentenciaFactura.executeUpdate(QueryUpdateDeduda3);
+                                } else {
+                                    resultadoFactura1.first();
+                                    
+                                    deuda_ante =  resultadoFactura1.getString("total_a_pagar").trim();
+                                    
+                                    String QueryInsertarSegundaFactura = "INSERT INTO Factura Values ('"+numeroTelefono.concat(fechaActual)+"d1',"
+                                    + ""+ totalaPagar +","
+                                        + " '"+fechaLimite+"', "
+                                        + "FALSE, "+ Long.parseLong(numeroTelefono) +", "+ Integer.parseInt(deuda_ante) +" , "
+                                        + " 0)";    
+
+                                    sentenciaFactura.executeUpdate(QueryInsertarSegundaFactura);
+                                    continue;
+                                    
+                                }
+
+                            } else {
+                                if(resultadoBuscarFactura.next()){
+                                    String QuerySuspenderServicio = "UPDATE Telefono SET estado_del_servicio = FALSE WHERE numero_telefono ="+ 
+                                        Long.parseLong(numeroTelefono);
+                                    sentenciaFactura.executeUpdate(QuerySuspenderServicio);
+                                    continue;
+                                }
+                                resultadoFactura2.first();
+                                resultadoFactura2.next();
+                                
+                                deuda_ante =  resultadoFactura2.getString("total_a_pagar").trim();
+                                deuda_trasante = resultadoFactura2.getString("deuda_anterior").trim();
+
+                                String QueryInsertarTerceraFactura = "INSERT INTO Factura Values ('"+numeroTelefono.concat(fechaActual)+"d2',"
+                                    + ""+ totalaPagar +","
+                                        + " '"+fechaLimite+"', "
+                                        + "FALSE, "+ Long.parseLong(numeroTelefono) +", "+ Integer.parseInt(deuda_ante) +" , "
+                                        + ""+Integer.parseInt(deuda_trasante)+")";    
+
+                                sentenciaFactura.executeUpdate(QueryInsertarTerceraFactura);
+                                continue;
+                            }
+                            
+                            }
+
+
+
+                        } else {
+                            sentenciaFactura.executeUpdate(QueryInsertarFacturas); // Crea primera factura del telefono
+
+                        }
                 }
 
                 
@@ -346,7 +421,7 @@ public class ClientsDAO {
                 
                 
                 //Direccion donde se guardan las facturas
-                String rutaGuardar="C:\\Users\\User\\Desktop\\Facturas\\Fatura-"+cedula+"-"+fechaActual+".pdf";
+                String rutaGuardar="C:\\Users\\User\\Desktop\\Facturas\\Fatura "+numeroTelefono+"/"+fechaActual+".pdf";
                 Factura g=new Factura();
                 g.generarPDF(rutaImagen, nombrePersona+" "+paternoPersona+" "+maternoPersona, direccionPersona, cedula, rutaGuardar, 
                         serviciosAdicional, facturasPendientes, costo, Double.toString(totalaPagar));
@@ -400,6 +475,137 @@ public class ClientsDAO {
                 ex.printStackTrace();
             }
         return false;
+    }
+    
+    
+    public boolean pagarTelefono(Long telefono, int mes) {
+        
+        String QueryBuscarFacturas = "SELECT id_factura"
+                        + " FROM Factura WHERE factura.numero_telefono ="+ telefono;
+        System.out.println(QueryBuscarFacturas);
+        Connection coneccion = this.access.getConnetion();
+        System.out.println("Connection: " + coneccion);
+        
+          try {
+                Statement sentencia = coneccion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                System.out.println("sentencia: " + sentencia);
+                ResultSet resultado = sentencia.executeQuery(QueryBuscarFacturas);
+                System.out.println("resultado: " + resultado);
+                
+                
+                
+                if (resultado.next()) {
+                    
+                    if (resultado.next()){
+                        
+                        if (resultado.next()){
+                        
+                            String id_factura = resultado.getString("id_factura").trim();
+                            
+                            String[] parts = id_factura.split("-");
+                            String mesFecha = parts[1];
+                            int mesFechaInt = Integer.parseInt(mesFecha);
+                            
+                            System.out.println(mesFecha);
+                            if(mesFechaInt == mes){
+                                String QueryPagarSegundaDeuda  = "UPDATE Factura SET estado_financiero = TRUE"+
+                                " WHERE numero_telefono = " + telefono + "and id_factura = '" +id_factura+"' and estado_financiero != TRUE";
+                                sentencia.executeUpdate(QueryPagarSegundaDeuda);
+                                return true;
+                            }
+                            
+                        
+                    
+                        }
+                        
+                        resultado.first();
+                        resultado.next();
+                       String id_factura = resultado.getString("id_factura").trim();
+                            
+                            String[] parts = id_factura.split("-");
+                            String mesFecha = parts[1];
+                            int mesFechaInt = Integer.parseInt(mesFecha);
+                            
+                            System.out.println(mesFecha);
+                            if(mesFechaInt == mes){
+                                String QueryPagarSegundaDeuda  = "UPDATE Factura SET estado_financiero = TRUE"+
+                                " WHERE numero_telefono = " + telefono + "and id_factura = '" +id_factura+"' and estado_financiero != TRUE";
+                                sentencia.executeUpdate(QueryPagarSegundaDeuda);
+                                return true;
+                            }
+                        
+
+                    
+                    }
+                    
+                    resultado.first();
+                String id_factura = resultado.getString("id_factura").trim();
+                            
+                            String[] parts = id_factura.split("-");
+                            String mesFecha = parts[1];
+                            int mesFechaInt = Integer.parseInt(mesFecha);
+                            
+                            System.out.println(mesFecha);
+                            if(mesFechaInt == mes){
+                                String QueryPagarSegundaDeuda  = "UPDATE Factura SET estado_financiero = TRUE"+
+                                " WHERE numero_telefono = " + telefono + "and id_factura = '" +id_factura+"' and estado_financiero != TRUE";
+                                sentencia.executeUpdate(QueryPagarSegundaDeuda);
+                                return true;
+                            }  
+                    
+
+                } else {
+                    return false;
+                   
+                }
+
+            } catch (SQLException ex) {
+                System.out.println("---- Problema en la ejecucion.");
+                ex.printStackTrace();
+            }
+        return false;
+    }
+
+    public ArrayList<String[]> listarFacturas(Long Telefono) {
+        String QuerySQL = "SELECT nombre_persona, paterno_persona, "
+                + "id_factura, total_a_pagar FROM Cliente_Telefono_Factura WHERE numero_telefono ="+Telefono +
+                "and estado_financiero = FALSE";
+        System.out.println(QuerySQL);
+        Connection coneccion = this.access.getConnetion();
+        System.out.println("Connection: " + coneccion);
+        
+        try {
+            Statement sentencia = coneccion.createStatement();
+            System.out.println("sentencia: "+sentencia);
+            ResultSet resultado = sentencia.executeQuery(QuerySQL);
+            System.out.println("resultado: "+resultado);
+            
+
+            ArrayList<String[]> matrixList = new ArrayList<String[]>();
+            int cont = 0;
+            while (resultado.next()) {
+                
+                String a1 = resultado.getString("nombre_persona").trim();
+                String a2 = resultado.getString("paterno_persona").trim();
+                String a3 = Long.toString(Telefono);
+                String a4 = resultado.getString("id_factura").trim();
+                String a5 = resultado.getString("total_a_pagar").trim();
+                
+                String[] parts = a4.split("-");
+                String mes = parts[1];
+                
+                String[] niu = {a1, a2, a3, mes, a5}; //Es importante crear un nuevo arreglo cada vez
+                
+                matrixList.add(niu);
+                cont++;
+            }
+            return matrixList;
+
+        } catch (SQLException ex) {
+            System.out.println("---- Problema en la ejecucion.");
+            ex.printStackTrace();
+        }
+        return null;
     }
     
 }

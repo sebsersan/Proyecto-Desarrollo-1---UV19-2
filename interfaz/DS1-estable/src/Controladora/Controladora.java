@@ -304,12 +304,20 @@ public class Controladora {
         return usersDao.listarUsuarios();
     }
     
+    public ArrayList<String[]> listarFacturas(Long telefono){
+        return clientsDao.listarFacturas(telefono);
+    }
+    
     public void generarFacturaClients() {
         clientsDao.generarFacturaClientes();
     }
     
     public boolean recargarTelefono(Long telefono) {
         return clientsDao.recargarCliente(telefono);
+    }
+    
+    public boolean pagarTelefono(Long telefono, int mes) {
+        return clientsDao.pagarTelefono(telefono, mes);
     }
             
 }

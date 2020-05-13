@@ -865,6 +865,11 @@ public class Administrador extends javax.swing.JFrame {
                 botonListarUsuariosMouseClicked(evt);
             }
         });
+        botonListarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonListarUsuariosActionPerformed(evt);
+            }
+        });
 
         jLabel27.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 30)); // NOI18N
         jLabel27.setText("Usuario Ingresados");
@@ -1139,6 +1144,10 @@ public class Administrador extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void botonListarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListarUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonListarUsuariosActionPerformed
 
     private void listarUsuarios(){
         md.setRowCount(0); //Para limpiar la tabla
