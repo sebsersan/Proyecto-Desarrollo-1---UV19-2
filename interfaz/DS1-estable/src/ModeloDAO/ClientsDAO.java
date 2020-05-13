@@ -357,9 +357,10 @@ public class ClientsDAO {
                                 sentenciaFactura.executeUpdate(QueryHabilitarTelefono);
                                 sentenciaFactura.executeUpdate(QueryEliminarFacturaPagada);
                                 sentenciaFactura.executeUpdate(QueryInsertarFactura1);
-                                continue;
+                                
                             }
-
+                        
+                            
                             if(!resultadoFactura2.next()){
                                 if(resultadoBuscarFactura.next()){
 
@@ -380,7 +381,7 @@ public class ClientsDAO {
                                         + " 0)";    
 
                                     sentenciaFactura.executeUpdate(QueryInsertarSegundaFactura);
-                                    continue;
+                                    
                                     
                                 }
 
@@ -389,8 +390,12 @@ public class ClientsDAO {
                                     String QuerySuspenderServicio = "UPDATE Telefono SET estado_del_servicio = FALSE WHERE numero_telefono ="+ 
                                         Long.parseLong(numeroTelefono);
                                     sentenciaFactura.executeUpdate(QuerySuspenderServicio);
-                                    continue;
+                                    
                                 }
+                                resultadoBuscarFactura = sentenciaFactura.executeQuery(QueryBuscarFacturas);
+                                resultadoFactura1 = resultadoBuscarFactura;
+                                resultadoFactura2 = resultadoBuscarFactura;
+                        
                                 resultadoFactura2.first();
                                 resultadoFactura2.next();
                                 
@@ -404,7 +409,7 @@ public class ClientsDAO {
                                         + ""+Integer.parseInt(deuda_trasante)+")";    
 
                                 sentenciaFactura.executeUpdate(QueryInsertarTerceraFactura);
-                                continue;
+                                
                             }
                             
                             }
@@ -425,7 +430,7 @@ public class ClientsDAO {
                 
                 
                 //Direccion donde se guardan las facturas
-                String rutaGuardar="C:\\Users\\User\\Desktop\\Facturas\\Fatura "+numeroTelefono+"/"+fechaActual+".pdf";
+                String rutaGuardar="C:\\Users\\User\\Desktop\\Facturas\\Fatura "+numeroTelefono+".pdf";
                 Factura g=new Factura();
                 g.generarPDF(rutaImagen, nombrePersona+" "+paternoPersona+" "+maternoPersona, direccionPersona, cedula, rutaGuardar, 
                         serviciosAdicional, facturasPendientes, costo, Double.toString(totalaPagar));
