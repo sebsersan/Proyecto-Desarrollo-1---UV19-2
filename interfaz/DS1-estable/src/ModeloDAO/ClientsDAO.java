@@ -81,7 +81,7 @@ public class ClientsDAO {
             JOptionPane.showMessageDialog(null, "El cliente ha superado el limite de telefonos \nIntentelo nuevamente con otro cliente");
             return false;
         } else {
-            String QuerySQL = "INSERT INTO Telefono VALUES(" + aUser.getId() + ", '" + aUser.getTel() + "', '" + aUser.getPlan() + "',true)";
+            String QuerySQL = "INSERT INTO Telefono VALUES(" + aUser.getId() + ", '" + aUser.getTel() + "', '" + aUser.getPlan() + "',TRUE)";
 
             String QuerySQLaux = "SELECT numero_telefono FROM Telefono WHERE numero_telefono = '" + aUser.getTel() + "'";
             System.out.println(QuerySQL);
@@ -274,6 +274,10 @@ public class ClientsDAO {
                 String deuda_trasante = "0";
                 ResultSet resultadoFactura1 = null;
                 ResultSet resultadoFactura2 = null;
+                
+                
+                String QueryHabilitarTelefono  = "UPDATE Telefono SET estado_del_servicio = TRUE"+
+                " WHERE numero_telefono = " + Long.parseLong(numeroTelefono);     
             
             
                 String QueryBuscarFacturas = "SELECT id_factura, total_a_pagar, estado_financiero, deuda_anterior, deuda_trasanterior"
@@ -291,24 +295,22 @@ public class ClientsDAO {
                     resultadoBuscarFactura = sentenciaFactura.executeQuery(QueryBuscarFacturas);
                     System.out.println("resultadoFACTURA: "+resultadoBuscarFactura);
                     
-                    resultadoFactura1 = resultadoBuscarFactura;
                     if(resultadoBuscarFactura.next()){
                         
                         
-                        resultadoFactura2 = resultadoBuscarFactura;
                         
                         if(resultadoBuscarFactura.next()){
                             
                             if(resultadoBuscarFactura.next()){
                                 id_factura = resultadoBuscarFactura.getString("id_factura").trim();
                                 estado_financiero = resultadoBuscarFactura.getString("estado_financiero").trim();
-                                deuda_ante = resultadoBuscarFactura.getString("deuda_anterior").trim();
                                 deuda_trasante = resultadoBuscarFactura.getString("deuda_trasanterior").trim();
 
                                 
                                 if(!estado_financiero.equals("f")){
                                     String QueryEliminarFacturaPagada = "DELETE FROM Factura WHERE id_factura = '"+ id_factura+"'";
-                          
+                                    
+                                    sentenciaFactura.executeUpdate(QueryHabilitarTelefono);            
                                     sentenciaFactura.executeUpdate(QueryEliminarFacturaPagada);
                                     
                                 }
@@ -326,6 +328,7 @@ public class ClientsDAO {
                             if(!estado_financiero.equals("f")){
                                 String QueryEliminarFacturaPagada = "DELETE FROM Factura WHERE id_factura = '"+ id_factura+"'";
                                 
+                                sentenciaFactura.executeUpdate(QueryHabilitarTelefono);
                                 sentenciaFactura.executeUpdate(QueryEliminarFacturaPagada);
                             }
                             
@@ -350,7 +353,8 @@ public class ClientsDAO {
                                         + "'"+fechaLimite+"', "
                                     + "FALSE, "+ Long.parseLong(numeroTelefono) +", "+ Integer.parseInt(deuda_ante) +", "
                                         + ""+Integer.parseInt(deuda_trasante)+")";
-
+                                
+                                sentenciaFactura.executeUpdate(QueryHabilitarTelefono);
                                 sentenciaFactura.executeUpdate(QueryEliminarFacturaPagada);
                                 sentenciaFactura.executeUpdate(QueryInsertarFactura1);
                                 continue;
@@ -485,7 +489,7 @@ public class ClientsDAO {
         System.out.println(QueryBuscarFacturas);
         Connection coneccion = this.access.getConnetion();
         System.out.println("Connection: " + coneccion);
-        
+           
           try {
                 Statement sentencia = coneccion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
                 System.out.println("sentencia: " + sentencia);
@@ -510,6 +514,8 @@ public class ClientsDAO {
                             if(mesFechaInt == mes){
                                 String QueryPagarSegundaDeuda  = "UPDATE Factura SET estado_financiero = TRUE"+
                                 " WHERE numero_telefono = " + telefono + "and id_factura = '" +id_factura+"' and estado_financiero != TRUE";
+                                
+
                                 sentencia.executeUpdate(QueryPagarSegundaDeuda);
                                 return true;
                             }
