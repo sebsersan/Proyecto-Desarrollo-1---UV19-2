@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     cliente_telefono_plan_consumo."numero_telefono" AS cliente_telefono_plan_consumo_numero_telefono,
+     cliente_telefono_plan_consumo."id_plan" AS cliente_telefono_plan_consumo_id_plan,
+     cliente_telefono_plan_consumo."cedula" AS cliente_telefono_plan_consumo_cedula,
+     cliente_telefono_plan_consumo."nombre_persona" AS cliente_telefono_plan_consumo_nombre_persona,
+     cliente_telefono_plan_consumo."paterno_persona" AS cliente_telefono_plan_consumo_paterno_persona,
+     cliente_telefono_plan_consumo."tipo_cliente" AS cliente_telefono_plan_consumo_tipo_cliente,
+     cliente_telefono_plan_consumo."estado_del_servicio" AS cliente_telefono_plan_consumo_estado_del_servicio,
+     cliente_telefono_factura."estado_financiero" AS cliente_telefono_factura_estado_financiero,
+     cliente_telefono_factura."deuda_anterior" AS cliente_telefono_factura_deuda_anterior,
+     cliente_telefono_factura."deuda_trasanterior" AS cliente_telefono_factura_deuda_trasanterior
+FROM
+     "public"."cliente_telefono_plan_consumo" cliente_telefono_plan_consumo,
+     "public"."cliente_telefono_factura" cliente_telefono_factura]]>
+	</queryString>
+	<field name="cliente_telefono_plan_consumo_numero_telefono" class="java.lang.Long"/>
+	<field name="cliente_telefono_plan_consumo_id_plan" class="java.lang.Integer"/>
+	<field name="cliente_telefono_plan_consumo_cedula" class="java.lang.Long"/>
+	<field name="cliente_telefono_plan_consumo_nombre_persona" class="java.lang.String"/>
+	<field name="cliente_telefono_plan_consumo_paterno_persona" class="java.lang.String"/>
+	<field name="cliente_telefono_plan_consumo_tipo_cliente" class="java.lang.String"/>
+	<field name="cliente_telefono_plan_consumo_estado_del_servicio" class="java.lang.Boolean"/>
+	<field name="cliente_telefono_factura_estado_financiero" class="java.lang.Boolean"/>
+	<field name="cliente_telefono_factura_deuda_anterior" class="java.lang.Integer"/>
+	<field name="cliente_telefono_factura_deuda_trasanterior" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="270" y="40" width="100" height="20" />
+				<text><![CDATA[Estado Financiero]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="84" y="2" width="100" height="20"/>
+				<text><![CDATA[cliente_telefono_plan_consumo_cedula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="2" width="100" height="20" />
+				<text><![CDATA[cliente_telefono_plan_consumo_nombre_persona]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="2" width="100" height="20" />
+				<text><![CDATA[cliente_telefono_plan_consumo_paterno_persona]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="84" y="39" width="100" height="20" />
+				<textFieldExpression><![CDATA[$F{cliente_telefono_plan_consumo_cedula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="263" y="42" width="100" height="20" />
+				<textFieldExpression><![CDATA[$F{cliente_telefono_plan_consumo_nombre_persona}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="42" width="100" height="20" />
+				<textFieldExpression><![CDATA[$F{cliente_telefono_plan_consumo_paterno_persona}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

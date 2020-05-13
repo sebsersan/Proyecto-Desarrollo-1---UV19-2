@@ -7,6 +7,16 @@ package Vista;
 
 import Controladora.Controladora;
 import Modelo.Users;
+import ModeloDAO.Acceso;
+import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -118,6 +128,11 @@ public class Gerente extends javax.swing.JFrame {
         jButton2.setContentAreaFilled(false);
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -542,6 +557,24 @@ public class Gerente extends javax.swing.JFrame {
         
         panelConsultaPlanes.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+            try {
+                // TODO add your handling code here:
+                Acceso con= new Acceso();
+                Connection coneccion = con.getConnetion();
+                String report = "/src/Reportes/estadoFinanciero.jrxml";
+                
+                JasperReport jr = JasperCompileManager.compileReport(report);
+                JasperPrint jp = JasperFillManager.fillReport(jr, null, coneccion);
+                JasperViewer jv = new JasperViewer(jp, false);
+                jv.setTitle("Reporte de ventas");
+                jv.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                jv.setVisible(true);
+            } catch (JRException ex) {
+                Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
